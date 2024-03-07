@@ -13,7 +13,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.use("/auth",userRouter);
+app.use("/auth", userRouter);
 
 //get for postman - Lists on webpage
 app.get('/', (req, res) => {

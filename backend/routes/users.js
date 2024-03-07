@@ -16,8 +16,8 @@ userRouter.post("/createAccount", async(req, res) =>
     {
         return res.json({ message: "User already exists."});
     }
-    const hashed = await bcrypt.hash(password,10); //hash password for security
-    const newUser = new UserModel({username,password: hashed}); //store new account in DB
+    const hashed = await bcrypt.hash(password, 10); //hash password for security
+    const newUser = new UserModel({username, password: hashed}); //store new account in DB
     await newUser.save();
     res.json({message: "Account Created Successfully."});
 });
@@ -42,4 +42,4 @@ userRouter.post("/login", async(req,res)=>
 });
 
 
-module.exports= userRouter;
+module.exports = userRouter;
