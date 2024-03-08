@@ -1,3 +1,3 @@
-export const CreateRecipes = () => {
-    return <div> Create Recipes</div>
-}
+export const CreateRecipe = () =>{
+    return <div> Create Recipe </div>
+};

@@ -1,19 +1,19 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home";
 import { Auth } from "./pages/auth";
-import { CreateRecipes } from "./pages/create-recipes";
+import { CreateRecipe } from "./pages/create-recipes";
 import { SavedRecipes } from "./pages/saved-recipes";
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router> 
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/auth" element={<Auth></Auth>}></Route>
-          <Route path="/create-recipes" element={<CreateRecipes></CreateRecipes>}></Route>
-          <Route path="/saved-recipes" element={<SavedRecipes></SavedRecipes>}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/create-recipe" element={<CreateRecipe />} />
+          <Route path="/saved-recipes" element={<SavedRecipes />} />
         </Routes>
       </Router>
     </div>

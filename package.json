@@ -1,1 +1,8 @@
-{}
+{
+  "dependencies": {
+    "argon2": "^0.40.1",
+    "axios": "^1.6.7",
+    "react-cookie": "^7.1.0",
+    "react-router-dom": "^6.22.3"
+  }
+}

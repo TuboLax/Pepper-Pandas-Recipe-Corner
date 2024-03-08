@@ -21,9 +21,9 @@ app.get('/', (req, res) => {
 })
 
 //database connection
-mongoose.connect("mongodb+srv://saccodeproject:TermPeppa89@recipes.v3su4qy.mongodb.net/Recipes?retryWrites=true&w=majority&appName=Recipes");
+mongoose.connect("mongodb+srv://saccodeproject:TermPeppa89@recipeapp.avdvskp.mongodb.net/recipeapp?retryWrites=true&w=majority&appName=recipeapp");
 
 //Listening for requests
 app.listen(process.env.PORT, () => {
-    console.log('Listening on port', process.env.PORT)
+    console.log('Listening on port', process.env.PORT);
 })
