@@ -1,4 +1,9 @@
 {
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "dependencies": {
     "argon2": "^0.40.1",
     "axios": "^1.6.7",
