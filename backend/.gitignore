@@ -1,3 +1,5 @@
+#private info
 .env
 
+#dependency
 /node_modules
