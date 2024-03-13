@@ -1,6 +1,4 @@
-// TODO: Break up the get requests by their type (title, diet, cuisine, ingredients, random)
 // TODO: Move the queries to be in the search bar 
-// TODO: Have the homepage either random recipes or selected recipes ("Pepper's Favorites")
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
