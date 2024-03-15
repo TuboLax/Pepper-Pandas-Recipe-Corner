@@ -6,7 +6,7 @@ export const CreateRecipe = () =>{
         <div className="logo-container">
             <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
         </div>
-        <h1>Pepper's Favorite</h1>
+        <h1>Pepper's Cooking</h1>
     </header>
 
     <footer>
