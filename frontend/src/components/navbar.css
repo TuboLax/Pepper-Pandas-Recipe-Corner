@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    padding: 10px 0;
+}
+
+.nav-link {
+    margin: 30px; /* Add spacing between the links */
+    text-decoration: none;
+    color: #333;
+}
