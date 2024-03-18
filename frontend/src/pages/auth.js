@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from 'axios';
 import {useCookies} from 'react-cookie';
 import {useNavigate} from 'react-router-dom';
+import './auth.css';
+import pepperPandaLogo from '../assets/pepper-panda.png';
 
 export const Auth = () =>{
     return(
@@ -131,3 +133,18 @@ const Form = ({username,setUsername, password, setPassword, formType, onSubmit})
         </div>
     );
 }
+
+export const Auth = () =>{
+    return  <div className="container">
+    <header>
+        <div className="logo-container">
+            <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
+        </div>
+        <h1>Pepper Auth</h1>
+    </header>
+
+    <footer>
+        <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
+    </footer>
+</div>
+};
