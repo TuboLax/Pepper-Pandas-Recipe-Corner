@@ -12,7 +12,7 @@ export const Auth = () =>{
         <div className="logo-container">
             <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
         </div>
-        <h1>Log In to Join Pepper!</h1>
+        <h1>Log In to Join Pepper Panda!</h1>
     </header>
     <body>
         <div className="auth">
