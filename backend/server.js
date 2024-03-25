@@ -5,6 +5,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 
 const userRouter = require('./routes/users.js');
+const readRouter = require('./routes/read.js');
 
 //express app
 const app = express()
@@ -15,6 +16,7 @@ app.use(cors())
 
 //path for app
 app.use("/auth", userRouter);
+app.use("/read", readRouter);
 
 /*****  NOT NEEDED - DELETE LATER  *****/
 //get for postman - Lists on webpage
