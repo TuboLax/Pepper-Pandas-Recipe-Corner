@@ -1,10 +1,16 @@
-const mongoose = require('mongoose')
+const express = require('express');
+const router = express.Router();
 
-//user model
-const UserSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true},
+const User = require('../models/User');
+
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
-const UserModel = mongoose.model("users", UserSchema);
-module.exports=UserModel;
+module.exports = router;
