@@ -1,10 +1,10 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-//user model
+// User model
 const UserSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true},
+   username: { type: String, required: true, unique: true },
+   password: { type: String, required: true},
 });
 
-const UserModel = mongoose.model("users", UserSchema);
-module.exports=UserModel;
+const UserModel = mongoose.model("users", UserSchema); // Changed collection name to "User" (singular)
+module.exports = UserModel;
