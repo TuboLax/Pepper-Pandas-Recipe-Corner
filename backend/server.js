@@ -6,6 +6,9 @@ const mongoose = require('mongoose')
 
 const userRouter = require('./routes/users.js');
 
+// Router for Spoonacular API access
+const spoonRouter = require('./routes/spoon.js');
+
 //express app
 const app = express()
 
@@ -15,6 +18,9 @@ app.use(cors())
 
 //path for app
 app.use("/auth", userRouter);
+
+// Start to the path for Spoonacular API access
+app.use("/recipes", spoonRouter);
 
 /*****  NOT NEEDED - DELETE LATER  *****/
 //get for postman - Lists on webpage
