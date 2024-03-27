@@ -1,40 +1,26 @@
-require('dotenv').config()
+require('dotenv').config(); // Load environment variables from .env file
 
-const express = require('express')
-const cors = require('cors')
-const mongoose = require('mongoose')
-
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 const userRouter = require('./routes/users.js');
-
-// Router for Spoonacular API access
-const spoonRouter = require('./routes/spoon.js');
 
 //express app
 const app = express()
 
-//middleware
-app.use(express.json())
-app.use(cors())
+// Middleware
+app.use(express.json()); // Parse JSON bodies
+app.use(cors()); // Enable Cross-Origin Resource Sharing
 
-//path for app
-app.use("/auth", userRouter);
+// Routes
+app.use("/auth", userRouter); // Use the user routes under /auth endpoint
 
-// Start to the path for Spoonacular API access
-app.use("/recipes", spoonRouter);
+// Database connection
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }) // Connect to MongoDB Atlas using the connection string from .env file
+    .then(() => { console.log('MongoDB Connected!'); })
+    .catch((err) => { console.error('MongoDB connection error:', err); });
 
-/*****  NOT NEEDED - DELETE LATER  *****/
-//get for postman - Lists on webpage
-app.get('/', (req, res) => {
-    res.json({mssg: 'Welcome to the app. I am Pepper Panda'});
-})
-/*****  NOT NEEDED - DELETE LATER  *****/
-
-//database connection - single statement
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {console.log('MongoDB Connected!')})
-    .catch((err) => {console.log(err)});
-
-//Listening for requests
+// Listening for requests
 app.listen(process.env.PORT, () => {
-    console.log('Listening on port', process.env.PORT);
-})
+    console.log('Server is listening on port', process.env.PORT);
+});
