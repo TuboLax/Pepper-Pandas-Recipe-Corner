@@ -8,12 +8,12 @@ import pepperPandaLogo from '../assets/pepper-panda.png';
 export const Auth = () => {
   return (
     <div className="container">
-      <header>
-        <div className="logo-container">
-          <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
-        </div>
-        <h1>Join Pepper Panda!</h1>
-    </header>
+        <header>
+            <div className="logo-container">
+            <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
+            </div>
+            <h1>Join Pepper Panda!</h1>
+        </header>
     <body>
         <div className="auth">
           <Login />
@@ -37,7 +37,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const input = await axios.post("/auth/login", { username, password });
+      const input = await axios.post("http://localhost:3000/auth/login", { username, password });
       const loginBool = input.data.logStatus;
       console.log(loginBool);
       if (loginBool === "true") {
@@ -71,7 +71,7 @@ const Register = () => {
   const onSubmit = async (event) => {
     event.preventDefault(); //prevents page refresh
     try {
-      const input = await axios.post("/auth/createAccount", { username, password });
+      const input = await axios.post("http://localhost:3000/auth/createAccount", { username, password });
       const regBool = input.data.regStatus;
       console.log(regBool);
       if (regBool === true) {
@@ -121,30 +121,4 @@ const Form = ({ username, setUsername, password, setPassword, formType, onSubmit
       </form>
     </div>
   );
-const Form = ({username,setUsername, password, setPassword, formType, onSubmit}) =>
-{
-    return(
-        <div className="auth-container">
-            <form onSubmit={onSubmit}>
-                <h2>{formType}</h2>
-                <div className="form-group">
-                    <label htmlFor="username">Username: </label>
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(event)=>setUsername(event.target.value)}/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password: </label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(event)=>setPassword(event.target.value)}/>
-                </div>
-                <button type="submit">Continue</button>
-            </form>
-        </div>
-    );
 }
