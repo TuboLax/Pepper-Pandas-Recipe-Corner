@@ -1,9 +1,13 @@
+/* Light mode styles */
 body {
-  background-color: #d3f7e6;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: #333;
+  background-color: #d3f7e6; /* Light green background */
+  color: #333; /* Dark text color */
+}
+
+/* Dark mode styles */
+body.dark {
+  background-color: #2e1e35; /* Dark purple background */
+  color: #dcd6f7; /* Light purple text color */
 }
 
 .logo-container {
@@ -23,19 +27,19 @@ body {
 }
 
 header {
-  background-color: #5eba8d;
+  background-color: #5eba8d; /* Light green header background */
   padding: 10px;
   text-align: center;
 }
 
 header h1 {
   margin-bottom: 10px;
-  color: #fff;
+  color: #fff; /* White text color */
 }
 
 header p {
   font-style: italic;
-  color: #fff;
+  color: #fff; /* White text color */
 }
 
 nav ul {
@@ -52,11 +56,11 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: #333; /* Dark text color */
 }
 
 nav ul li a:hover {
-  color: #5eba8d;
+  color: #5eba8d; /* Light green hover color */
 }
 
 .featured-recipes {
@@ -68,20 +72,52 @@ nav ul li a:hover {
 }
 
 .recipe h3 {
-  color: #333;
+  color: #333; /* Dark text color */
 }
 
 .recipe p {
-  color: #666;
+  color: #666; /* Medium dark text color */
 }
 
 footer {
-  background-color: #5eba8d;
+  background-color: #5eba8d; /* Light green footer background */
   padding: 10px;
   text-align: center;
   width: 100%;
-  color: #fff;
+  color: #fff; /* White text color */
   position: fixed;
   bottom: 0;
   left: 0;
+}
+
+/* Dark mode specific styles */
+body.dark .container {
+  background-color: #2e1e35; /* Dark purple background for container */
+}
+
+body.dark header {
+  background-color: #8b2e3d; /* Dark red background for header */
+}
+
+body.dark header h1,
+body.dark header p {
+  color: #dcd6f7; /* Light purple text color for header */
+}
+
+body.dark nav ul li a,
+body.dark nav ul li a:hover {
+  color: #dcd6f7; /* Light purple text color for nav links */
+}
+
+body.dark .recipe h3 {
+  color: #dcd6f7; /* Light purple text color for recipe titles */
+}
+
+body.dark .recipe p {
+  color: #bfa4b8; /* Light purple text color for recipe descriptions */
+}
+
+body.dark footer {
+  background-color: #8b2e3d; /* Dark red background for footer */
+  color: #dcd6f7; /* Light purple text color for footer */
 }
