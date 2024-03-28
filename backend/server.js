@@ -4,11 +4,10 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const userRouter = require('./routes/users.js');
-const readRouter = require('./routes/read.js');
 
 //Routers
 const userRouter = require('./routes/users.js');
+const readRouter = require('./routes/read.js');
 const recipesRouter = require('./routes/recipes.js');
 
 //Express app
