@@ -37,7 +37,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const input = await axios.post("/auth/login", { username, password });
+      const input = await axios.post("http://localhost:3000/auth/login", { username, password });
       const loginBool = input.data.logStatus;
       console.log(loginBool);
       if (loginBool === "true") {
@@ -71,7 +71,7 @@ const Register = () => {
   const onSubmit = async (event) => {
     event.preventDefault(); //prevents page refresh
     try {
-      const input = await axios.post("/auth/createAccount", { username, password });
+      const input = await axios.post("http://localhost:3000/auth/createAccount", { username, password });
       const regBool = input.data.regStatus;
       console.log(regBool);
       if (regBool === true) {

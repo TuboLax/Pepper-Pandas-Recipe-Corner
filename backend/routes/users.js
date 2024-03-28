@@ -1,10 +1,11 @@
+require('dotenv').config();
+
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const argon2 = require('argon2'); // Import argon2 for password hashing
 const UserModel = require('../models/Users.js');
 
 const userRouter = express.Router();
-const SECRET = "8aJaDbI6DtHof5jvDD75J8OfscAs0optTyF";
 
 userRouter.post("/createAccount", async (req, res) => {
    try {
@@ -44,7 +45,7 @@ userRouter.post("/login", async (req, res) => {
        return res.json({ logStatus, message: "Username / Password is Incorrect." });
    }
    logStatus = "true";
-   const token = jwt.sign({ id: user._id }, SECRET);
+   const token = jwt.sign({ id: user._id }, process.env.SECRET);
    res.json({ logStatus, token, userID: user._id });
 });
 
