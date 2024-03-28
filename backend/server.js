@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 
 //Routers
 const userRouter = require('./routes/users.js');
-const readRouter = require('./routes/read.js');
 const recipesRouter = require('./routes/recipes.js');
 
 //Express app
