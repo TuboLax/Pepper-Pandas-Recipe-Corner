@@ -1,42 +1,67 @@
 .navbar {
+    background-color: #f3f3f3;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-left {
     display: flex;
     align-items: center;
-    background-color: #f3f3f3;
-    padding: 10px 0;
-    padding-left: 10%;
-    padding-right: 10%;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
 }
 
 .nav-link {
-    margin: 30px; /* Add spacing between the links */
     text-decoration: none;
     color: #333;
-    list-style: none;
-    display: inline-block;
     font-weight: 400;
-    justify-content: left;
+    margin-right: 20px;
 }
 
-#loginBtn{
-    padding-left: 60%;
-    display: inline-block;
-}
-
-.logout{
-    margin: 30px; /* Add spacing between the links */
+#loginBtn {
     text-decoration: none;
     color: #333;
-    background:none;
-    border:none;
-    cursor: pointer;
-    font:inherit;
-    padding-left:3vh;
-    outline:inherit;
+    font-weight: 400;
 }
 
-@media only screen and (max-width: 430px){
+.logout {
+    text-decoration: none;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    outline: inherit;
+    margin-left: 20px;
+}
 
-    .nav-link{
-        margin:15px;
+@media only screen and (max-width: 430px) {
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar-left {
+        flex: 1;
+    }
+
+    .navbar-right {
+        margin-top: 10px;
+    }
+
+    .nav-link,
+    #loginBtn,
+    .logout {
+        margin: 10px;
     }
 }

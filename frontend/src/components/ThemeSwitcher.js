@@ -1,9 +1,18 @@
-// ThemeSwitcher.js
 import React from 'react';
 
-const ThemeSwitcher = ({ isDarkMode, setIsDarkMode }) => {
-  return null; // Return null to remove the button
+const ThemeSwitcher = ({ isDarkMode, toggleTheme }) => {
+  const handleToggle = () => {
+    console.log('Button clicked');
+    toggleTheme();
+  };
+
+  return (
+    <div className="theme-switcher">
+      <button onClick={handleToggle}>
+        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
+    </div>
+  );
 };
 
-export default ThemeSwitcher; // Export the component as default
-export { ThemeSwitcher }; // Export the component as named export
+export default ThemeSwitcher;

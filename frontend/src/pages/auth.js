@@ -8,16 +8,20 @@ import pepperPandaLogo from '../assets/pepper-panda.png';
 export const Auth = () => {
   return (
     <div className="container">
-        <header>
-            <div className="logo-container">
-            <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
-            </div>
-            <h1>Join Pepper Panda!</h1>
-        </header>
-    <body>
+      <header>
+        <div className="logo-container">
+          <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
+        </div>
+        <h1>Join Pepper Panda!</h1>
+      </header>
+      <body>
         <div className="auth">
-          <Login />
-          <Register />
+          <div className="auth-box">
+            <Login />
+          </div>
+          <div className="auth-box">
+            <Register />
+          </div>
         </div>
       </body>
       <footer>

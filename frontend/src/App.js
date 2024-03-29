@@ -5,11 +5,15 @@ import { Home } from './pages/home';
 import { Auth } from './pages/auth';
 import { CreateRecipe } from './pages/create-recipes';
 import { SavedRecipes } from './pages/saved-recipes';
-import { Navbar } from './components/navbar'; // Assuming Navbar is exported as the default export
-import { ThemeSwitcher } from './components/ThemeSwitcher'; // Assuming ThemeSwitcher is exported as the default export
+import { Navbar } from './components/navbar';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode(prevMode => !prevMode);
+  };
 
   return (
     <div className={`App ${isDarkMode ? 'dark' : 'light'}`}>
@@ -21,7 +25,7 @@ function App() {
           <Route path="/create-recipes" element={<CreateRecipe />} />
           <Route path="/saved-recipes" element={<SavedRecipes />} />
         </Routes>
-        <ThemeSwitcher isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <ThemeSwitcher isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       </Router>
     </div>
   );
