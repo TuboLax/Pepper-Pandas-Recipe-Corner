@@ -1,22 +1,25 @@
 .navbar {
     display: flex;
-    justify-content: left;
     align-items: center;
     background-color: #f3f3f3;
     padding: 10px 0;
-    padding-left: 10vw;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .nav-link {
     margin: 30px; /* Add spacing between the links */
     text-decoration: none;
     color: #333;
+    list-style: none;
+    display: inline-block;
+    font-weight: 400;
+    justify-content: left;
 }
 
-#authButton{
-    justify-content: right;
-    width: 200px;
-    padding-left:48vw;
+#loginBtn{
+    padding-left: 60%;
+    display: inline-block;
 }
 
 .logout{
@@ -29,4 +32,11 @@
     font:inherit;
     padding-left:3vh;
     outline:inherit;
+}
+
+@media only screen and (max-width: 430px){
+
+    .nav-link{
+        margin:15px;
+    }
 }
