@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.css';
+import '../App.css';
 import ThemeSwitcher from '../components/ThemeSwitcher'; // Import the ThemeSwitcher component
 import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
