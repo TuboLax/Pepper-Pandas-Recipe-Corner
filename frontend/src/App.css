@@ -83,33 +83,6 @@ footer {
   left: 0;
 }
 
-body.dark .container {
-  background-color: #2e1e35;
-}
+@media only screen and (max-width: 430px){
 
-body.dark header {
-  background-color: #8b2e3d;
-}
-
-body.dark header h1,
-body.dark header p {
-  color: #dcd6f7;
-}
-
-body.dark nav ul li a,
-body.dark nav ul li a:hover {
-  color: #dcd6f7;
-}
-
-body.dark .recipe h3 {
-  color: #dcd6f7;
-}
-
-body.dark .recipe p {
-  color: #bfa4b8;
-}
-
-body.dark footer {
-  background-color: #8b2e3d;
-  color: #dcd6f7;
 }
