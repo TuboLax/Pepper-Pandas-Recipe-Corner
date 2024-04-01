@@ -8,10 +8,10 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const RecipeModel = require('../models/Recipes.js');
 const UserModel = require('../models/Users.js');
+//const verifyToken = require('./users.js');
 
 const recipesRouter = express.Router();
 
-//home page display - change into pepper panda's recommended recipes
 //get all recipes avaliable in collection - edit to as a user
 recipesRouter.get("/", async (req, res) => {
     try {
@@ -59,10 +59,10 @@ recipesRouter.put("/", async (req, res) => {
     }
 });
 //get all saved recipes in user's savedRecipe array by userID
-recipesRouter.get("/savedRecipes", async (req, res) => {
+recipesRouter.get("/savedRecipes/:userID", async (req, res) => {
     try {
-        const { userID } = req.query;                        //get user ID        
-        const user = await UserModel.findById(userID);      
+        const userID = req.params.userID;                       //get user ID 
+        const user = await UserModel.findById(userID);            
         if (!user) {                                        //validate if user exists
             return res.status(404).json({
                 message: "User Not Found."
@@ -80,10 +80,10 @@ recipesRouter.get("/savedRecipes", async (req, res) => {
     } 
 });
 //get all saved recipes by IDs in user's savedRecipe array by userID (for frontend view on saved recipes page) 
-recipesRouter.get("/savedRecipes/ids", async (req, res) => {
+recipesRouter.get("/savedRecipes/ids/:userID", async (req, res) => {
     try {
-        const { userID } = req.query;                       //get user ID from query parameters
-        const user = await UserModel.findById(userID);      
+        const userID = req.params.userID;                       //get user ID 
+        const user = await UserModel.findById(userID);             
         if (!user) {                                        //validate if user exists
             return res.status(404).json({
                 message: "User Not Found."
@@ -100,31 +100,11 @@ recipesRouter.get("/savedRecipes/ids", async (req, res) => {
     } 
 });
 
-// Middleware to verify JWT token
-const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    if (!token) {
-        return res.status(401).json({ 
-            message: "Unauthorized. Token not found." 
-        });
-    }
+module.exports = recipesRouter;
 
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
-        if (err) {
-            console.error("Error verifying token:", err);
-            return res.status(401).json({ 
-                message: "Unauthorized. Invalid token." 
-            });
-        }
-        req.user = decoded; // Attach decoded user object to request
-        next();
-    });
-};
-
-
+/*
 //finds and deletes recipe by ID locally by userID
-recipesRouter.delete("/:recipeID", authenticateToken, async (req, res) => {
+recipesRouter.delete("/:recipeID", async (req, res) => {
     try {
         const recipeID = req.params.recipeID;                       //get recipeID
         const recipe = await RecipeModel.findById(recipeID);        //find recipe by ID
@@ -134,18 +114,22 @@ recipesRouter.delete("/:recipeID", authenticateToken, async (req, res) => {
             }); 
         }
 
-        if (!req.user || !req.user._id) {                       // Check if userID is present in req.user._id
-            return res.status(401).json({ 
-                message: "Unauthorized. User ID not found." 
+        const userID = req.user._id;                        //get userID from decoded JWT token
+        const user = await UserModel.findById(userID);      //validates if the user has access to delete the recipe
+        if (!user) {
+            return res.status(404).json({ 
+                message: "User Not Found." 
             });
         }
-
-        const userID = req.user._id;                     //get authenticated userID
-        await UserModel.findByIdAndUpdate(               //remove recipe from user's savedRecipes Array in user document
+        if (!user.savedRecipes.includes(recipeID)) {        //check if the user has the recipe in their savedRecipes array
+            return res.status(401).json({ 
+                message: "Unauthorized. Recipe not found in user's saved recipes." 
+            });
+        }
+        await UserModel.findByIdAndUpdate(              //delete recipe from user's savedRecipes Array in user document
             userID, 
-            { $pull: { savedRecipes: recipeID} }         //remove recipeID from savedRecipes Array
+            { $pull: { savedRecipes: recipeID } }       //remove recipeID from savedRecipes Array
         );
-
         res.json({ 
             message: "Recipe Deleted Sucessfully." 
         });
@@ -188,5 +172,28 @@ recipesRouter.patch("/:recipeID", async (req, res) => {
         });
     }
 });
+*/
 
-module.exports = recipesRouter;
+/**
+ * // Middleware to verify JWT token
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) {
+        return res.status(401).json({ 
+            message: "Unauthorized. Token not found." 
+        });
+    }
+
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+        if (err) {
+            console.error("Error verifying token:", err);
+            return res.status(401).json({ 
+                message: "Unauthorized. Invalid token." 
+            });
+        }
+        req.user = decoded; // Attach decoded user object to request
+        next();
+    });
+};
+ */

@@ -1,50 +1,50 @@
 import './create-recipes.css';
 import pepperPandaLogo from '../assets/pepper-panda.png';
 import { useState } from "react";
+import { userGetUserID } from '../hooks/useGetUserID';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 export const CreateRecipe = () =>{
+    const userID = userGetUserID();
+    const navigate = useNavigate();
+    
     const [recipe, setRecipe] = useState({
         title: "",
         image: "",
         servings: 0,
         readyInMinutes: 0,
-        sourceName: "",
-        sourceURL: "",
-        cuisines: [],
-        dairyFree: false,
-        diets: [],
-        instructions: [],
         extendedIngredients: [],
-        vegetarian: false,
-        vegan: false,
-        ketogenic: false,
-        glutenFree: false,
-        globalRecipe: false,
-        userOwner: 0,
+        userOwner: userID,
     });
 
+    //
     const handleChange = (event) => {
         const {name, value} = event.target;
-        setRecipe({ ...recipe, [name]: value})
+        setRecipe({ ...recipe, [name]: value });
     };
 
+    //each new ingredient is added 
     const handleIngredientChange = (event, idx) => {
         const { value } = event.target;
         const extendedIngredients = recipe.extendedIngredients;
         extendedIngredients[idx] = value;
-        setRecipe({ ...recipe, extendedIngredients })
+        setRecipe({ ...recipe, extendedIngredients: extendedIngredients });
     };
 
+    //recipe object adds new ingredients onto existing ingredients in Array
     const addIngredient = () => {
-        setRecipe({...recipe, extendedIngredients: [...recipe.extendedIngredients, ""]})
+        setRecipe({ ...recipe, extendedIngredients: [...recipe.extendedIngredients, ""] });
     };
 
+    //submits recipe to backend database and navigates to home page
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:3000/recipes/", recipe);
+            await axios.post("http://localhost:3000/recipes", recipe);
             alert("Recipe Created!");
+            navigate("/");
         } catch (err) {
             console.log(err);
         }
@@ -112,8 +112,6 @@ export const CreateRecipe = () =>{
                     onChange={handleChange}
                 />
 
-
-
                 <button type="submit">
                     Create Recipe
                 </button>
@@ -131,12 +129,36 @@ export const CreateRecipe = () =>{
     );
 };
 
+export default CreateRecipe;
+
 /*const addCuisine = () => {
         setRecipe({...recipe, cuisines: [...recipe.cuisines, ""]});
     }
     const addDiet = () => {
         setRecipe({...recipe, diets: [...recipe.diets, ""]});
     }*/
+
+/**
+ *  const [recipe, setRecipe] = useState({
+        title: "",
+        image: "",
+        servings: 0,
+        readyInMinutes: 0,
+        sourceName: "",
+        sourceURL: "",
+        cuisines: [],
+        dairyFree: false,
+        diets: [],
+        instructions: [],
+        extendedIngredients: [],
+        vegetarian: false,
+        vegan: false,
+        ketogenic: false,
+        glutenFree: false,
+        globalRecipe: false,
+        userOwner: userID,
+    });
+ */
 
 /**
  * 

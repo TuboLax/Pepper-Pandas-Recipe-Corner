@@ -50,3 +50,21 @@ userRouter.post("/login", async (req, res) => {
 });
 
 module.exports = userRouter;
+
+/*
+//middleware to verify jwt token
+const verifyToken = (req, res, next) => {
+    const token = req.headers.authorization;
+    if (token) {
+        jwt.verify(token, process.env.SECRET, (err) => {
+            if (err) {
+                res.sendStatus(403);
+            };
+            next();
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
+
+module.exports = verifyToken;*/

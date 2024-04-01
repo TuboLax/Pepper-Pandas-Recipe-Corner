@@ -1,9 +1,52 @@
 import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
 import pepperPandaLogo from '../assets/pepper-panda.png';
+import { useEffect, useState } from 'react';
+import { userGetUserID } from '../hooks/useGetUserID';
+//import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 
 export const Home = () => {
+    const [recipes, setRecipes] = useState([]);
+    const [savedRecipes, setSavedRecipes] = useState([]);
+    //const [cookies,] = useCookies(["accessToken"]);
+
+    const userID = userGetUserID();
+
+    useEffect(() => {
+        const fetchRecipe = async () => {
+            try{
+                const response = await axios.get("http://localhost:3000/recipes");
+                setRecipes(response.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        const fetchSavedRecipe = async () => {
+            try{
+                const response = await axios.get(`http://localhost:3000/recipes/savedRecipes/ids/${userID}`);
+                setSavedRecipes(response.data.savedRecipes);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        fetchRecipe();
+        fetchSavedRecipe();
+    }, []);
+
+    const saveRecipe = async (recipeID) => {
+        try{
+            const response = await axios.put("http://localhost:3000/recipes", { recipeID, userID });
+            setSavedRecipes(response.data.savedRecipes);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const isRecipeSaved = (id) => savedRecipes.includes(id);
+
     return (
         <div className="container">
             <header>
@@ -12,6 +55,31 @@ export const Home = () => {
                 </div>
                 <h1>Welcome to Pepper Panda's Recipe Corner</h1>
             </header>
+
+            <section className="local-recipes">
+                <h2> Local Recipes </h2>
+                <ul>
+                    {recipes.map((recipe) => (
+                        <li key={recipe._id}>
+                            <div>
+                                <h3> {recipe.title} </h3>
+                                <button 
+                                    onClick={() => saveRecipe(recipe._id)}
+                                    disabled={isRecipeSaved(recipe._id)}
+                                > 
+                                    {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
+                                </button>
+                            </div>
+                            <div className="instructions">
+                                <p> {recipe.instructions} </p>
+                            </div>
+                            <img src={recipe.image} alt={recipe.title}></img>
+                            <p> Cooking Time: {recipe.readyInMinutes} (min) </p>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+
             <section className="featured-recipes">
                 <h2>Featured Recipes</h2>
                 <div className="recipe">
@@ -25,6 +93,8 @@ export const Home = () => {
                     <img src={bambooStirFryImage} alt="Bamboo Stir Fry" />
                 </div>
             </section>
+
+
             <footer>
                 <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
             </footer>
