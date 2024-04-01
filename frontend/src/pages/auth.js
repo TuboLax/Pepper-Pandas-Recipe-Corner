@@ -28,9 +28,9 @@ export const Auth = () => {
 };
 
 const Login = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [, setCookies] = useCookies(["accessToken"])
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [, setCookies] = useCookies(["accessToken"]);
   const navigate = useNavigate();
 
   const onSubmit = async (event) => {
@@ -40,6 +40,7 @@ const Login = () => {
       const input = await axios.post("http://localhost:3000/auth/login", { username, password });
       const loginBool = input.data.logStatus;
       console.log(loginBool);
+      
       if (loginBool === "true") {
         setCookies("accessToken", input.data.token);
         window.localStorage.setItem("userID", input.data.userID);
@@ -47,6 +48,7 @@ const Login = () => {
       } else {
         alert(input.data.message);
       }
+
     } catch (err) {
       console.error(err);
     }
