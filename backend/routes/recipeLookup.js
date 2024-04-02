@@ -1,31 +1,62 @@
 const express = require('express')
-const jwt = require('jsonwebtoken')
 const spoon = require('../lib/spoonacularCall.js')
-const axios = require('axios')
 require('dotenv').config()
+const spoonacularRouter = express.Router()
 
-const recipeRouter = express.Router()
-
-recipeRouter.post("/getSpoon", async (req, res) => {    //This route was just to get the code developed before I moved it into the module file
-    const data = req.body
-     await axios.get('https://api.spoonacular.com/recipes/' + data.id + '/information?apiKey=' + process.env.SPOONACULARAPI)
-        .then(response => {
-            // console.log(response)
-            res.status(200).json({
-                success:true,
-                result:response.data
-              })
-        })
-        .catch(err => console.error(err))
+// Example: const recipes = await axios.get(`http://localhost:3000/find/title/Pepper`);
+spoonacularRouter.get("/title/:title", async (req, res) => {
+  try {
+    const response = await spoon.searchTitle(req.params.title);
+    res.json(response);
+  } catch (err) {
+      res.json(err);
+  }
 })
 
-recipeRouter.post("/getSpoon2", async (req, res) => {   //This route demonstrates how to use the spoonacularCall module.
-  const data = req.body
-  response = await spoon.searchTitle(data.searchTitle(data.search)) 
-  res.json(response)
+spoonacularRouter.get("/diet/:diet", async (req, res) => {
+  try {
+    const response = await spoon.searchDiet(req.params.diet);
+    res.json(response);
+  } catch (err) {
+      res.json(err);
+  }
 })
 
-module.exports = recipeRouter
+spoonacularRouter.get("/cuisine/:cuisine", async (req, res) => {
+  try {
+    const response = await spoon.searchCuisine(req.params.cuisine);
+    res.json(response);
+  } catch (err) {
+      res.json(err);
+  }
+})
 
-//DO NOT USE THIS
-//This file serves as an example of how to use the spoonacularCall module
+spoonacularRouter.get("/ingredients/:ingredients", async (req, res) => {
+  try {
+    const response = await spoon.searchIngredients(req.params.ingredients);
+    res.json(response);
+  } catch (err) {
+      res.json(err);
+  }
+})
+
+spoonacularRouter.get("/id/:id", async (req, res) => {
+  try {
+    const response = await spoon.getID(req.params.id);
+    res.json(response);
+  } catch (err) {
+      res.json(err);
+  }
+})
+
+// Example: const recipes = await axios.get('http://localhost:3000/find/random')
+spoonacularRouter.get("/random", async (req, res) => {
+  try {
+    const response = await spoon.searchRandom();
+    res.json(response);
+  } catch (err) {
+      res.json(err);
+  }
+})
+
+module.exports = spoonacularRouter
