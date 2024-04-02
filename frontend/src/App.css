@@ -1,25 +1,9 @@
-@media screen and (max-width: 768px) {
-  .featured-recipes {
-    flex-direction: column;
-  }
-
-  .recipe {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-}
-
 body {
   background-color: var(--first-color);
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   color: var(--second-color);
-}
-
-body.dark {
-  background-color: #2e1e35;
-  color: #dcd6f7;
 }
 
 .logo-container {
@@ -38,7 +22,6 @@ body.dark {
 .container {
   width: 80%;
   margin: 0 auto;
-  transition: background-color 0.3s, color 0.3s; 
 }
 
 header {
@@ -80,20 +63,10 @@ nav ul li a:hover {
 
 .featured-recipes {
   margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.left-column,
-.right-column {
-  width: 45%;
 }
 
 .recipe {
   margin-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .recipe h3 {
