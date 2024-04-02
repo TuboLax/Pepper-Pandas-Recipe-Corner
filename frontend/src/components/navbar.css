@@ -1,26 +1,8 @@
 @import url("/src/App.css");
 
 .navbar {
-    background-color: #f3f3f3;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    color: #333;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
     display: flex;
-    justify-content: space-between;
-}
-
-.navbar-left {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-right {
-    display: flex;
+    justify-content: left;
     align-items: center;
     background-color: var(--fifth-color);
     padding: 10px 0;
@@ -28,17 +10,19 @@
 }
 
 .nav-link {
+    margin: 30px; /* Add spacing between the links */
     text-decoration: none;
     color: var(--second-color);
 }
 
-#loginBtn {
-    text-decoration: none;
-    color: #333;
-    font-weight: 400;
+#authButton{
+    justify-content: right;
+    width: 200px;
+    padding-left:48vw;
 }
 
-.logout {
+.logout{
+    margin: 30px; /* Add spacing between the links */
     text-decoration: none;
     color: var(--second-color);
     background:none;

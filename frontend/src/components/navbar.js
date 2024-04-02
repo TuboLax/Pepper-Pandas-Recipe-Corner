@@ -6,10 +6,11 @@ import moonLogo from '../assets/moon.png';
 import sunLogo from '../assets/sun.png';
 
 export const Navbar = () => {
-    const [cookies, setCookies] = useCookies(["accessToken"]);
-    const navigate = useNavigate();
+    const [cookies,setCookies] = useCookies(["accessToken"]);
+    const navigate=useNavigate();
 
-    const logout = () => {
+    const logout = () =>
+    {
         setCookies("accessToken", "");
         window.localStorage.removeItem("userID");
         navigate("/auth");
@@ -17,17 +18,11 @@ export const Navbar = () => {
 
     return (
         <div className="navbar">
-            <div className="navbar-left">
-                <Link to="/" className="nav-link">Home</Link>
-                <Link to="/create-recipes" className="nav-link">Create Recipes</Link>
-                <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
-            </div>
-            <div className="navbar-right">
-                {!cookies.accessToken ? (
-                    <Link to="/auth" className="nav-link" id="loginBtn">Login/Register</Link>
-                ) : (
-                    <button className="logout" onClick={logout}>Logout</button>
-                )}
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/create-recipes" className="nav-link">Create Recipes</Link>
+            <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
+            <div id="authButton">
+                {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) : (<button className="logout" onClick={logout}>Logout</button>)}
             </div>
             <img src={moonLogo} style={{width:'40px', height:'40px'}} id="modeIcon" alt="Mode" onClick={checkMode} title="Dark Mode"></img>
         </div>

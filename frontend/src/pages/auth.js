@@ -1,10 +1,9 @@
 import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'; // Removed duplicate import
 import { userGetUserID } from '../hooks/useGetUserID';
 //import { useCookies } from 'react-cookie';
 import axios from 'axios';
-
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -100,3 +99,4 @@ export const Home = () => {
         </div>
     );
 };
+export default Auth;
