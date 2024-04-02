@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from 'react';
+import '../App.css';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
-import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 //import { useCookies } from 'react-cookie';
 import axios from 'axios';
@@ -47,12 +49,14 @@ export const Home = () => {
     const isRecipeSaved = (id) => savedRecipes.includes(id);
 
     return (
-        <div className="container">
+        <div className={`container ${isDarkMode ? 'dark' : 'light'}`}>
             <header>
                 <div className="logo-container">
                     <div className="logo"></div>
                 </div>
                 <h1>Welcome to Pepper Panda's Recipe Corner</h1>
+                
+                <ThemeSwitcher isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
             </header>
 
             <section className="local-recipes">
@@ -100,3 +104,5 @@ export const Home = () => {
         </div>
     );
 };
+
+export default Home;
