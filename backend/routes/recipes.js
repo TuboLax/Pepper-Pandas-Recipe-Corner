@@ -100,6 +100,28 @@ recipesRouter.get("/savedRecipes/ids/:userID", async (req, res) => {
     } 
 });
 
+//get all saved recipes by IDs in user's savedRecipe array by userID (for frontend view on saved recipes page) 
+recipesRouter.post("/savedRecipes/recipe/:recipeID", async (req, res) => {
+    try {
+        const recipeID = req.params.recipeID;                       //get recipe ID 
+        const recipe = await RecipeModel.findById(recipeID);             
+        if (!recipe) {                                        //validate if recipe exists
+            return res.status(404).json({
+                message: "Recipe Not Found."
+            });
+        }
+
+        res.json({                                            
+            recipe 
+        });
+
+    } catch (err) { //Generic catch statement
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+    } 
+});
+
 module.exports = recipesRouter;
 
 /*
