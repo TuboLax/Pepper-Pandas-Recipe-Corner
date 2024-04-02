@@ -1,8 +1,10 @@
+@import url("/src/App.css");
+
 .navbar {
     display: flex;
     justify-content: left;
     align-items: center;
-    background-color: #f3f3f3;
+    background-color: var(--fifth-color);
     padding: 10px 0;
     padding-left: 10vw;
 }
@@ -10,7 +12,7 @@
 .nav-link {
     margin: 30px; /* Add spacing between the links */
     text-decoration: none;
-    color: #333;
+    color: var(--second-color);
 }
 
 #authButton{
@@ -22,11 +24,16 @@
 .logout{
     margin: 30px; /* Add spacing between the links */
     text-decoration: none;
-    color: #333;
+    color: var(--second-color);
     background:none;
     border:none;
     cursor: pointer;
     font:inherit;
     padding-left:3vh;
     outline:inherit;
+}
+
+#modeIcon{
+    width:30px;
+    cursor:pointer;
 }
