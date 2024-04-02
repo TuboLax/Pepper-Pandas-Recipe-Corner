@@ -1,3 +1,5 @@
+@import url("/src/App.css");
+
 .navbar {
     background-color: #f3f3f3;
     padding: 10px;
@@ -20,13 +22,14 @@
 .navbar-right {
     display: flex;
     align-items: center;
+    background-color: var(--fifth-color);
+    padding: 10px 0;
+    padding-left: 10vw;
 }
 
 .nav-link {
     text-decoration: none;
-    color: #333;
-    font-weight: 400;
-    margin-right: 20px;
+    color: var(--second-color);
 }
 
 #loginBtn {
@@ -37,31 +40,16 @@
 
 .logout {
     text-decoration: none;
-    color: #333;
-    background: none;
-    border: none;
+    color: var(--second-color);
+    background:none;
+    border:none;
     cursor: pointer;
-    font: inherit;
-    outline: inherit;
-    margin-left: 20px;
+    font:inherit;
+    padding-left:3vh;
+    outline:inherit;
 }
 
-@media only screen and (max-width: 430px) {
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .navbar-left {
-        flex: 1;
-    }
-
-    .navbar-right {
-        margin-top: 10px;
-    }
-
-    .nav-link,
-    #loginBtn,
-    .logout {
-        margin: 10px;
-    }
+#modeIcon{
+    width:30px;
+    cursor:pointer;
 }

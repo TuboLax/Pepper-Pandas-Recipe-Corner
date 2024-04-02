@@ -10,8 +10,11 @@
 }
 
 body {
-  background-color: #d3f7e6;
-  color: #333;
+  background-color: var(--first-color);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: var(--second-color);
 }
 
 body.dark {
@@ -28,6 +31,8 @@ body.dark {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  background-color: var(--first-color);
+  content: var(--pepper-logo);
 }
 
 .container {
@@ -37,14 +42,19 @@ body.dark {
 }
 
 header {
-  background-color: #5eba8d;
+  background-color: var(--third-color);
   padding: 10px;
   text-align: center;
 }
 
-header h1,
+header h1 {
+  margin-bottom: 10px;
+  color: var(--fourth-color);
+}
+
 header p {
-  color: #fff;
+  font-style: italic;
+  color: var(--fourth-color);
 }
 
 nav ul {
@@ -61,11 +71,11 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: var(--second-color);
 }
 
 nav ul li a:hover {
-  color: #5eba8d;
+  color: var(--third-color);
 }
 
 .featured-recipes {
@@ -87,49 +97,38 @@ nav ul li a:hover {
 }
 
 .recipe h3 {
-  color: #333;
-  text-align: center;
+  color: var(--second-color);
 }
 
 .recipe p {
-  color: #666;
-  text-align: center;
-}
-
-.recipe-image {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+  color: var(--second-color);
 }
 
 footer {
-  background-color: #5eba8d;
+  background-color: var(--third-color);
   padding: 10px;
   text-align: center;
   width: 100%;
-  color: #fff;
+  color: var(--fourth-color);
   position: fixed;
   bottom: 0;
   left: 0;
-  transition: background-color 0.3s, color 0.3s; 
 }
 
-body.dark .container,
-body.dark header,
-body.dark nav ul li a,
-body.dark .recipe h3 {
-  background-color: #2e1e35;
-  color: #dcd6f7;
+:root{
+  --first-color: #d3f7e6;
+  --second-color: #333;
+  --third-color: #5eba8d;
+  --fourth-color: #fff;
+  --fifth-color: #f3f3f3; /* navbar header in navbar.css */
+  --pepper-logo: url('./assets/pepper-panda.png');
 }
 
-body.dark footer {
-  background-color: #8b2e3d;
-}
-
-body.dark nav ul li a:hover {
-  color: #dcd6f7;
-}
-
-body.dark .recipe p {
-  color: #bfa4b8;
+.darkMode{
+  --first-color: #573c39;
+  --second-color: #fff;
+  --third-color: #db4035;
+  --fourth-color: #fff;
+  --fifth-color: #303030; /* navbar header in navbar.css */
+  --pepper-logo: url('./assets/evil_pepper.png');
 }
