@@ -5,6 +5,7 @@ import { Auth } from "./pages/auth";
 import { CreateRecipe } from "./pages/create-recipes";
 import { SavedRecipes } from "./pages/saved-recipes";
 import { Navbar } from "./components/navbar";
+import { Search } from "./pages/search";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/create-recipes" element={<CreateRecipe />} />
           <Route path="/saved-recipes" element={<SavedRecipes />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </Router>
     </div>
