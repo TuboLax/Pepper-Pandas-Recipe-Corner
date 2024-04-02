@@ -1,63 +1,113 @@
-.container {
+body {
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.logo-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #4caf50;
+  padding: 10px;
+  text-align: center;
+}
+
+header h1,
+header p {
+  color: #fff;
+}
+
+main {
+  margin-top: 20px;
+}
+
+footer {
+  background-color: #4caf50;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .auth {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  gap: 40px; /* Added gap between the login and register boxes */
 }
 
 .auth-container {
-  width: 45%; /* Adjust width as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: calc(50% - 40px); /* Added max-width and calc to limit each box's width and accommodate the gap */
 }
 
-.form-container {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 20px;
+.auth-container h2 {
+  color: #4caf50; /* Set the title color for both login and register */
+  font-size: 24px; /* Set the font size for the titles */
+}
+
+.auth-container.login h2 {
+  color: #4caf50; /* Login box title color */
+}
+
+.auth-container.register h2 {
+  color: #4caf50; /* Register box title color */
 }
 
 .form-group {
   margin-bottom: 15px;
 }
 
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
 button {
-  background-color: #4caf50;
-  color: white;
   padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 button:hover {
   background-color: #45a049;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: calc(100% - 20px); /* Adjust width as needed */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 50px; /* Adjust size as needed */
-  height: auto;
-  margin-right: 10px;
 }

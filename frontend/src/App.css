@@ -19,33 +19,16 @@ body {
   content: var(--pepper-logo);
 }
 
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 header {
-  display: flex;
-  align-items: center;
   background-color: var(--third-color);
   padding: 10px;
   text-align: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000; /* Ensure the header stays on top */
 }
-
-header .header-title {
-  font-family: 'Comic Sans MS', cursive;
-  font-size: 24px;
-  color: var(--fourth-color);
-  text-align: left;
-  margin-left: 20px;
-}
-
-/* Add margin to sections below the header */
-.container {
-  margin-top: 60px; /* Adjust the value according to your header's height */
-}
-
-
 
 header h1 {
   margin-bottom: 10px;

@@ -10,19 +10,19 @@ export const Auth = () => {
     <div className="container">
         <header>
             <div className="logo-container">
-            <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
+              <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
             </div>
             <h1>Join Pepper Panda!</h1>
         </header>
-    <body>
-        <div className="auth">
-          <Login />
-          <Register />
-        </div>
-      </body>
-      <footer>
-        <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
-      </footer>
+        <main>
+          <div className="auth">
+            <Login />
+            <Register />
+          </div>
+        </main>
+        <footer>
+          <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
+        </footer>
     </div>
   )
 };
@@ -39,7 +39,6 @@ const Login = () => {
     try {
       const input = await axios.post("http://localhost:3000/auth/login", { username, password });
       const loginBool = input.data.logStatus;
-      console.log(loginBool);
       
       if (loginBool === "true") {
         setCookies("accessToken", input.data.token);
@@ -71,11 +70,10 @@ const Register = () => {
   const [password, setPassword] = useState("")
 
   const onSubmit = async (event) => {
-    event.preventDefault(); //prevents page refresh
+    event.preventDefault();
     try {
       const input = await axios.post("http://localhost:3000/auth/createAccount", { username, password });
       const regBool = input.data.regStatus;
-      console.log(regBool);
       if (regBool === true) {
         alert(input.data.message);
       } else {
@@ -100,7 +98,7 @@ const Register = () => {
 
 const Form = ({ username, setUsername, password, setPassword, formType, onSubmit }) => {
   return (
-    <div className="form-container">
+    <div className={`auth-container ${formType.toLowerCase().replace(" ", "-")}`}>
       <form onSubmit={onSubmit}>
         <h2>{formType}</h2>
         <div className="form-group">

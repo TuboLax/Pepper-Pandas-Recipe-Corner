@@ -1,121 +1,106 @@
 body {
-    background-color: var(--first-color);
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: var(--second-color);
+  background-color: var(--first-color);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: var(--second-color);
 }
 
 .logo-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: var(--first-color);
-    content: var(--pepper-logo);
-}
-
-header {
-    display: flex;
-    align-items: center;
-    background-color: var(--third-color);
-    padding: 10px;
-    text-align: center;
-    /* Remove position: fixed; */
-    /* Remove top: 0; */
-    /* Remove left: 0; */
-    /* Remove right: 0; */
-    /* Remove z-index: 1000; */
-}
-
-header .header-title {
-    font-family: 'Comic Sans MS', cursive;
-    font-size: 24px;
-    color: var(--fourth-color);
-    text-align: left;
-    margin-left: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--first-color);
+  content: var(--pepper-logo);
 }
 
 .container {
-    margin-top: 60px; /* Adjust the value according to your header's height */
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  background-color: var(--third-color);
+  padding: 10px;
+  text-align: center;
 }
 
 header h1 {
-    margin-bottom: 10px;
-    color: var(--fourth-color);
+  margin-bottom: 10px;
+  color: var(--fourth-color);
 }
 
 header p {
-    font-style: italic;
-    color: var(--fourth-color);
+  font-style: italic;
+  color: var(--fourth-color);
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--fifth-color);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: calc(50% - 40px);
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+.auth-container h2 {
+  color: var(--third-color);
+  font-size: 24px;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: var(--second-color);
+.auth-container.login h2 {
+  color: var(--third-color);
 }
 
-nav ul li a:hover {
-    color: var(--third-color);
+.auth-container.register h2 {
+  color: var(--third-color);
 }
 
-.featured-recipes {
-    margin-top: 30px;
+.form-group {
+  margin-bottom: 15px;
 }
 
-.recipe {
-    margin-bottom: 30px;
+label {
+  font-weight: bold;
 }
 
-.recipe h3 {
-    color: var(--second-color);
+input[type="text"],
+input[type="password"] {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid var(--third-color);
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-.recipe p {
-    color: var(--second-color);
+button {
+  padding: 10px 20px;
+  background-color: var(--third-color);
+  color: var(--fourth-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-footer {
-    background-color: var(--third-color);
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    color: var(--fourth-color);
-    /* Remove position: fixed; */
-    /* Remove bottom: 0; */
-    /* Remove left: 0; */
-}
-
-:root {
-    --first-color: #d3f7e6;
-    --second-color: #333;
-    --third-color: #5eba8d;
-    --fourth-color: #fff;
-    --fifth-color: #f3f3f3; /* navbar header in navbar.css */
-    --pepper-logo: url('./assets/pepper-panda.png');
+button:hover {
+  background-color: #45a049;
 }
 
 .darkMode {
-    --first-color: #573c39;
-    --second-color: #fff;
-    --third-color: #db4035;
-    --fourth-color: #fff;
-    --fifth-color: #303030; /* navbar header in navbar.css */
-    --pepper-logo: url('./assets/evil_pepper.png');
+  --first-color: #573c39;
+  --second-color: #fff;
+  --third-color: #db4035;
+  --fourth-color: #fff;
+  --fifth-color: #303030;
+  --pepper-logo: url('./assets/evil_pepper.png');
 }

@@ -1,36 +1,39 @@
-/* navbar.css */
+@import url("/src/App.css");
 
 .navbar {
     display: flex;
+    justify-content: left;
     align-items: center;
-    justify-content: space-between;
-    background-color: var(--third-color);
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000; /* Ensure the navbar stays on top */
+    background-color: var(--fifth-color);
+    padding: 10px 0;
+    padding-left: 10vw;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
+.nav-link {
+    margin: 30px; /* Add spacing between the links */
     text-decoration: none;
     color: var(--second-color);
 }
 
-nav ul li a:hover {
-    color: var(--fourth-color);
+#authButton{
+    justify-content: right;
+    width: 200px;
+    padding-left:48vw;
+}
+
+.logout{
+    margin: 30px; /* Add spacing between the links */
+    text-decoration: none;
+    color: var(--second-color);
+    background:none;
+    border:none;
+    cursor: pointer;
+    font:inherit;
+    padding-left:3vh;
+    outline:inherit;
+}
+
+#modeIcon{
+    width:30px;
+    cursor:pointer;
 }

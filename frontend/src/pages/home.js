@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import ThemeSwitcher from '../components/ThemeSwitcher';
 import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
 import { userGetUserID } from '../hooks/useGetUserID';
