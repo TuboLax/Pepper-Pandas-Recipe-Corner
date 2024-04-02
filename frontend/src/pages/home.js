@@ -1,6 +1,5 @@
 import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
-import pepperPandaLogo from '../assets/pepper-panda.png';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 //import { useCookies } from 'react-cookie';
@@ -55,7 +54,7 @@ export const Home = () => {
         <div className="container">
             <header>
                 <div className="logo-container">
-                    <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
+                    <div className="logo"></div>
                 </div>
                 <h1>Welcome to Pepper Panda's Recipe Corner</h1>
             </header>
@@ -85,7 +84,7 @@ export const Home = () => {
             </section>
 
             <section className="featured-recipes">
-                <h2>Featured Recipes</h2>
+                <h2>Pepper's Favorites</h2>
                 <div className="recipe">
                     <h3>Pepper Panda's Bamboo Salad</h3>
                     <p>A refreshing salad made with fresh bamboo shoots and garden greens.</p>
