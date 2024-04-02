@@ -2,6 +2,8 @@ import './navbar.css';
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import moonLogo from '../assets/moon.png';
+import sunLogo from '../assets/sun.png';
 
 export const Navbar = () => {
     const [cookies,setCookies] = useCookies(["accessToken"]);
@@ -22,6 +24,23 @@ export const Navbar = () => {
             <div id="authButton">
                 {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) : (<button className="logout" onClick={logout}>Logout</button>)}
             </div>
+            <img src={moonLogo} style={{width:'40px', height:'40px'}} id="modeIcon" alt="Mode" onClick={checkMode} title="Dark Mode"></img>
         </div>
     );
+}
+
+const checkMode = () =>
+{
+var icon= document.getElementById("modeIcon");
+    document.body.classList.toggle("darkMode");
+    if(document.body.classList.contains("darkMode"))
+    {
+        icon.src=sunLogo;
+        icon.title="Light Mode";
+    }
+    else
+    {
+        icon.src=moonLogo;
+        icon.title="Dark Mode";
+    }
 }
