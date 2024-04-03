@@ -74,12 +74,9 @@ footer {
   font-size: 24px; /* Set the font size for the titles */
 }
 
-.auth-container.login h2 {
-  color: #4caf50; /* Login box title color */
-}
-
+.auth-container.login h2,
 .auth-container.register h2 {
-  color: #4caf50; /* Register box title color */
+  color: #4caf50; /* Set the title color for both login and register */
 }
 
 .form-group {
@@ -101,7 +98,7 @@ input[type="password"] {
 
 button {
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #4caf50; /* Green button color for both login and register forms in light mode */
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -110,4 +107,23 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+/* Dark Mode */
+.darkMode {
+  background-color: #333;
+  color: #fff;
+}
+
+.darkMode .auth-container {
+  background-color: #555;
+}
+
+.darkMode .auth-container button {
+  background-color: #db4035; /* Red button color for both login and register forms in dark mode */
+  color: #fff; /* Text color for both login and register buttons in dark mode */
+}
+
+.darkMode .auth-container h2 {
+  color: #db4035; /* Text color for both login and register titles in dark mode */
 }

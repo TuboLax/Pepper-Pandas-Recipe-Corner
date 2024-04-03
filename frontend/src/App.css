@@ -77,6 +77,10 @@ nav ul li a:hover {
   color: var(--second-color);
 }
 
+.recipe img {
+  width: 50%; /* Make the image half the size */
+}
+
 footer {
   background-color: var(--third-color);
   padding: 10px;

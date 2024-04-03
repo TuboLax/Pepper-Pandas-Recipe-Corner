@@ -15,25 +15,47 @@
     color: var(--second-color);
 }
 
-#authButton{
-    justify-content: right;
-    width: 200px;
-    padding-left:48vw;
+#authButton {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1; /* Let the button take remaining space */
+    padding-right: 10vw; /* Adjust according to your layout */
 }
 
-.logout{
+.logout {
     margin: 30px; /* Add spacing between the links */
     text-decoration: none;
     color: var(--second-color);
-    background:none;
-    border:none;
+    background: none;
+    border: none;
     cursor: pointer;
-    font:inherit;
-    padding-left:3vh;
-    outline:inherit;
+    font: inherit;
+    padding-left: 3vh;
+    outline: inherit;
 }
 
-#modeIcon{
-    width:30px;
-    cursor:pointer;
+#modeIcon {
+    width: 30px;
+    cursor: pointer;
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        padding-left: 5vw; /* Adjust as needed */
+        padding-right: 5vw; /* Adjust as needed */
+        justify-content: center; /* Center align items on mobile */
+        align-items: center; /* Center vertically */
+        flex-direction: column; /* Display vertically */
+    }
+    .nav-link {
+        margin: 10px; /* Reduce spacing between links on mobile */
+    }
+    #authButton {
+        padding-right: 0; /* Remove right padding on mobile */
+    }
+    .logout {
+        margin: 10px; /* Reduce spacing between links on mobile */
+        padding-left: 0; /* Remove left padding on mobile */
+    }
 }
