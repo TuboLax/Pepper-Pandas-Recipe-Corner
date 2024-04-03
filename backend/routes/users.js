@@ -15,7 +15,7 @@ userRouter.post("/createAccount", async (req, res) => {
        const user = await UserModel.findOne({ username });
 
        if (user) {
-           return res.status(400).json({ regStatus, message: "User already exists." });
+           return res.json({ regStatus, message: "User already exists." }).status(400); //Fixed pop-up alert
        }
 
        regStatus = true;
@@ -25,7 +25,7 @@ userRouter.post("/createAccount", async (req, res) => {
        return res.json({ regStatus, message: "Account Created Successfully. Proceed to login." });
    } catch (error) {
        console.error("Error occurred during account creation:", error);
-       return res.status(500).json({ message: "Internal Server Error" });
+       return res.json({ message: "Internal Server Error" }).status(500); // Fixed pop-up alert
    }
 });
 
