@@ -10,7 +10,7 @@
 }
 
 .nav-link {
-    margin: 30px; /* Add spacing between the links */
+    margin: 30px;
     text-decoration: none;
     color: var(--second-color);
 }
@@ -18,12 +18,12 @@
 #authButton {
     display: flex;
     justify-content: flex-end;
-    flex-grow: 1; /* Let the button take remaining space */
-    padding-right: 10vw; /* Adjust according to your layout */
+    flex-grow: 1;
+    padding-right: 10vw;
 }
 
 .logout {
-    margin: 30px; /* Add spacing between the links */
+    margin: 30px;
     text-decoration: none;
     color: var(--second-color);
     background: none;
@@ -42,20 +42,20 @@
 /* Media Query for Mobile Devices */
 @media only screen and (max-width: 768px) {
     .navbar {
-        padding-left: 5vw; /* Adjust as needed */
-        padding-right: 5vw; /* Adjust as needed */
-        justify-content: center; /* Center align items on mobile */
-        align-items: center; /* Center vertically */
-        flex-direction: column; /* Display vertically */
+        padding-left: 5vw;
+        padding-right: 5vw;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
     .nav-link {
-        margin: 10px; /* Reduce spacing between links on mobile */
+        margin: 10px;
     }
     #authButton {
-        padding-right: 0; /* Remove right padding on mobile */
+        padding-right: 0;
     }
     .logout {
-        margin: 10px; /* Reduce spacing between links on mobile */
-        padding-left: 0; /* Remove left padding on mobile */
+        margin: 10px;
+        padding-left: 0;
     }
 }
