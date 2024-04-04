@@ -1,11 +1,12 @@
 .shopping-list-container {
-    position: relative;
+    position: relative; /* Add this to allow absolute positioning of the button */
 }
 
 .shopping-list {
-    position: absolute;
+    position: fixed;
     right: 20px;
-    top: 100%; /* Adjusted to position the list below the toggle button */
+    top: 50%;
+    transform: translateY(-50%);
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -20,12 +21,13 @@
     margin-bottom: 15px;
 }
 
-.shopping-list ul {
+.shopping-list li {
     list-style-type: none;
     padding: 0;
 }
 
 .shopping-list li {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;

@@ -7,8 +7,8 @@ const ShoppingList = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const addItemToShoppingList = (item) => {
-        setShoppingList([...shoppingList, item]);
-    };
+        setShoppingList(prevList => [...prevList, item]);
+    };    
 
     const removeItemFromShoppingList = (index) => {
         const updatedList = [...shoppingList];
