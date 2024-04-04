@@ -10,30 +10,52 @@
 }
 
 .nav-link {
-    margin: 30px; /* Add spacing between the links */
+    margin: 30px;
     text-decoration: none;
     color: var(--second-color);
 }
 
-#authButton{
-    justify-content: right;
-    width: 200px;
-    padding-left:48vw;
+#authButton {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    padding-right: 10vw;
 }
 
-.logout{
-    margin: 30px; /* Add spacing between the links */
+.logout {
+    margin: 30px;
     text-decoration: none;
     color: var(--second-color);
-    background:none;
-    border:none;
+    background: none;
+    border: none;
     cursor: pointer;
-    font:inherit;
-    padding-left:3vh;
-    outline:inherit;
+    font: inherit;
+    padding-left: 3vh;
+    outline: inherit;
 }
 
-#modeIcon{
-    width:30px;
-    cursor:pointer;
+#modeIcon {
+    width: 30px;
+    cursor: pointer;
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        padding-left: 5vw;
+        padding-right: 5vw;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .nav-link {
+        margin: 10px;
+    }
+    #authButton {
+        padding-right: 0;
+    }
+    .logout {
+        margin: 10px;
+        padding-left: 0;
+    }
 }

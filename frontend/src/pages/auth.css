@@ -1,81 +1,129 @@
 body {
-    background-color: var(--first-color);
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: var(--second-color);
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
 .logo-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 header {
-    background-color: var(--third-color);
-    padding: 10px;
-    text-align: center;
+  background-color: #4caf50;
+  padding: 10px;
+  text-align: center;
 }
 
-header h1, header p {
-    color: var(--fourth-color);
+header h1,
+header p {
+  color: #fff;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--second-color);
-}
-
-nav ul li a:hover {
-    color: var(--third-color);
+main {
+  margin-top: 20px;
 }
 
 footer {
-    background-color: var(--third-color);
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    color: var(--fourth-color);
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  background-color: #4caf50;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
-.auth{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height:100vh;
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  gap: 40px; /* Added gap between the login and register boxes */
 }
 
-.auth-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: pink;
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: calc(50% - 40px); /* Added max-width and calc to limit each box's width and accommodate the gap */
+}
+
+.auth-container h2 {
+  color: #4caf50; /* Set the title color for both login and register */
+  font-size: 24px; /* Set the font size for the titles */
+}
+
+.auth-container.login h2,
+.auth-container.register h2 {
+  color: #4caf50; /* Set the title color for both login and register */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50; /* Green button color for both login and register forms in light mode */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Dark Mode */
+.darkMode {
+  background-color: #333;
+  color: #fff;
+}
+
+.darkMode .auth-container {
+  background-color: #555;
+}
+
+.darkMode .auth-container button {
+  background-color: #db4035; /* Red button color for both login and register forms in dark mode */
+  color: #fff; /* Text color for both login and register buttons in dark mode */
+}
+
+.darkMode .auth-container h2 {
+  color: #db4035; /* Text color for both login and register titles in dark mode */
 }
