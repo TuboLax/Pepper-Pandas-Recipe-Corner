@@ -1,7 +1,3 @@
-/**
- * CRUD Operations
- */
-
 require('dotenv').config();
 
 const express = require('express');
@@ -61,9 +57,9 @@ recipesRouter.put("/", async (req, res) => {
 //get all saved recipes in user's savedRecipe array by userID
 recipesRouter.get("/savedRecipes/:userID", async (req, res) => {
     try {
-        const userID = req.params.userID;                       //get user ID 
+        const userID = req.params.userID;                        
         const user = await UserModel.findById(userID);            
-        if (!user) {                                        //validate if user exists
+        if (!user) {                                        
             return res.status(404).json({
                 message: "User Not Found."
             });
@@ -82,9 +78,9 @@ recipesRouter.get("/savedRecipes/:userID", async (req, res) => {
 //get all saved recipes by IDs in user's savedRecipe array by userID (for frontend view on saved recipes page) 
 recipesRouter.get("/savedRecipes/ids/:userID", async (req, res) => {
     try {
-        const userID = req.params.userID;                       //get user ID 
+        const userID = req.params.userID;                        
         const user = await UserModel.findById(userID);             
-        if (!user) {                                        //validate if user exists
+        if (!user) {                                        
             return res.status(404).json({
                 message: "User Not Found."
             });
@@ -103,9 +99,9 @@ recipesRouter.get("/savedRecipes/ids/:userID", async (req, res) => {
 //get all saved recipes by IDs in user's savedRecipe array by userID (for frontend view on saved recipes page) 
 recipesRouter.post("/savedRecipes/recipe/:recipeID", async (req, res) => {
     try {
-        const recipeID = req.params.recipeID;                       //get recipe ID 
+        const recipeID = req.params.recipeID;                        
         const recipe = await RecipeModel.findById(recipeID);             
-        if (!recipe) {                                        //validate if recipe exists
+        if (!recipe) {                                        
             return res.status(404).json({
                 message: "Recipe Not Found."
             });
@@ -122,46 +118,89 @@ recipesRouter.post("/savedRecipes/recipe/:recipeID", async (req, res) => {
     } 
 });
 
-module.exports = recipesRouter;
-
-/*
 //finds and deletes recipe by ID locally by userID
-recipesRouter.delete("/:recipeID", async (req, res) => {
+recipesRouter.delete("/deletedRecipes", async (req, res) => {
     try {
-        const recipeID = req.params.recipeID;                       //get recipeID
-        const recipe = await RecipeModel.findById(recipeID);        //find recipe by ID
-        if (!recipe) {                                              //validates if recipe was found
-            return res.status(404).json({ 
-                message: "Recipe Not Found." 
-            }); 
+        const { recipeID, userID } = req.body;
+        const recipe = await RecipeModel.findById(recipeID);
+        if (!recipe) {
+            return res.status(404).json({
+                message: "Recipe Not Found."
+            });
+        }
+        const user = await UserModel.findById(userID);
+        if (!user) {
+            return res.status(404).json({
+                message: "User Not Found."
+            });
         }
 
-        const userID = req.user._id;                        //get userID from decoded JWT token
-        const user = await UserModel.findById(userID);      //validates if the user has access to delete the recipe
-        if (!user) {
-            return res.status(404).json({ 
-                message: "User Not Found." 
+        if (!user.savedRecipes.includes(recipeID)) {        //check if user has the recipe in their savedRecipes array
+            return res.status(401).json({
+                message: "Unauthorized. Recipe not found in User's savedRecipes."
             });
         }
-        if (!user.savedRecipes.includes(recipeID)) {        //check if the user has the recipe in their savedRecipes array
-            return res.status(401).json({ 
-                message: "Unauthorized. Recipe not found in user's saved recipes." 
-            });
-        }
-        await UserModel.findByIdAndUpdate(              //delete recipe from user's savedRecipes Array in user document
-            userID, 
-            { $pull: { savedRecipes: recipeID } }       //remove recipeID from savedRecipes Array
-        );
-        res.json({ 
-            message: "Recipe Deleted Sucessfully." 
+
+        await UserModel.findByIdAndUpdate(                  //delete recipe from user's savedRecipes Array in user document
+            userID, { $pull: { savedRecipes: recipeID } }, {new: true}
+        );       
+
+        const updatedUser = await UserModel.findById(userID);
+        res.json({
+            message: "Recipe Deleted Successfully", 
+            savedRecipes: updatedUser.savedRecipes
         });
-    } catch(err){
+    } catch (err) {
         res.status(500).json({
             message: "Internal Server Error"
         });
     }
 });
 
+module.exports = recipesRouter;
+
+/*
+//finds and updates recipe by ID locally by userID
+recipesRouter.patch("/updatedRecipes", async (req, res) => {
+    try {
+        const { recipeID, userID, updatedData } = req.body;
+        const recipe = await RecipeModel.findById(recipeID);
+        if (!recipe) {
+            return res.status(404).json({
+                message: "Recipe Not Found."
+            });
+        }
+        const user = await UserModel.findById(userID);
+        if (!user) {
+            return res.status(404).json({
+                message: "User Not Found."
+            });
+        }
+
+        if (!user.savedRecipes.includes(recipeID)) {        
+            return res.status(401).json({
+                message: "Unauthorized. Recipe not found in user's savedRecipes."
+            });
+        }
+
+        const updatedRecipe = await RecipeModel.findByIdAndUpdate(          //update recipe with specific fields of new data by ID
+            recipeID, { $set: updatedData }, { new: true}
+        );
+
+        res.json({ 
+            message: "Recipe Updated Successfully.",
+            recipe: updatedRecipe 
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+    }
+});
+*/
+
+/*
 //finds and updates recipe by ID locally by userID
 recipesRouter.patch("/:recipeID", async (req, res) => {
     try {

@@ -2,14 +2,12 @@ import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
-//import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
     const [savedRecipes, setSavedRecipes] = useState([]);
-    //const [cookies,] = useCookies(["accessToken"]);
 
     const userID = userGetUserID();
 

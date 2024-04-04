@@ -1,48 +1,44 @@
 import './saved-recipes.css';
 import pepperPandaLogo from '../assets/pepper-panda.png';
-import { useCookies } from 'react-cookie';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 
 export const SavedRecipes = () => {
-    const [savedRecipes, setSavedRecipes] = useState([]);
-    //const [deletedRecipes, setDeletedRecipes] = useState([]);
-    //const [updatedRecipes, setUpdatedRecipes] = useState([]);
+    const [savedRecipes, setSavedRecipes] = useState([]);    
     const userID = userGetUserID();
 
     useEffect(() => {
-        const fetchSavedRecipe = async () => {
-            try{
-                const response = await axios.get(`http://localhost:3000/recipes/savedRecipes/${userID}`);
-                setSavedRecipes(response.data.savedRecipes);
-            } catch (err) {
-                console.log(err);
-            }
-        };
+      const fetchSavedRecipe = async () => {
+          try{
+              const response = await axios.get(`http://localhost:3000/recipes/savedRecipes/${userID}`);
+              setSavedRecipes(response.data.savedRecipes);
+          } catch (err) {
+              console.log(err);
+          }
+      };
 
-        fetchSavedRecipe();
-    }, []);
+      fetchSavedRecipe();
+    }, [userID]);
 
-    /*
     const deleteRecipe = async (recipeID) => {
-        try {
-            const response = await axios.delete(`http://localhost:3000/recipes/${recipeID}`);
-            setDeletedRecipes(response.data.deletedRecipes)
-        } catch (err) {
-            console.log(err);
-        }
-    }
+      try {
+        await axios.delete("http://localhost:3000/recipes/deletedRecipes", { data: { recipeID, userID } });
+        setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID)); 
+      } catch (err) {
+        console.log(err);
+      }
+    };
+/*
     const updateRecipe = async (recipeID) => {
-        try {
-            const response = await axios.patch(`http://localhost:3000/recipes/${recipeID}`);
-            setUpdatedRecipes(response.data.deletedRecipes)
-        } catch (err) {
-            console.log(err);
-        }
+      try {
+        await axios.patch("http://localhost:3000/recipes/updatedRecipes", { data: { recipeID, userID } });
+        setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID)); 
+      } catch (err) {
+          console.log(err);
+      }
     }
-    */
-
+*/
     return  (
     <div className="container">
         <header>
@@ -59,8 +55,13 @@ export const SavedRecipes = () => {
                         <li key={recipe._id}>
                             <div>
                                 <h3> {recipe.title} </h3>
-                                <button> Delete Recipe </button>
-                                <button> Update Recipe </button>
+                                <button onClick={() => deleteRecipe(recipe._id)}> 
+                                  Delete Recipe 
+                                </button>
+                                <button >
+                                  Update Recipe
+                                </button>
+
                             </div>
                             <div className="instructions">
                                 <p> {recipe.instructions} </p>
@@ -78,56 +79,3 @@ export const SavedRecipes = () => {
     </div>
     );
 };
-
-/**
-const Recipes = () => {
-  const [cookies] = useCookies(['accessToken']); // Access the JWT token
-
-  const handleDelete = async (recipeId) => {
-    try {
-      await axios.delete(`http://YOUR_BACKEND_URL/recipes/${recipeId}`, {
-        headers: {
-          Authorization: `Bearer ${cookies.accessToken}` // Include the JWT in the request headers
-        }
-      });
-      // Handle successful deletion, e.g., update the UI accordingly
-    } catch (error) {
-      // Handle error (e.g., show an error message)
-      console.error(error);
-    }
-  };
-  // Render your recipes, each with a delete button that calls handleDelete with its ID
-  return (
-    <div>
-      { Your code to list recipes }
-      {For each recipe, include a delete button like below }
-      { <button onClick={() => handleDelete(recipe.id)}>Delete</button> }
-      </div>
-      );
-    };
-    
-    export default Recipes;
- */
-/**
-
-const YourComponent = () => {
-  const [cookies] = useCookies(['accessToken']); // Access the JWT token from cookies
-
-  const deleteRecipe = async (recipeId) => {
-    try {
-      const response = await axios.delete(`http://localhost:3000/recipes/${recipeId}`, {
-        headers: {
-          Authorization: `Bearer ${cookies.accessToken}` // Use the token from cookies here
-        }
-      });
-      console.log(response.data);
-      // Handle response...
-    } catch (error) {
-      console.error(error);
-      // Handle error...
-    }
-  };
-
-  // Your component's return statement...
-};
- */
