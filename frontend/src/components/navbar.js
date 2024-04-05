@@ -9,6 +9,13 @@ import { SearchBar } from "./searchbar";
 export const Navbar = () => {
     const [cookies,setCookies] = useCookies(["accessToken"]);
     const navigate=useNavigate();
+    var pepperIcon=moonLogo;
+    let getTheme = JSON.parse(localStorage.getItem("appMode"));
+    if(getTheme==="DARK")
+    {
+        document.body.classList="darkMode";
+        pepperIcon=sunLogo;
+    }
 
     const logout = () =>
     {
@@ -24,25 +31,31 @@ export const Navbar = () => {
             <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
             <div> <SearchBar /> </div>
             <div id="authButton">
-                {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) : (<button className="logout" onClick={logout}>Logout</button>)}
+                {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) :
+                    (<button className="logout" onClick={logout}>Logout</button>)}
             </div>
-            <img src={moonLogo} style={{width:'40px', height:'40px'}} id="modeIcon" alt="Mode" onClick={checkMode} title="Dark Mode"></img>
+            <img src={pepperIcon} style={{width:'40px', height:'40px'}} id="modeIcon" alt="Mode" onClick={checkMode} title="Dark Mode"></img>
         </div>
     );
 }
 
 const checkMode = () =>
 {
-var icon= document.getElementById("modeIcon");
+    var mode;
+    var icon= document.getElementById("modeIcon");
     document.body.classList.toggle("darkMode");
     if(document.body.classList.contains("darkMode"))
     {
         icon.src=sunLogo;
         icon.title="Light Mode";
+        mode = "DARK";
     }
     else
     {
         icon.src=moonLogo;
         icon.title="Dark Mode";
+        mode = "LIGHT";
     }
+
+    localStorage.setItem("appMode", JSON.stringify(mode));
 }
