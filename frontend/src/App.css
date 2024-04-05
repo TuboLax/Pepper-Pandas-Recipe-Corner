@@ -92,8 +92,9 @@ footer {
   --first-color: #d3f7e6;
   --second-color: #333;
   --third-color: #5eba8d;
-  --fourth-color: #fff;
+  --fourth-color: #fff; /* header colour */
   --fifth-color: #f3f3f3; /* navbar header in navbar.css */
+  --sixth-color: #45a049; /* button colour */
   --pepper-logo: url('./assets/pepper-panda.png');
 }
 
@@ -101,7 +102,8 @@ footer {
   --first-color: #573c39;
   --second-color: #fff;
   --third-color: #db4035;
-  --fourth-color: #fff;
+  --fourth-color: #fff; /* header colour */
   --fifth-color: #303030; /* navbar header in navbar.css */
+  --sixth-color: #db4035; /*button colour*/
   --pepper-logo: url('./assets/evil_pepper.png');
 }

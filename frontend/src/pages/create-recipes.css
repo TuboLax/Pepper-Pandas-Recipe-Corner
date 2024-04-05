@@ -63,3 +63,7 @@ footer {
     bottom: 0;
     left: 0;
 }
+
+#buttonColor {
+    background-color: var(--sixth-color);
+}

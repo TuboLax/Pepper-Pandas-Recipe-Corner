@@ -19,7 +19,7 @@
     display: flex;
     justify-content: flex-end;
     flex-grow: 1;
-    padding-right: 10vw;
+    padding-right: 2vw;
 }
 
 .logout {
@@ -35,6 +35,8 @@
 }
 
 #modeIcon {
+    padding-left: 2%;
+    padding-right: 5%;
     width: 30px;
     cursor: pointer;
 }

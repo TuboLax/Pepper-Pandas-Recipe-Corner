@@ -60,7 +60,7 @@ export const Home = () => {
                         <li key={recipe._id}>
                             <div>
                                 <h3> {recipe.title} </h3>
-                                <button 
+                                <button id= "buttonColor"
                                     onClick={() => saveRecipe(recipe._id)}
                                     disabled={isRecipeSaved(recipe._id)}
                                 > 
