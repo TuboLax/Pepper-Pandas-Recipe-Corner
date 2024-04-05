@@ -19,6 +19,7 @@ body {
   content: var(--pepper-logo);
 }
 
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -79,14 +80,16 @@ nav ul li a:hover {
 
 footer {
   background-color: var(--third-color);
-  padding: 10px;
+  padding: 20px;
   text-align: center;
-  width: 100%;
   color: var(--fourth-color);
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  width: 100%;
 }
+
+footer p {
+  margin: 0;
+}
+
 
 :root{
   --first-color: #d3f7e6;

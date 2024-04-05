@@ -38,14 +38,15 @@ main {
 }
 
 footer {
-  background-color: #4caf50;
-  padding: 10px;
+  background-color: var(--third-color);
+  padding: 20px;
   text-align: center;
+  color: var(--fourth-color);
   width: 100%;
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+}
+
+footer p {
+  margin: 0;
 }
 
 .auth {
