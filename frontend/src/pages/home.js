@@ -3,7 +3,7 @@ import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
-import ShoppingList from '../components/shoppinglist';
+import './home.css';
 
 
 export const Home = () => {
@@ -61,7 +61,7 @@ export const Home = () => {
                         <li key={recipe._id}>
                             <div>
                                 <h3> {recipe.title} </h3>
-                                <button 
+                                <button id= "buttonColor"
                                     onClick={() => saveRecipe(recipe._id)}
                                     disabled={isRecipeSaved(recipe._id)}
                                 > 
@@ -78,10 +78,6 @@ export const Home = () => {
                 </ul>
             </section>
 
-            <aside className="notepad-container">
-                <ShoppingList /> {/* Move ShoppingList component here */}
-            </aside>
-
             <section className="featured-recipes">
                 <h2>Pepper's Favorites</h2>
                 <div className="recipe">
@@ -95,6 +91,7 @@ export const Home = () => {
                     <img src={bambooStirFryImage} alt="Bamboo Stir Fry" />
                 </div>
             </section>
+
 
             <footer>
                 <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
