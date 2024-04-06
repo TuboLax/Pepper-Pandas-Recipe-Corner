@@ -2,8 +2,8 @@ import './navbar.css';
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import moonLogo from '../assets/moon.png';
-import sunLogo from '../assets/sun.png';
+import moonLogo from '../assets/light_mode.png';
+import sunLogo from '../assets/dark_mode.png';
 import { SearchBar } from "./searchbar"; 
 
 export const Navbar = () => {
@@ -34,7 +34,7 @@ export const Navbar = () => {
                 {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) :
                     (<button className="logout" onClick={logout}>Logout</button>)}
             </div>
-            <img src={pepperIcon} style={{width:'40px', height:'40px'}} id="modeIcon" alt="Mode" onClick={checkMode} title="Dark Mode"></img>
+            <img src={pepperIcon} style={{width:'80px', height:'80px'}} id="modeIcon" alt="Mode" onClick={checkMode} title="Dark Mode"></img>
         </div>
     );
 }
