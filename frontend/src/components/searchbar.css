@@ -30,7 +30,7 @@
     height: 44px;
   }
 
-  svg {
+  .search-svg {
     color: var(--fourth-color);
     fill: currentColor;
     width: 24px;

@@ -41,11 +41,11 @@ const GetRecipes = () => {
     }, []);
 
     return (
-        <ul>
+        <ul className='recipeList'>
             {recipes.map((recipe) => (
-                <li key={recipe._id}>
+                <li key={recipe._id} className='recipeListItem'>
                     <div>
-                        <h2>{recipe.title}</h2>
+                        <h2 className='recipeListItemTitle'>{recipe.title}</h2>
                     </div>
                     <img src={recipe.image} alt={recipe.title} />
                 </li>
