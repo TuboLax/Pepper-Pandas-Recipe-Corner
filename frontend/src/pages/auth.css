@@ -88,8 +88,8 @@ label {
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="password"] {
+.auth-input[type="text"],
+.auth-input[type="password"] {
   padding: 8px;
   width: 100%;
   border: 1px solid #ccc;
@@ -97,7 +97,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-button {
+.auth-button {
   padding: 10px 20px;
   background-color: var(--sixth-color); /* Green button color for both login and register forms in light mode */
   color: #fff;
@@ -106,7 +106,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.auth-button:hover {
   background-color: var(--sixth-color);
 }
 

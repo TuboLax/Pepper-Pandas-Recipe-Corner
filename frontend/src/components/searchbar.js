@@ -126,7 +126,7 @@ const Form = ({ title, setTitle, formType, onSubmit }) => {
     return (
         <div id={formType} className="tabcontent">
           <form onSubmit={onSubmit} className="searchForm">
-            <div className="form-group">
+            <div >
               <input
                 className="searchInput"
                 type="text"

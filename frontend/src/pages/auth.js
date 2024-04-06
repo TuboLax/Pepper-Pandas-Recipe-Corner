@@ -104,6 +104,7 @@ const Form = ({ username, setUsername, password, setPassword, formType, onSubmit
         <div className="form-group">
           <label htmlFor="username">Username: </label>
           <input
+            className='auth-input'
             type="text"
             id="username"
             value={username}
@@ -112,12 +113,13 @@ const Form = ({ username, setUsername, password, setPassword, formType, onSubmit
         <div className="form-group">
           <label htmlFor="password">Password: </label>
           <input
+            className='auth-input'
             type="password"
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)} />
         </div>
-        <button type="submit">Continue</button>
+        <button type="submit" className='auth-button'>Continue</button>
       </form>
     </div>
   );
