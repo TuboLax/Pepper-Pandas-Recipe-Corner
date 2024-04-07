@@ -2,6 +2,7 @@
 
 # private info 
 backend/.env
+frontend/.env
 
 # dependencies
 frontend/node_modules
