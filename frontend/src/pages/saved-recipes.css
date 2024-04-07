@@ -24,27 +24,13 @@ body {
     margin: 0 auto;
 }
 
-@font-face {
-    font-family: 'Hongkong';
-    src: url('../fonts/Hongkong-MPv.ttf') format('truetype');
-}
-  
 header {
     background-color: var(--third-color);
     padding: 10px;
     text-align: center;
-    width: 100%;
 }
-  
-header h1 {
-    margin-bottom: 10px;
-    color: var(--fourth-color);
-    font-family: 'HongKong';
-    font-size: 36px;
-}
-  
-header p {
-    font-style: italic;
+
+header h1, header p {
     color: var(--fourth-color);
 }
 
@@ -67,6 +53,10 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--third-color);
+}
+
+.my-recipes {
+    margin-bottom: 500px; /* changes space between body and footer */ 
 }
 
 footer {

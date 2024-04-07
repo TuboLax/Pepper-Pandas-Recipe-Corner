@@ -4,6 +4,8 @@ import { useState } from "react";
 import { userGetUserID } from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import GroceryList from '../components/grocerylist';
+
 
 
 export const CreateRecipe = () =>{
@@ -59,7 +61,8 @@ export const CreateRecipe = () =>{
             <h1>Pepper's Cooking</h1>
         </header>
 
-        <div>
+        <section className="my-recipes">
+            <GroceryList />
             <h2>Create Recipe:</h2>
             <form onSubmit={onSubmit}>
                 <label htmlFor="title"> Title </label>
@@ -120,7 +123,8 @@ export const CreateRecipe = () =>{
                 </button>
 
             </form>
-        </div>
+        </section>
+
 
         <footer>
             <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
