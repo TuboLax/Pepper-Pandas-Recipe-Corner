@@ -14,3 +14,27 @@
 .recipeListItemTitle {
     overflow-wrap: break-word;  
 }
+
+@font-face {
+    font-family: 'Hongkong';
+    src: url('../fonts/Hongkong-MPv.ttf') format('truetype');
+}
+  
+header {
+    background-color: var(--third-color);
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+  
+header h1 {
+    margin-bottom: 10px;
+    color: var(--fourth-color);
+    font-family: 'HongKong';
+    font-size: 36px;
+}
+  
+header p {
+    font-style: italic;
+    color: var(--fourth-color);
+}
