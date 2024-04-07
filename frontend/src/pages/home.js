@@ -56,6 +56,7 @@ export const Home = () => {
             </header>
 
             <section className="local-recipes">
+                <GroceryList />
                 <h2> Local Recipes </h2>
                 <ul>
                     {recipes.map((recipe) => (
@@ -78,10 +79,6 @@ export const Home = () => {
                     ))}
                 </ul>
             </section>
-
-            <aside className="notepad-container">
-                <GroceryList />
-            </aside>
 
             <section className="featured-recipes">
                 <h2>Pepper's Favorites</h2>
