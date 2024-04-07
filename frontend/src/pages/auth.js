@@ -7,7 +7,7 @@ import pepperPandaLogo from '../assets/pepper-panda.png';
 
 export const Auth = () => {
   return (
-    <div className="container">
+    <div className="container" style={{ paddingTop: '120px' }}>
         <header>
             <div className="logo-container">
               <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
