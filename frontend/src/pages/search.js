@@ -57,7 +57,7 @@ const GetRecipes = () => {
 
 export const Search = () => {
 
-    return  <div className="container">
+    return  <div className="container" style={{ paddingTop: '120px' }}>
     <header>
         <div className="logo-container">
             <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />

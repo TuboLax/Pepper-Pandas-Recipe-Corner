@@ -47,7 +47,7 @@ export const Home = () => {
     const isRecipeSaved = (id) => savedRecipes.includes(id);
 
     return (
-        <div className="container">
+        <div className="container" style={{ paddingTop: '120px' }}>
             <header>
                 <div className="logo-container">
                     <div className="logo"></div>
@@ -56,6 +56,7 @@ export const Home = () => {
             </header>
 
             <section className="local-recipes">
+                <GroceryList />
                 <h2> Local Recipes </h2>
                 <ul>
                     {recipes.map((recipe) => (
@@ -78,10 +79,6 @@ export const Home = () => {
                     ))}
                 </ul>
             </section>
-
-            <aside className="notepad-container">
-                <GroceryList />
-            </aside>
 
             <section className="featured-recipes">
                 <h2>Pepper's Favorites</h2>

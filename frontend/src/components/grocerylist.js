@@ -48,6 +48,7 @@ const GroceryList = () => {
             {isOpen && (
                 <Draggable cancel=".no-drag">
                     <div className="grocery-list">
+                        <button className="close-button" onClick={() => setIsOpen(false)}>X</button>
                         <h2>Grocery List</h2>
                         <div className="list-container">
                             <ul className="item-list">
@@ -85,7 +86,7 @@ const GroceryList = () => {
                 {isOpen ? 'Close Grocery List' : 'Open Grocery List'}
             </button>
         </div>
-    );
+    );     
 };
 
 export default GroceryList;

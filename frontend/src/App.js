@@ -6,6 +6,7 @@ import { CreateRecipe } from "./pages/create-recipes";
 import { SavedRecipes } from "./pages/saved-recipes";
 import { Navbar } from "./components/navbar";
 import { Search } from "./pages/search";
+import ReCAPTCHA from "react-google-recaptcha";
 
 function App() {
   return (
