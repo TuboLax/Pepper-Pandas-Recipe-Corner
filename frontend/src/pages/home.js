@@ -5,8 +5,6 @@ import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
-import { useGroceryList, GroceryListProvider } from '../components/grocerylist-context';
-
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);

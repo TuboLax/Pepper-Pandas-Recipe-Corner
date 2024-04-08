@@ -244,7 +244,23 @@
     margin-top: 20px;
 }
 
+.darkMode .print-button {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #db4035;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
 .darkMode .save-button:hover {
+    background-color: #a82b22;
+}
+
+.darkMode .print-button:hover {
     background-color: #a82b22;
 }
 
