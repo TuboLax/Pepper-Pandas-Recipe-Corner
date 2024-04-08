@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import './grocerylist.css';
+import { useGroceryList } from './grocerylist-context';
 
 const GroceryList = () => {
-    const [groceryList, setGroceryList] = useState([]);
+    const { groceryList, addItemToGroceryList, removeItemFromGroceryList } = useGroceryList();
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
-
-    const addItemToGroceryList = (item) => {
-        setGroceryList([...groceryList, item]);
-    };
-
-    const removeItemFromGroceryList = (index) => {
-        const updatedList = [...groceryList];
-        updatedList.splice(index, 1);
-        setGroceryList(updatedList);
-    };
 
     const saveListLocally = () => {
         const currentDate = new Date();
@@ -81,7 +72,6 @@ const GroceryList = () => {
                     </div>
                 </Draggable>
             )}
-            {/* Open Grocery List button placed outside Draggable */}
             <button className="toggle-button" onClick={() => setIsOpen(!isOpen)}>
                 {isOpen ? 'Close Grocery List' : 'Open Grocery List'}
             </button>

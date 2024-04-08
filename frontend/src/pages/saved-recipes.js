@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
+import { useGroceryList, GroceryListProvider } from '../components/grocerylist-context';
 
 export const SavedRecipes = () => {
     const [savedRecipes, setSavedRecipes] = useState([]);    
