@@ -3,6 +3,7 @@ import pepperPandaLogo from '../assets/pepper-panda.png';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
+import GroceryList from '../components/grocerylist';
 
 export const SavedRecipes = () => {
     const [savedRecipes, setSavedRecipes] = useState([]);    
@@ -49,6 +50,7 @@ export const SavedRecipes = () => {
         </header>
 
         <section className="my-recipes">
+                <GroceryList />
                 <h2> My Recipes </h2>
                 <ul>
                     {savedRecipes.map((recipe) => (
@@ -72,7 +74,7 @@ export const SavedRecipes = () => {
                     ))}
                 </ul>
             </section>
-
+    
         <footer>
             <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
         </footer>

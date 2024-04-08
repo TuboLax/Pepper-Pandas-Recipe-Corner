@@ -17,11 +17,18 @@
     z-index: 9999;
 }
 
+@font-face {
+    font-family: 'Hongkong';
+    src: url('../fonts/Hongkong-MPv.ttf') format('truetype');
+}
+
 .grocery-list h2 {
     margin-top: 0;
     font-size: 20px;
+    font-family: 'Hongkong';
     color: #333;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .grocery-list ul {
@@ -89,9 +96,26 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 20px;
+    margin-right: 10px;
+}
+
+.print-button {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
 .save-button:hover {
+    background-color: #45a049;
+}
+
+.print-button:hover {
     background-color: #45a049;
 }
 
@@ -220,7 +244,23 @@
     margin-top: 20px;
 }
 
+.darkMode .print-button {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #db4035;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
 .darkMode .save-button:hover {
+    background-color: #a82b22;
+}
+
+.darkMode .print-button:hover {
     background-color: #a82b22;
 }
 

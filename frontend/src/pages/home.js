@@ -6,7 +6,6 @@ import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
 
-
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
     const [savedRecipes, setSavedRecipes] = useState([]);
@@ -54,9 +53,8 @@ export const Home = () => {
                 </div>
                 <h1>Welcome to Pepper Panda's Recipe Corner</h1>
             </header>
-
+            <GroceryList />
             <section className="local-recipes">
-                <GroceryList />
                 <h2> Local Recipes </h2>
                 <ul>
                     {recipes.map((recipe) => (

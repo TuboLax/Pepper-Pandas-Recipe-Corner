@@ -6,6 +6,7 @@ import pepperPandaLogo from '../assets/pepper-panda.png';
 import ReCAPTCHA from "react-google-recaptcha";
 import './auth.css';
 
+
 export const Auth = () => {
   return (
     <div className="container" style={{ paddingTop: '120px' }}>
@@ -142,7 +143,7 @@ const Form = ({ username, setUsername, password, setPassword, formType, onSubmit
             value={password}
             onChange={(event) => setPassword(event.target.value)} />
           <ReCAPTCHA
-            sitekey="6Lcke7MpAAAAABG1o_UASWAJGCXLiYleXWqLasay"
+            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
             onChange={onChange} // Pass onChange function
           />
         </div>

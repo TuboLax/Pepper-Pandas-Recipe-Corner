@@ -52,12 +52,13 @@ main {
 
 footer {
   background-color: var(--third-color);
-  padding: 20px;
   text-align: center;
   color: var(--fourth-color);
   width: 100%;
+  bottom: 0;
+  padding: 20px 0;
+  position:relative;
 }
-
 footer p {
   margin: 0;
 }
