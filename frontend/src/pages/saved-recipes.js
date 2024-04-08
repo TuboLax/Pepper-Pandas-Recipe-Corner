@@ -3,6 +3,7 @@ import pepperPandaLogo from '../assets/pepper-panda.png';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
+import { RecipeModal } from '../components/recipeModal';
 import GroceryList from '../components/grocerylist';
 
 export const SavedRecipes = () => {
@@ -46,7 +47,7 @@ export const SavedRecipes = () => {
             <div className="logo-container">
                 <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
             </div>
-            <h1>Pepper's Favorite</h1>
+            <h1>Pepper's Favorites</h1>
         </header>
 
         <section className="my-recipes">
@@ -70,6 +71,9 @@ export const SavedRecipes = () => {
                             </div>
                             <img src={recipe.image} alt={recipe.title}></img>
                             <p> Cooking Time: {recipe.readyInMinutes} (min) </p>
+                            <RecipeModal
+                                recipeID = {recipe._id}
+                            />
                         </li>
                     ))}
                 </ul>

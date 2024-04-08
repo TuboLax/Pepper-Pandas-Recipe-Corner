@@ -2,6 +2,7 @@ import './search.css';
 import pepperPandaLogo from '../assets/pepper-panda.png';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { RecipeModal } from '../components/recipeModal';
 
 const GetRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -43,12 +44,17 @@ const GetRecipes = () => {
     return (
         <ul className='recipeList'>
             {recipes.map((recipe) => (
+                <>
                 <li key={recipe._id} className='recipeListItem'>
                     <div>
                         <h2 className='recipeListItemTitle'>{recipe.title}</h2>
                     </div>
-                    <img src={recipe.image} alt={recipe.title} />
+                    <img src={recipe.image} alt={recipe.title} id="recipeImage" />
+                    <RecipeModal
+                        recipeID = {recipe._id}
+                    />
                 </li>
+                </>
             ))}
         </ul>
     )

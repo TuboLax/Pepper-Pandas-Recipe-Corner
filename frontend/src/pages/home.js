@@ -5,6 +5,7 @@ import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
+import { RecipeModal } from '../components/recipeModal';
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -73,6 +74,9 @@ export const Home = () => {
                             </div>
                             <img src={recipe.image} alt={recipe.title}></img>
                             <p> Cooking Time: {recipe.readyInMinutes} (min) </p>
+                            <RecipeModal
+                                recipeID = {recipe._id}
+                            />
                         </li>
                     ))}
                 </ul>
