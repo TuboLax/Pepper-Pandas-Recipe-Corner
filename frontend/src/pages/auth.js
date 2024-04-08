@@ -79,8 +79,9 @@ const Login = () => {
 };
 
 const Register = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [recaptchaValue, setRecaptchaValue] = useState(""); // Define recaptchaValue state here
 
   const onSubmit = async (event) => {
     event.preventDefault();
