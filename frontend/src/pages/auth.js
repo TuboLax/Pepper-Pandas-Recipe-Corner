@@ -142,7 +142,7 @@ const Form = ({ username, setUsername, password, setPassword, formType, onSubmit
             value={password}
             onChange={(event) => setPassword(event.target.value)} />
           <ReCAPTCHA
-            sitekey="6Lcke7MpAAAAABG1o_UASWAJGCXLiYleXWqLasay"
+            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
             onChange={onChange} // Pass onChange function
           />
         </div>
