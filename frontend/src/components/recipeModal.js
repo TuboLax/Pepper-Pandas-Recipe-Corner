@@ -40,8 +40,8 @@ export const RecipeModal = (recipeID) =>
 }
 
 const Form = (ID) =>{
-    const[recipes,setRecipes] = useState([]);
-    const [savedRecipes, setSavedRecipes] = useState([]);
+    const[recipes,setRecipes] = useState("");
+    const [savedRecipes, setSavedRecipes] = useState("");
     const userID = userGetUserID();
     const recID=ID;
     useEffect(() => {
@@ -66,21 +66,19 @@ const Form = (ID) =>{
     }, [recID]);
 
     console.log(recipes);
-    console.log(savedRecipes);
+    //console.log(savedRecipes);
     console.log(ID);
     return(
         <ul>
-            {recipes && recipes.map((recipe) =>(
-                <li key={recipe._id}>
+            
+                <li key={recipes._id}>
                     <div>
-                        <h1 className='recName'>{recipe.title}</h1>
+                        <h1 className='recName'>{recipes.title}</h1>
                         <h3 className='recCategories'>Recipe Categories</h3>
-                        <img src={recipe.image} alt={recipe.title}></img>
+                        <img src={recipes.image} alt={recipes.title}></img>
                         <h3 className='directionsHeader'>Directions:</h3>
                     </div>
                 </li>
-            ))}
-            <h4>test</h4>
         </ul>
     );
 }
