@@ -1,56 +1,25 @@
 import './create-recipes.css';
 import pepperPandaLogo from '../assets/pepper-panda.png';
-import { useState } from "react";
+import dairy_free from '../assets/dairy_free.png';
+import gluten_free from '../assets/gluten_free.png';
+import vegan from '../assets/vegan.png';
+import vegitarian from '../assets/vegitarian.png';
+import React, { useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Ketogenic", "Gluten Free", "Dairy Free"];
+const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, gluten_free, dairy_free];
 
-export const CreateRecipe = () =>{
-    const userID = userGetUserID();
-    const navigate = useNavigate();
-    
-    const [recipe, setRecipe] = useState({
-        title: "",
-        image: "",
-        servings: 0,
-        readyInMinutes: 0,
-        extendedIngredients: [],
-        userOwner: userID,
-    });
+const GLOBAL_CUISINES = ["African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese",
+    "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", 
+    "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern",
+    "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"];
 
-    //
-    const handleChange = (event) => {
-        const {name, value} = event.target;
-        setRecipe({ ...recipe, [name]: value });
-    };
 
-    //each new ingredient is added 
-    const handleIngredientChange = (event, idx) => {
-        const { value } = event.target;
-        const extendedIngredients = recipe.extendedIngredients;
-        extendedIngredients[idx] = value;
-        setRecipe({ ...recipe, extendedIngredients: extendedIngredients });
-    };
-
-    //recipe object adds new ingredients onto existing ingredients in Array
-    const addIngredient = () => {
-        setRecipe({ ...recipe, extendedIngredients: [...recipe.extendedIngredients, ""] });
-    };
-
-    //submits recipe to backend database and navigates to home page
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            await axios.post("http://localhost:3000/recipes", recipe);
-            alert("Recipe Created!");
-            navigate("/");
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    return  (
+export const CreateRecipe = () => {
+    return (
     <div className="container">
         <header>
             <div className="logo-container">
@@ -58,70 +27,9 @@ export const CreateRecipe = () =>{
             </div>
             <h1>Pepper's Cooking</h1>
         </header>
-
         <div>
-            <h2>Create Recipe:</h2>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="title"> Title </label>
-                <input 
-                    type="text" 
-                    id="title" 
-                    name="title"
-                    value={recipe.title} 
-                    onChange={handleChange}
-                />
-
-                <label htmlFor="servings"> Servings </label>
-                <input
-                    type="number"
-                    id="servings"
-                    name="servings"
-                    value={recipe.servings}
-                    onChange={handleChange}
-                />
-
-                <label htmlFor="readyInMinutes"> Cooking Time (min) </label>
-                <input 
-                    type="number" 
-                    id="readyInMinutes" 
-                    name="readyInMinutes" 
-                    value={recipe.readyInMinutes}
-                    onChange={handleChange}
-                />
-
-                <label htmlFor="extendedIngredients"> Ingredients </label>
-                {recipe.extendedIngredients.map((ingredient, idx) => (
-                    <input 
-                        key={idx} 
-                        type="text" 
-                        name="extendedIngredients" 
-                        value={ingredient} 
-                        onChange={(event) => handleIngredientChange(event, idx)}
-                    />
-                ))}
-                <button onClick={addIngredient} type="button" id="buttonColor"> 
-                    Add Ingredient 
-                </button>
-
-                <label htmlFor="image"> Image URL </label>
-                <input 
-                    type="text" 
-                    id="image" 
-                    name="image"
-                    value={recipe.image} 
-                    onChange={handleChange}
-                />
-
-                <button type="submit" id="buttonColor">
-                    Create Recipe
-                </button>
-                <button type="reset" id="buttonColor">
-                    Reset Recipe
-                </button>
-
-            </form>
+            < CreateRecipeForm />
         </div>
-
         <footer>
             <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
         </footer>
@@ -129,115 +37,204 @@ export const CreateRecipe = () =>{
     );
 };
 
-export default CreateRecipe;
+const TextParameter = ( {parameter, setParameter, formType} ) => {
+    return (
+        <div>
+            <h3>{formType}</h3>
+            <input
+            className='text-input'
+            type="text"
+            value={parameter}
+            onChange={(event) => setParameter(event.target.value)} />
+      </div>
+    )
+}
 
-/*const addCuisine = () => {
-        setRecipe({...recipe, cuisines: [...recipe.cuisines, ""]});
+const NumberParameter = ( {parameter, setParameter, formType} ) => {
+    return (
+        <div>
+            <h3>{formType}</h3>
+            <input
+            type="number"
+            min="0"
+            value={parameter}
+            onChange={(event) => setParameter(event.target.value)} />
+      </div>
+    )
+}
+
+const DietsParameter = ( {parameter, setParameter}) => {
+
+    const changeDiet = (diet, index) => {
+        // Get the checkbox
+        var checkBox = document.getElementById("diets-checkbox-"+diet);
+        const updatedList = [...parameter]
+
+        // If the checkbox is checked, add it else remove it
+        if (checkBox.checked == true) {
+            updatedList[index] = `${diet}`;
+            setParameter(updatedList);
+        } else {
+            updatedList[index] = ""
+            setParameter(updatedList)
+        }
     }
-    const addDiet = () => {
-        setRecipe({...recipe, diets: [...recipe.diets, ""]});
-    }*/
 
-/**
- *  const [recipe, setRecipe] = useState({
-        title: "",
-        image: "",
-        servings: 0,
-        readyInMinutes: 0,
-        sourceName: "",
-        sourceURL: "",
-        cuisines: [],
-        dairyFree: false,
-        diets: [],
-        instructions: [],
-        extendedIngredients: [],
-        vegetarian: false,
-        vegan: false,
-        ketogenic: false,
-        glutenFree: false,
-        globalRecipe: false,
-        userOwner: userID,
-    });
- */
+    return (
+        <div className='diets-container'>
+            <h2 className='heading'>Diets</h2>
+            {GLOBAL_DIETS.map((diet, index) => (
+                <div className='diets-checkbox'>
+                    <input type="checkbox" id={"diets-checkbox-" + diet}  onClick={() => changeDiet(diet, index)}/>
+                    <h5>{diet}</h5>
+                </div>
+            ))}
+        </div>
+        
+    )
+}
 
-/**
- * 
- * <label htmlFor="instructions"> Instructions </label>
-                <textarea 
-                    id="instructions" 
-                    name="instructions" 
-                    onChange={handleChange}
-                ></textarea>                 
- * 
- * <label htmlFor="sourceURL"> Source URL </label>
-                    <input
-                        type="text"
-                        id="sourceURL"
-                        name="sourceURL"
-                        onChange={handleChange}
-                    />
+const CuisinesParameter = ( {parameter, setParameter} ) => {
 
-                    <label htmlFor="cuisines"> Cuisines </label>
-                    <input
-                        type="text"
-                        id="cuisines"
-                        name="cuisines"
-                        onChange={handleChange}
-                    />
+    const changeCuisine = (cuisine, index) => {
+        // Get the checkbox
+        var checkBox = document.getElementById("cuisine-checkbox-"+ cuisine);
+        const updatedList = [...parameter]
 
-                    <label htmlFor="diets"> Diets </label>
-                    <input
-                        type="text"
-                        id="diets"
-                        name="diets"
-                        onChange={handleChange}
-                    />
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            updatedList[index] = `${cuisine}`;
+            setParameter(updatedList);
+        } else {
+            updatedList[index] = ""
+            setParameter(updatedList)
+        }
+    }
 
-                    <label htmlFor="vegetarian"> Vegetarian </label>
-                    <input
-                        type="radio"
-                        id="vegetarian"
-                        name="vegetarian"
-                        onChange={handleChange}
-                    />
+    return (
+        <div className='cuisines-container'>
+            <h2 className='heading'>Cuisines</h2> 
+            {GLOBAL_CUISINES.map((cuisine, index) => (
+                <div className='cuisines-checkbox'>
+                    <input type="checkbox" id={"cuisine-checkbox-" + cuisine}  onClick={() => changeCuisine(cuisine, index)}/> 
+                    <h5>{cuisine}</h5>
+                </div>
+            ))}
+        </div>
+        
+    )
+}
 
-                    <label htmlFor="vegan"> Vegan </label>
-                    <input
-                        type="radio"
-                        id="vegan"
-                        name="vegan"
-                        onChange={handleChange}
-                    />
+const ArrayParameter = ( {parameter, setParameter, formType} ) => {
+    const [inputValue, setInputValue] = useState('');
 
-                    <label htmlFor="ketogenic"> Ketogenic </label>
-                    <input
-                        type="radio"
-                        id="ketogenic"
-                        name="ketogenic"
-                        onChange={handleChange}
-                    />
+    const add = (item) => {
+        if (item.trim() === "" ) {
+            alert("Invalid input");
+        } else {
+            setParameter([...parameter, item]);
+        }
+    };
 
-                    <label htmlFor="glutenFree"> Gluten Free </label>
-                    <input
-                        type="radio"
-                        id="glutenFree"
-                        name="glutenFree"
-                        onChange={handleChange}
-                    />
-                    
-                    <label htmlFor="dairyFree"> Dairy Free </label>
-                    <input
-                        type="radio"
-                        id="dairyFree"
-                        name="dairyFree"
-                        onChange={handleChange}
-                    />
+    const remove = (index) => {
+        const updatedList = [...parameter];
+        updatedList.splice(index, 1);
+        setParameter(updatedList);
+    };
+    
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
 
-                    <label htmlFor="globalRecipe"> Publish Recipe </label>
-                    <input
-                        type="checkbox"
-                        id="glutenFree"
-                        name="glutenFree"
-                        onChange={handleChange}
-                    />
- */
+    return (
+        <div>
+            <div>
+                <h3>{formType}</h3>
+                    {parameter.map((item, index) => (
+                        <div className='array'>
+                            <button type="button" onClick={() => remove(index)}>X</button>
+                            <span>{item}</span>
+                        </div>
+                    ))}
+            </div>
+            <div>
+                <div className='array-input-box'>{inputValue ? '' : '"Enter" for another input'}</div>
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                            add(" " + inputValue);
+                            setInputValue('');
+                        }
+                    }}
+                />
+            </div>
+        </div>
+    )
+};
+
+const CreateRecipeForm = () => {
+    const [title, setTitle] = useState("");
+    const [image, setImage] = useState("");
+    const [servings, setServings] = useState("");
+    const [readyInMinutes, setReadyInMinutes] = useState("");
+    const [instructions, setInstructions] = useState([]);  
+    const [extendedIngredients, setExtendedIngredients] = useState([]);
+    const [diets, setDiets] = useState([]);
+    const [cuisines, setCuisines] = useState([]);
+
+    const userID = userGetUserID();
+    const navigate = useNavigate();
+
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            if (title.trim() === "" || readyInMinutes === "" || instructions.length === 0 || extendedIngredients.length === 0) {
+                alert("Title/Cooking Time/Instructions/Ingredients is missing")
+            } else {
+            const recipe = {
+                title: title,
+                image: image,
+                servings: servings,
+                readyInMinutes: readyInMinutes,
+                instructions: instructions,
+                extendedIngredients: extendedIngredients,
+                diets: diets,
+                cuisines: cuisines,
+                userOwner: userID,
+            }
+
+            await axios.post("http://localhost:3000/recipes", recipe);
+            alert("Recipe Created!");
+            navigate("/");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    return (
+        <form onSubmit={onSubmit} >
+                <ul className='border'>
+                    <div className='text-container'>
+                        <h2 className='heading'>Recipe Information</h2>
+                            <li><TextParameter parameter={title} setParameter={setTitle} formType="Title"/></li>
+                            <li><TextParameter parameter={image} setParameter={setImage} formType="Image"/></li>
+                            <li><NumberParameter parameter={servings} setParameter={setServings} formType="Servings"/></li>
+                            <li><NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time"/></li>
+                            <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions"/></li>
+                            <li><ArrayParameter parameter={extendedIngredients} setParameter={setExtendedIngredients} formType="Ingredients"/></li>
+                    </div>
+                    <li><DietsParameter parameter={diets} setParameter={setDiets}/></li>
+                    <li><CuisinesParameter parameter={cuisines} setParameter={setCuisines}/></li>
+                </ul>   
+                <button type="button" onClick={onSubmit} >Create Recipe</button>
+        </form>
+    );
+  }
+
+export default CreateRecipe;
