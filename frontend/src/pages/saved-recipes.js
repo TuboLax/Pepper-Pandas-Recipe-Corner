@@ -5,7 +5,7 @@ import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 
-/*
+
 export const SavedRecipes = () => {
     return (
         <div className="container" style={{ paddingTop: '120px' }}>
@@ -28,158 +28,9 @@ export const SavedRecipes = () => {
     );
 };
 
-const startUpdating = (recipe) => {
-    setIsUpdating(recipe._id);
-    setUpdatedData({
-        title: recipe.title,
-        image: recipe.image,
-        servings: recipe.servings,
-        readyInMinutes: recipe.readyInMinutes,
-        sourceURL: recipe.sourceURL,
-        cuisines: [...recipe.cuisines],
-        diets: [...recipe.diets],
-        instructions: [...recipe.instructions],
-        extendedIngredients: [...recipe.extendedIngredients],
-    });
-};
-
-const handleUpdateChange = (event) => {
-    const  { name, value } = event.target;
-    setUpdatedData(recipe => ({ ...recipe, [name]: value }));
-};
-
-const deleteRecipe = async (recipeID) => {
-  try {
-    await axios.delete("http://localhost:3000/recipes/deletedRecipes", { data: { recipeID, userID } });
-    setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID));
-    alert("Recipe Successfully Deleted!"); 
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const updateRecipe = async (recipeID) => {
-    try {
-        const response = await axios.patch("http://localhost:3000/recipes/updatedRecipes", { 
-            recipeID: recipeID, 
-            userID: userID, 
-            updatedData: updatedData 
-        });
-        const updatedRecipes = savedRecipes.map(
-            recipe => recipe._id === recipeID ? response.data.recipe : recipe
-        );
-
-        setSavedRecipes(updatedRecipes);
-        setIsUpdating(null);
-        alert("Recipe Updated!");
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-const handleArrayChange = async (index, value, element) => {
-    setUpdatedData( recipe => ({
-        ...recipe,
-        [element]: recipe[element].map((item, i) => i === index ? value : item)
-    }));
-};
-
-const addArrayElement = async (element) => {
-    setUpdatedData(recipe => ({
-        ...recipe,
-        [element]: [...recipe[element], ''] // Add an empty string or a default value
-    }));
-};
-
-const removeArrayElement = (index, element) => {
-    setUpdatedData(recipe => ({
-        ...recipe, 
-        [element]: recipe[element].filter((_, i) => i !== index)
-    }));
-};
-
-const TextParameter = ( {parameter, setParameter, formType} ) => {
-    return (
-        <div>
-            <h3>{formType}</h3>
-            <input
-            className='text-input'
-            type="text"
-            value={parameter}
-            onChange={(event) => setParameter(event.target.value)} />
-      </div>
-    )
-}
-
-const NumberParameter = ( {parameter, setParameter, formType} ) => {
-    return (
-        <div>
-            <h3>{formType}</h3>
-            <input
-            type="number"
-            min="0"
-            value={parameter}
-            onChange={(event) => setParameter(event.target.value)} />
-      </div>
-    )
-}
-
-const ArrayParameter = ( {parameter, setParameter, formType} ) => {
-    const [inputValue, setInputValue] = useState('');
-
-    const add = (item) => {
-        if (item.trim() === "" ) {
-            alert("Invalid input");
-        } else {
-            setParameter([...parameter, item]);
-        }
-    };
-
-    const remove = (index) => {
-        const updatedList = [...parameter];
-        updatedList.splice(index, 1);
-        setParameter(updatedList);
-    };
-    
-    const handleInputChange = (e) => {
-        setInputValue(e.target.value);
-    };
-
-    return (
-        <div>
-            <div>
-                <h3>{formType}</h3>
-                    {parameter.map((item, index) => (
-                        <div className='array'>
-                            <button type="button" onClick={() => remove(index)}>X</button>
-                            <span>{item}</span>
-                        </div>
-                    ))}
-            </div>
-            <div>
-                <div className='array-input-box'>{inputValue ? '' : '"Enter" for another input'}</div>
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                            add(" " + inputValue);
-                            setInputValue('');
-                        }
-                    }}
-                />
-            </div>
-        </div>
-    )
-};
-
-//checks if user is owner of recipe
-const isOwner = (recipe) => recipe.userOwner === userID;
-
 const SavedRecipesForm = () => {
     const [savedRecipes, setSavedRecipes] = useState([]);    
-    const [isUpdating, setIsUpdating] = useState(null); //to track which recipe is being updated
+    const [isUpdating, setIsUpdating] = useState(null); 
     const [updatedData, setUpdatedData] = useState({ 
         title: '' ,
         image: '',
@@ -206,6 +57,80 @@ const SavedRecipesForm = () => {
 
         fetchSavedRecipe();
     }, [userID]);
+
+    const startUpdating = (recipe) => {
+        setIsUpdating(recipe._id);
+        setUpdatedData({
+            title: recipe.title,
+            image: recipe.image,
+            servings: recipe.servings,
+            readyInMinutes: recipe.readyInMinutes,
+            sourceURL: recipe.sourceURL,
+            cuisines: [...recipe.cuisines],
+            diets: [...recipe.diets],
+            instructions: [...recipe.instructions],
+            extendedIngredients: [...recipe.extendedIngredients],
+        });
+    };
+
+    const handleUpdateChange = (event) => {
+        const  { name, value } = event.target;
+        setUpdatedData(recipe => ({ ...recipe, [name]: value }));
+    };
+    
+    const handleArrayChange = async (index, value, element) => {
+        setUpdatedData( recipe => ({
+            ...recipe,
+            [element]: recipe[element].map((item, i) => i === index ? value : item)
+        }));
+    };
+    
+    const addArrayElement = async (element) => {
+        setUpdatedData(recipe => ({
+            ...recipe,
+            [element]: [...recipe[element], ''] // Add an empty string or a default value
+        }));
+    };
+    
+    const removeArrayElement = (index, element) => {
+        setUpdatedData(recipe => ({
+            ...recipe, 
+            [element]: recipe[element].filter((_, i) => i !== index)
+        }));
+    };
+
+    const deleteRecipe = async (recipeID) => {
+        try {
+          await axios.delete("http://localhost:3000/recipes/deletedRecipes", { data: { recipeID, userID } });
+          setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID));
+          alert("Recipe Successfully Deleted!"); 
+        } catch (err) {
+          console.log(err);
+        }
+    };
+      
+    const updateRecipe = async (recipeID) => {
+        try {
+            const response = await axios.patch("http://localhost:3000/recipes/updatedRecipes", { 
+                recipeID: recipeID, 
+                userID: userID, 
+                updatedData: updatedData 
+            });
+            
+            const updatedRecipes = savedRecipes.map(
+                recipe => recipe._id === recipeID ? response.data.recipe : recipe
+            );
+    
+            setSavedRecipes(updatedRecipes);
+            setIsUpdating(null);
+            alert("Recipe Updated!");
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    //checks if user is owner of recipe
+    const isOwner = (recipe) => recipe.userOwner === userID;
 
     return (
         <ul>
@@ -347,9 +272,85 @@ const SavedRecipesForm = () => {
 
 export default SavedRecipes;
 
+/*
+const TextParameter = ( {parameter, setParameter, formType} ) => {
+    return (
+        <div>
+            <h3>{formType}</h3>
+            <input
+            className='text-input'
+            type="text"
+            value={parameter}
+            onChange={(event) => setParameter(event.target.value)} />
+      </div>
+    )
+}
+
+const NumberParameter = ( {parameter, setParameter, formType} ) => {
+    return (
+        <div>
+            <h3>{formType}</h3>
+            <input
+            type="number"
+            min="0"
+            value={parameter}
+            onChange={(event) => setParameter(event.target.value)} />
+      </div>
+    )
+}
+
+const ArrayParameter = ( {parameter, setParameter, formType} ) => {
+    const [inputValue, setInputValue] = useState('');
+
+    const add = (item) => {
+        if (item.trim() === "" ) {
+            alert("Invalid input");
+        } else {
+            setParameter([...parameter, item]);
+        }
+    };
+
+    const remove = (index) => {
+        const updatedList = [...parameter];
+        updatedList.splice(index, 1);
+        setParameter(updatedList);
+    };
+    
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    return (
+        <div>
+            <div>
+                <h3>{formType}</h3>
+                    {parameter.map((item, index) => (
+                        <div className='array'>
+                            <button type="button" onClick={() => remove(index)}>X</button>
+                            <span>{item}</span>
+                        </div>
+                    ))}
+            </div>
+            <div>
+                <div className='array-input-box'>{inputValue ? '' : '"Enter" for another input'}</div>
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                            add(" " + inputValue);
+                            setInputValue('');
+                        }
+                    }}
+                />
+            </div>
+        </div>
+    )
+};
 */
 
-
+/*
 export const SavedRecipes = () => {
     const [savedRecipes, setSavedRecipes] = useState([]);    
     const [isUpdating, setIsUpdating] = useState(null); //to track which recipe is being updated
@@ -606,3 +607,4 @@ export const SavedRecipes = () => {
     </div>
     );
 };
+*/
