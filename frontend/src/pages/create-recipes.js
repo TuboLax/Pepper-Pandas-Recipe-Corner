@@ -22,16 +22,17 @@ const GLOBAL_CUISINES = ["African", "Asian", "American", "British", "Cajun", "Ca
 
 export const CreateRecipe = () => {
     return (
-    <div className="container">
+    <div className="container"  style={{ paddingTop: '120px' }}>
         <header>
             <div className="logo-container">
                 <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
             </div>
             <h1>Pepper's Cooking</h1>
         </header>
-        <div>
+        <section className="my-recipes">
+            <GroceryList />
             < CreateRecipeForm />
-        </div>
+        </section>
         <footer>
             <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
         </footer>
