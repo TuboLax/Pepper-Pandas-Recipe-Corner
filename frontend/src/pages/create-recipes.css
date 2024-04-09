@@ -72,3 +72,66 @@ footer p {
 #buttonColor {
     background-color: var(--sixth-color);
 }
+
+.text-container {
+    width: 500px;
+    padding: 5%;
+    background-color: var(--fifth-color);
+}
+
+.text-input {
+    width: 80%;
+}
+
+.diets-container {
+    width: 110px;
+    overflow-y: auto;
+    background-color: var(--fifth-color);
+}
+
+.diets-checkbox {
+    display: flex;
+    height: 60px;
+    width: 100px;
+}
+
+.cuisines-container {
+    width: 150px;
+    height: 368px;
+    overflow-y: auto;
+    background-color: var(--fifth-color);
+}
+
+.cuisines-checkbox {
+    display: flex;
+    height: 60px;
+    width: 120px;
+}
+
+.array-input-box {
+    margin-top: 5%;
+}
+
+.array {
+    width: 490px;
+    overflow-y: auto;
+    margin-top: 5%;
+}
+
+.array button {
+    height: 20px;
+    width: 30px;
+}
+
+.border {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 5%;
+    list-style-type:none;
+    background-color: var(--third-color);
+}
+
+.heading {
+    text-align: center;
+}
