@@ -157,9 +157,6 @@ recipesRouter.delete("/deletedRecipes", async (req, res) => {
     }
 });
 
-module.exports = recipesRouter;
-
-/*
 //finds and updates recipe by ID locally by userID
 recipesRouter.patch("/updatedRecipes", async (req, res) => {
     try {
@@ -198,7 +195,8 @@ recipesRouter.patch("/updatedRecipes", async (req, res) => {
         });
     }
 });
-*/
+
+module.exports = recipesRouter;
 
 /*
 //finds and updates recipe by ID locally by userID
