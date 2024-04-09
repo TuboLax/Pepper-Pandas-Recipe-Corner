@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 //Recipe model
 const RecipeSchema = new mongoose.Schema({
-    //isSpoonacular: { type: Boolean, required: false },
     //id: { type: String, required: true, unique: true },
     title: { 
         type: String, 
@@ -67,10 +66,6 @@ const RecipeSchema = new mongoose.Schema({
     glutenFree: { 
         type: Boolean, 
         required: false 
-    },
-    globalRecipe: {
-        type: Boolean, 
-        required: false
     },
     userOwner: { 
         type: mongoose.Schema.Types.ObjectId, 
