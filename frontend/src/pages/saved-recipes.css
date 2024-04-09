@@ -55,6 +55,10 @@ nav ul li a:hover {
     color: var(--third-color);
 }
 
+.my-recipes {
+    margin-bottom: 500px; /* changes space between body and footer */ 
+}
+
 footer {
     background-color: var(--third-color);
     padding: 20px;

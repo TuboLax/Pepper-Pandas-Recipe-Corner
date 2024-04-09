@@ -1,43 +1,67 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import './grocerylist.css';
+import { useGroceryList } from './grocerylist-context';
+import { jsPDF } from 'jspdf';
+import logo from '../assets/pepper-panda.png';
 
 const GroceryList = () => {
-    const [groceryList, setGroceryList] = useState([]);
+    const { groceryList, addItemToGroceryList, removeItemFromGroceryList } = useGroceryList();
     const [isOpen, setIsOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
 
-    const addItemToGroceryList = (item) => {
-        setGroceryList([...groceryList, item]);
-    };
-
-    const removeItemFromGroceryList = (index) => {
-        const updatedList = [...groceryList];
-        updatedList.splice(index, 1);
-        setGroceryList(updatedList);
-    };
-
     const saveListLocally = () => {
         const currentDate = new Date();
-        const formattedDate = `${(currentDate.getMonth() + 1)
-            .toString()
-            .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}-${currentDate.getFullYear().toString().slice(-2)}`;
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const year = String(currentDate.getFullYear()).slice(-2);
     
-        let textToSave = "Pepper Panda's Grocery List!\n";
-        groceryList.forEach(item => {
-            textToSave += `[ ] ${item}\n\n`;
+        const formattedDate = `${month}-${day}-${year}`;
+        const fileName = `grocery_list_${formattedDate}.pdf`;
+    
+        const doc = new jsPDF();
+        addLogoToPDF(doc);
+        const textX = 60;
+        const textY = 25;
+        doc.setFont('helvetica', 'bolditalic');
+        doc.setFontSize(36);
+        doc.text("Pepper's Grocery List!", textX, textY);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(12);
+        groceryList.forEach((item, index) => {
+            const checkboxX = 10;
+            const checkboxY = textY + 20 + index * 10;
+            doc.rect(checkboxX, checkboxY, 5, 5);
+            doc.text(item, checkboxX + 10, checkboxY + 5);
+        });
+        doc.save(fileName);
+    };       
+    
+    const printList = () => {
+        const doc = new jsPDF();
+        addLogoToPDF(doc);
+        const textX = 60; 
+        const textY = 25;
+        doc.setFont('helvetica', 'bolditalic');
+        doc.setFontSize(36);
+        doc.text("Pepper's Grocery List!", textX, textY);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(12);
+        groceryList.forEach((item, index) => {
+            const checkboxX = 10;
+            const checkboxY = textY + 20 + index * 10;
+            doc.rect(checkboxX, checkboxY, 5, 5);
+            doc.text(item, checkboxX + 10, checkboxY + 5);
         });
     
-        const blob = new Blob([textToSave], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `grocery_list_${formattedDate}.txt`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    };    
+        doc.autoPrint();
+        window.open(doc.output('bloburl'), '_blank');
+    };        
+    
+    const addLogoToPDF = (doc) => {
+        const imgData = logo;
+        doc.addImage(imgData, 'PNG', 10, 10, 40, 40);
+    };       
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -48,6 +72,7 @@ const GroceryList = () => {
             {isOpen && (
                 <Draggable cancel=".no-drag">
                     <div className="grocery-list">
+                        <button className="close-button" onClick={() => setIsOpen(false)}>X</button>
                         <h2>Grocery List</h2>
                         <div className="list-container">
                             <ul className="item-list">
@@ -77,15 +102,17 @@ const GroceryList = () => {
                         <button className="save-button" onClick={saveListLocally}>
                             Save Grocery List
                         </button>
+                        <button className="print-button" onClick={printList}>
+                            Print Grocery List
+                        </button>
                     </div>
                 </Draggable>
             )}
-            {/* Open Grocery List button placed outside Draggable */}
             <button className="toggle-button" onClick={() => setIsOpen(!isOpen)}>
                 {isOpen ? 'Close Grocery List' : 'Open Grocery List'}
             </button>
         </div>
-    );
+    );     
 };
 
 export default GroceryList;

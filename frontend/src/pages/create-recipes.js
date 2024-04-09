@@ -8,6 +8,8 @@ import React, { useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import GroceryList from '../components/grocerylist';
+
 
 const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Ketogenic", "Gluten Free", "Dairy Free"];
 const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, gluten_free, dairy_free];

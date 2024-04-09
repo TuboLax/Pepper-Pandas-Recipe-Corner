@@ -6,7 +6,6 @@ import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
 
-
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
     const [savedRecipes, setSavedRecipes] = useState([]);
@@ -47,14 +46,14 @@ export const Home = () => {
     const isRecipeSaved = (id) => savedRecipes.includes(id);
 
     return (
-        <div className="container">
+        <div className="container" style={{ paddingTop: '120px' }}>
             <header>
                 <div className="logo-container">
                     <div className="logo"></div>
                 </div>
-                <h1>Welcome to Pepper Panda's Recipe Corner</h1>
+                <h1>Pepper Panda's Recipe Corner</h1>
             </header>
-
+            <GroceryList />
             <section className="local-recipes">
                 <h2> Local Recipes </h2>
                 <ul>
@@ -78,10 +77,6 @@ export const Home = () => {
                     ))}
                 </ul>
             </section>
-
-            <aside className="notepad-container">
-                <GroceryList />
-            </aside>
 
             <section className="featured-recipes">
                 <h2>Pepper's Favorites</h2>

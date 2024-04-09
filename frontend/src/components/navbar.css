@@ -1,63 +1,67 @@
-@import url("/src/App.css");
+/* navbar.css */
 
 .navbar {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    background-color: var(--fifth-color);
-    padding: 10px 0;
-    padding-left: 10vw;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: var(--fifth-color);
+  padding: 10px 0;
+  padding-left: 5vw; /* Adjusted padding-left */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .nav-link {
-    margin: 30px;
-    text-decoration: none;
-    color: var(--second-color);
+  margin: 30px;
+  text-decoration: none;
+  color: var(--second-color);
 }
 
 #authButton {
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 1;
-    padding-right: 2vw;
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding-right: 2vw;
 }
 
 .logout {
-    margin: 30px;
-    text-decoration: none;
-    color: var(--second-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font: inherit;
-    padding-left: 3vh;
-    outline: inherit;
+  text-decoration: none;
+  color: var(--second-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding-left: 3vh;
+  outline: inherit;
 }
 
 #modeIcon {
-    padding-left: 2%;
-    padding-right: 5%;
-    width: 100px;
-    cursor: pointer;
+  padding-left: 2%;
+  padding-right: 5%;
+  width: 100px;
+  cursor: pointer;
+  z-index: 1000;
 }
 
 /* Media Query for Mobile Devices */
 @media only screen and (max-width: 768px) {
-    .navbar {
-        padding-left: 5vw;
-        padding-right: 5vw;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    .nav-link {
-        margin: 10px;
-    }
-    #authButton {
-        padding-right: 0;
-    }
-    .logout {
-        margin: 10px;
-        padding-left: 0;
-    }
+  .navbar {
+      padding-left: 5vw;
+      padding-right: 5vw;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+  .nav-link {
+      margin: 10px;
+  }
+  #authButton {
+      padding-right: 0;
+  }
+  .logout {
+      margin: 10px;
+      padding-left: 0;
+  }
 }

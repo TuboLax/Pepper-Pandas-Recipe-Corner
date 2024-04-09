@@ -1,3 +1,74 @@
+body {
+    background-color: var(--first-color);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: var(--second-color);
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--third-color);
+    padding: 10px;
+    text-align: center;
+}
+
+header h1, header p {
+    color: var(--fourth-color);
+}
+
+.my-recipes {
+    margin-bottom: 500px; /* changes space between body and footer */ 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--second-color);
+}
+
+nav ul li a:hover {
+    color: var(--third-color);
+}
+
+footer {
+    background-color: var(--third-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--fourth-color);
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
 #buttonColor {
     background-color: var(--sixth-color);
 }

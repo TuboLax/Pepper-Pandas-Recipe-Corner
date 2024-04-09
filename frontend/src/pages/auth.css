@@ -22,15 +22,28 @@ body {
   margin: 0 auto;
 }
 
-header {
-  background-color: #4caf50;
-  padding: 10px;
-  text-align: center;
+@font-face {
+  font-family: 'Hongkong';
+  src: url('../fonts/Hongkong-MPv.ttf') format('truetype');
 }
 
-header h1,
+header {
+  background-color: var(--third-color);
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  color: var(--fourth-color);
+  font-family: 'HongKong';
+  font-size: 36px;
+}
+
 header p {
-  color: #fff;
+  font-style: italic;
+  color: var(--fourth-color);
 }
 
 main {
@@ -39,12 +52,13 @@ main {
 
 footer {
   background-color: var(--third-color);
-  padding: 20px;
   text-align: center;
   color: var(--fourth-color);
   width: 100%;
+  bottom: 0;
+  padding: 20px 0;
+  position:relative;
 }
-
 footer p {
   margin: 0;
 }

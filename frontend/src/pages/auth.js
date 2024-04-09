@@ -1,13 +1,15 @@
-import './auth.css';
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import pepperPandaLogo from '../assets/pepper-panda.png';
+import ReCAPTCHA from "react-google-recaptcha";
+import './auth.css';
+
 
 export const Auth = () => {
   return (
-    <div className="container">
+    <div className="container" style={{ paddingTop: '120px' }}>
         <header>
             <div className="logo-container">
               <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
@@ -32,12 +34,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [, setCookies] = useCookies(["accessToken"]);
   const navigate = useNavigate();
+  const [recaptchaValue, setRecaptchaValue] = useState(""); // State variable for reCAPTCHA response
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    if (!recaptchaValue) {
+      alert("Please complete the reCAPTCHA.");
+      return;
+    }
+
     try {
-      const input = await axios.post("http://localhost:3000/auth/login", { username, password });
+      const input = await axios.post("http://localhost:3000/auth/login", { username, password, recaptchaValue });
       const loginBool = input.data.logStatus;
       
       if (loginBool === "true") {
@@ -53,6 +61,10 @@ const Login = () => {
     }
   }
 
+  const onChange = (value) => {
+    setRecaptchaValue(value); // Update reCAPTCHA response in state
+  };
+
   return (
     <Form
       username={username}
@@ -61,18 +73,26 @@ const Login = () => {
       setPassword={setPassword}
       formType="Login"
       onSubmit={onSubmit}
+      onChange={onChange} // Pass onChange function to Form component
     />
   );
 };
 
 const Register = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [recaptchaValue, setRecaptchaValue] = useState(""); // Define recaptchaValue state here
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    if (!recaptchaValue) {
+      alert("Please complete the reCAPTCHA.");
+      return;
+    }
+
     try {
-      const input = await axios.post("http://localhost:3000/auth/createAccount", { username, password });
+      const input = await axios.post("http://localhost:3000/auth/createAccount", { username, password, recaptchaValue });
       const regBool = input.data.regStatus;
       if (regBool === true) {
         alert(input.data.message);
@@ -84,6 +104,10 @@ const Register = () => {
     }
   }
 
+  const onChange = (value) => {
+    setRecaptchaValue(value); // Update reCAPTCHA response in state
+  };
+
   return (
     <Form
       username={username}
@@ -92,11 +116,12 @@ const Register = () => {
       setPassword={setPassword}
       formType="Create Account"
       onSubmit={onSubmit}
+      onChange={onChange} // Pass onChange function to Form component
     />
   );
 };
 
-const Form = ({ username, setUsername, password, setPassword, formType, onSubmit }) => {
+const Form = ({ username, setUsername, password, setPassword, formType, onSubmit, onChange }) => {
   return (
     <div className={`auth-container ${formType.toLowerCase().replace(" ", "-")}`}>
       <form onSubmit={onSubmit}>
@@ -118,6 +143,10 @@ const Form = ({ username, setUsername, password, setPassword, formType, onSubmit
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)} />
+          <ReCAPTCHA
+            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+            onChange={onChange} // Pass onChange function
+          />
         </div>
         <button type="submit" className='auth-button'>Continue</button>
       </form>
