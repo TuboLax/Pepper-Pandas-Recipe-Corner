@@ -1,5 +1,5 @@
 import './saved-recipes.css';
-import pepperPandaLogo from '../assets/pepper-panda.png';
+import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
