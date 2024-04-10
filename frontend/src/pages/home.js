@@ -52,7 +52,7 @@ export const Home = () => {
                 <div className="logo-container">
                     <div className="logo"></div>
                 </div>
-                <h1>Welcome to Pepper Panda's Recipe Corner</h1>
+                <h1>Pepper Panda's Recipe Corner</h1>
             </header>
             <GroceryList />
             <section className="local-recipes">

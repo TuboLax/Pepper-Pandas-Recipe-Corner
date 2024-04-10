@@ -10,7 +10,7 @@ const SearchTitle = () => {
       event.preventDefault();
       try {
         // If the request is blank, send an alert
-        if (title != "") {
+        if (title.trim() != "") {
           navigate(`/search?filter=title&query=${title}`);
           location.reload();
         } else {
@@ -40,7 +40,7 @@ const SearchCuisine = () => {
     event.preventDefault();
     try {
       // If the request is blank, send an alert
-      if (title != "") {
+      if (title.trim() != "") {
           navigate(`/search?filter=cuisine&query=${title}`);
           location.reload();
       } else {
@@ -70,7 +70,7 @@ const SearchDiet = () => {
     event.preventDefault();
     try {
       // If the request is blank, send an alert
-      if (title != "") {
+      if (title.trim() != "") {
         navigate(`/search?filter=diet&query=${title}`);
         location.reload();
       } else {
@@ -99,7 +99,7 @@ const SearchIngredients = () => {
     event.preventDefault();
     try {
       // If the request is blank, send an alert
-      if (title != "") {
+      if (title.trim() != "") {
         navigate(`/search?filter=ingredients&query=${title}`);
         location.reload();
       } else {
