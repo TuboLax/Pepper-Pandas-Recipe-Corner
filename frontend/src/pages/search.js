@@ -1,5 +1,5 @@
 import './search.css';
-import pepperPandaLogo from '../assets/pepper-panda.png';
+import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 

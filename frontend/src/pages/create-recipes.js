@@ -1,9 +1,9 @@
 import './create-recipes.css';
-import pepperPandaLogo from '../assets/pepper-panda.png';
-import dairy_free from '../assets/dairy_free.png';
-import gluten_free from '../assets/gluten_free.png';
-import vegan from '../assets/vegan.png';
-import vegitarian from '../assets/vegitarian.png';
+import pepperPandaLogo from '../assets/logos/pepper-panda.png';
+import dairy_free from '../assets/food icons/dairy_free.png';
+import gluten_free from '../assets/food icons/gluten_free.png';
+import vegan from '../assets/food icons/vegan.png';
+import vegitarian from '../assets/food icons/vegitarian.png';
 import React, { useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';

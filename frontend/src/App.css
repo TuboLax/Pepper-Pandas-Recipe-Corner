@@ -98,7 +98,7 @@ footer p {
   --fourth-color: #fff; /* header colour */
   --fifth-color: #f3f3f3; /* navbar header in navbar.css */
   --sixth-color: #45a049; /* button colour */
-  --pepper-logo: url('./assets/pepper-panda.png');
+  --pepper-logo: url('./assets/logos/pepper-panda.png');
 }
 
 .darkMode{
@@ -108,5 +108,5 @@ footer p {
   --fourth-color: #fff; /* header colour */
   --fifth-color: #303030; /* navbar header in navbar.css */
   --sixth-color: #db4035; /*button colour*/
-  --pepper-logo: url('./assets/evil_pepper.png');
+  --pepper-logo: url('./assets/logos/evil_pepper.png');
 }
