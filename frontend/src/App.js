@@ -20,6 +20,7 @@ function App() {
             <Route path="/create-recipes" element={<CreateRecipe />} />
             <Route path="/saved-recipes" element={<SavedRecipes />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/settings" element={<Search />} />
           </Routes>
         </Router>
       </GroceryListProvider>
