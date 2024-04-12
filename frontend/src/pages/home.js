@@ -1,10 +1,41 @@
 import bambooSaladImage from '../assets/bamboo-salad.jpg';
 import bambooStirFryImage from '../assets/bamboo-stir-fry.jpg';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
+
+const GetRandom = () => {
+    const [randomRecipes, setRandomRecipes] = useState([]);
+
+    useEffect(() => {
+        const fetchRandom = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/find/random");
+                setRandomRecipes(response.data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchRandom();
+    }, []);
+
+    return (
+        <ul>
+            {randomRecipes.map((random) => (
+                <li key={random._id}>
+                    <div>
+                        <h2>{random.title}</h2>
+                    </div>
+                    <img src={random.image} alt={random.title} />
+                </li>
+            ))}
+        </ul>
+    )
+}
+
+
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -80,6 +111,7 @@ export const Home = () => {
 
             <section className="featured-recipes">
                 <h2>Pepper's Favorites</h2>
+                < GetRandom />
                 <div className="recipe">
                     <h3>Pepper Panda's Bamboo Salad</h3>
                     <p>A refreshing salad made with fresh bamboo shoots and garden greens.</p>
