@@ -3,7 +3,7 @@ import Draggable from 'react-draggable';
 import './grocerylist.css';
 import { useGroceryList } from './grocerylist-context';
 import { jsPDF } from 'jspdf';
-import logo from '../assets/pepper-panda.png';
+import logo from '../assets/logos/pepper-panda.png';
 
 const GroceryList = () => {
     const { groceryList, addItemToGroceryList, removeItemFromGroceryList } = useGroceryList();
