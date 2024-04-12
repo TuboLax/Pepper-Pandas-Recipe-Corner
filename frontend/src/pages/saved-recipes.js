@@ -3,6 +3,7 @@ import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
+import { RecipeModalLocal } from '../components/recipeModalLocal';
 import GroceryList from '../components/grocerylist';
 
 
@@ -176,6 +177,9 @@ const SavedRecipesForm = () => {
                                 ))}
                             </ul>
                         <p> Source URL: {recipe.sourceURL}</p>
+                        <RecipeModalLocal
+                            recipeKey = {recipe}
+                        />
                     </div>
 
                     <div className="buttons">
@@ -459,7 +463,7 @@ export const SavedRecipes = () => {
             <div className="logo-container">
                 <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
             </div>
-            <h1>Pepper's Favorite</h1>
+            <h1>Pepper's Favorites</h1>
         </header>
 
         <section className="my-recipes">
@@ -471,6 +475,9 @@ export const SavedRecipes = () => {
                             <div className="front-recipe-display">
                                 <h3>{recipe.title}</h3>
                                 <img src={recipe.image} alt={recipe.title}></img>
+                                <RecipeModal
+                                recipeID = {recipe._id}
+                                />
                             </div>
                             <div className="full-recipe-display">
                                 <p> Servings: {recipe.servings} </p>

@@ -3,14 +3,21 @@
     flex-wrap: wrap;
     list-style: none;
     justify-content:center; 
+    text-align: center;
 }
 
 .recipeListItem {
     width: 350px;
     height: 350px;
     margin: 10px;
+    padding-bottom: 25px;
   }
 
 .recipeListItemTitle {
     overflow-wrap: break-word;  
+}
+
+#recipeImage{
+    background-color: var(--third-color);
+    padding: 10px;
 }
