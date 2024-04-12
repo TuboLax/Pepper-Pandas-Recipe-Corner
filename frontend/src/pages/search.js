@@ -2,7 +2,7 @@ import './search.css';
 import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { RecipeModal } from '../components/recipeModal';
+import { RecipeModalSpoon } from '../components/recipeModalSpoon.js';
 
 const GetRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -50,8 +50,8 @@ const GetRecipes = () => {
                         <h2 className='recipeListItemTitle'>{recipe.title}</h2>
                     </div>
                     <img src={recipe.image} alt={recipe.title} id="recipeImage" />
-                    <RecipeModal
-                        recipeID = {recipe._id}
+                    <RecipeModalSpoon
+                        recipeID = {recipe.id}
                     />
                 </li>
                 </>

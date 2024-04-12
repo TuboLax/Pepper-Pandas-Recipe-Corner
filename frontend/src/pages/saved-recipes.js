@@ -3,7 +3,7 @@ import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import { useEffect, useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
-import { RecipeModal } from '../components/recipeModal';
+import { RecipeModalLocal } from '../components/recipeModalLocal';
 import GroceryList from '../components/grocerylist';
 
 
@@ -177,6 +177,9 @@ const SavedRecipesForm = () => {
                                 ))}
                             </ul>
                         <p> Source URL: {recipe.sourceURL}</p>
+                        <RecipeModalLocal
+                            recipeKey = {recipe}
+                        />
                     </div>
 
                     <div className="buttons">

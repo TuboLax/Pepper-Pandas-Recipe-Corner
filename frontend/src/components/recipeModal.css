@@ -16,22 +16,48 @@ body.overlayScrollBlock {
 
 .fullDetails{
     position: absolute;
-    top:40%;
+    top:50%;
     left:50%;
     transform: translate(-50%,-50%);
     line-height: 1.4;
     background: var(--fifth-color);
-    padding: 14px 28px;
+    padding: 6px 18px;
     border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
+    max-width: 1130px;
+    min-width: 930px;
+    max-height:1150px;
+    min-height: 950px;
+    background-image: var(--border-lrg);
+    background-position-x: 50%;
+    background-position-y: 50%;
 }
 
 .closeModal{
     position:absolute;
-    bottom: 5;   
+    right:8%;
+    bottom: 88%;   
     padding: 10px 20px;
     border-radius: 5px;
     background-color: var(--sixth-color);
     color:var(--fourth-color);
+}
+
+.recName{
+    padding-top: 100px;
+}
+
+.yes, .no{
+    border-radius: 50%;
+}
+
+.no{
+    background-color: rgba(224, 49, 49, 0.8);
+}
+
+.ingBox{
+    background-color: var(--first-color);
+}
+
+.dirBox{
+    background-color: var(--first-color);
 }

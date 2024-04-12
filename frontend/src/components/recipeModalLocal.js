@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 
-export const RecipeModal = (recipeID) =>
+export const RecipeModalLocal = (recipeKey) =>
 {
     const [modal, setModal] = useState(false);
 
@@ -29,7 +29,7 @@ export const RecipeModal = (recipeID) =>
                 <div className='overlay' onClick={toggleModal}></div>
                 <div className='fullDetails'>
                     <Form
-                    ID = {recipeID}
+                    recipe = {recipeKey}
                     />
                     <button className='closeModal' onClick={toggleModal}>Close</button>
                 </div>
@@ -39,7 +39,8 @@ export const RecipeModal = (recipeID) =>
     );
 }
 
-const Form = (ID) =>{
+const Form = (recipe) =>{
+    /*
     const[recipes,setRecipes] = useState("");
     const [savedRecipes, setSavedRecipes] = useState("");
     const userID = userGetUserID();
@@ -64,21 +65,9 @@ const Form = (ID) =>{
         fetchSpoonacularRecipe();
         fetchSavedRecipe();
     }, [recID]);
-
-    console.log(recipes);
+*/
+    console.log(recipe);
     //console.log(savedRecipes);
-    console.log(ID);
-    return(
-        <ul>
-            
-                <li key={recipes._id}>
-                    <div>
-                        <h1 className='recName'>{recipes.title}</h1>
-                        <h3 className='recCategories'>Recipe Categories</h3>
-                        <img src={recipes.image} alt={recipes.title}></img>
-                        <h3 className='directionsHeader'>Directions:</h3>
-                    </div>
-                </li>
-        </ul>
-    );
+    //console.log(ID);
+    return(0);
 }
