@@ -87,6 +87,10 @@ export const Home = () => {
                     </div>                
                 ))}
             </section>
+            <section className='home-random-recipes'>
+                <h2>Pepper's Suggestions!</h2>
+                <GetRandom />
+            </section>
     
             <footer>
                 <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
@@ -94,3 +98,30 @@ export const Home = () => {
         </div>
     );      
 };
+
+const GetRandom = () => {
+    const [randomRecipes, setRandomRecipes] = useState([]);
+
+    useEffect(() => {
+        const fetchRandom = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/find/random");
+                setRandomRecipes(response.data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchRandom();
+    }, []);
+
+    return (
+        <ul className='home-random-recipes-list'>
+            {randomRecipes.map((random) => (
+                <li key={random._id} className='home-random-recipes-list-item'>
+                        <h2>{random.title}</h2>
+                        <img src={random.image} alt={random.title} className='home-random-recipes-image'/>
+                </li>
+            ))}
+        </ul>
+    )
+}
