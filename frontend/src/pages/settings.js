@@ -60,20 +60,48 @@ const DeleteAccountModal = ({ show, onClose, onDelete, navigate }) => {
 
 export const Settings = () => {
     const [showModal, setShowModal] = useState(false);
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleDelete = async (password) => {
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+        setError("");
+    };
+
+    const handleDelete = async () => {
         try {
+            if (!password) {
+                setError("Please enter your password.");
+                return;
+            }
+
             const userID = window.localStorage.getItem("userID");
-            const response = await axios.delete(`http://localhost:3000/auth/deleteAccount/${userID}`, {
-                data: {
-                    password: password
-                }
+            const response = await axios.post(`http://localhost:3000/auth/checkPassword`, {
+                userID: userID,
+                password: password
             });
-            return response.data;
+
+            if (response.data && response.data.success) {
+                // Password check successful, proceed with account deletion
+                const deleteResponse = await axios.delete(`http://localhost:3000/auth/deleteAccount/${userID}`, {
+                    data: {
+                        password: password
+                    }
+                });
+
+                if (deleteResponse.data && deleteResponse.data.success) {
+                    alert(deleteResponse.data.message);
+                    navigate("/");
+                } else {
+                    setError(deleteResponse.data.message || "An error occurred. Please try again.");
+                }
+            } else {
+                setError(response.data.message || "Incorrect password. Please try again.");
+            }
         } catch (error) {
             console.error("Error deleting account:", error);
-            return { success: false, message: "An error occurred. Please try again." };
+            setError("An error occurred. Please try again.");
         }
     };
 
