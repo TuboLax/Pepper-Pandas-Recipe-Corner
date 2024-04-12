@@ -1,63 +1,41 @@
-.modal, .overlay{
-    width: 100vw;
-    height:100vh;
-    inset:0;
-    position:fixed;
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow-y: auto;
 }
 
-.overlay{
-    background:rgba(49,49,49,0.8);
-}
-
-body.overlayScrollBlock {
-    max-height: 100%;
-    overflow: hidden;
-}
-
-.fullDetails{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    line-height: 1.4;
-    background: var(--fifth-color);
-    padding: 6px 18px;
-    border-radius: 3px;
-    max-width: 1130px;
-    min-width: 930px;
-    max-height:1150px;
-    min-height: 950px;
-    background-image: var(--border-lrg);
-    background-position-x: 50%;
-    background-position-y: 50%;
-}
-
-.closeModal{
-    position:absolute;
-    right:8%;
-    bottom: 88%;   
-    padding: 10px 20px;
+.fullDetails {
+    background-color: white;
+    padding: 20px;
     border-radius: 5px;
-    background-color: var(--sixth-color);
-    color:var(--fourth-color);
+    max-width: 80%;
+    overflow-y: auto;
 }
 
-.recName{
-    padding-top: 100px;
+.closeModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
 }
 
-.yes, .no{
-    border-radius: 50%;
-}
-
-.no{
-    background-color: rgba(224, 49, 49, 0.8);
-}
-
-.ingBox{
-    background-color: var(--first-color);
-}
-
-.dirBox{
-    background-color: var(--first-color);
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
 }

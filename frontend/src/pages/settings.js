@@ -82,7 +82,7 @@ export const Settings = () => {
     };
 
     return (
-        <div className="settings-container" style={{ paddingTop: '120px' }}>
+        <div className="container" style={{ paddingTop: '120px' }}>
             <header className="header">
                 <div className="logo-container">
                     <div className="logo"></div>

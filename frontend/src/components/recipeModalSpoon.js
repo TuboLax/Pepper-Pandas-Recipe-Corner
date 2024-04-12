@@ -2,7 +2,7 @@ import './recipeModal.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import veganLogo from '../assets/food icons/vegan.png';
-import vegetarianLogo from '../assets/food icons/vegitarian.png';
+import vegetarianLogo from '../assets/food icons/vegetarian.png';
 import pescLogo from '../assets/food icons/pescatarian.PNG';
 import ketoLogo from '../assets/food icons/keto.PNG';
 import dairyFreeLogo from '../assets/food icons/dairy_free.png';
@@ -45,12 +45,12 @@ export const RecipeModalSpoon = (recipeID) =>
     );
 }
 
-const Form = (ID) =>{
-    const[recipes,setRecipes] = useState([]);
-    const recID=ID;
+const Form = (ID) => {
+    const [recipes, setRecipes] = useState([]);
+    const recID = ID;
     useEffect(() => {
-        const fetchSpoonacularRecipe = async() => {
-            try{
+        const fetchSpoonacularRecipe = async () => {
+            try {
                 const response = await axios.get(`http://localhost:3000/find/id/${recID.ID.recipeID}`);
                 setRecipes(response.data);
             } catch (err) {
@@ -61,54 +61,60 @@ const Form = (ID) =>{
     }, [recID]);
 
     console.log(recipes);
-    //console.log(ID);
-    let spoonScore= parseInt(JSON.stringify(recipes.spoonacularScore));
-    let ingredients=Object.values(recipes.extendedIngredients || {});
+    let spoonScore = parseInt(JSON.stringify(recipes.spoonacularScore));
+    let ingredients = Object.values(recipes.extendedIngredients || {});
     console.log(ingredients);
-    let sourceURL=JSON.stringify(recipes.sourceURL);
-    //console.log(sourceURL);
-    return(
+    let sourceURL = JSON.stringify(recipes.sourceURL);
+
+    return (
         <ul>
-                <li key={recipes._id}>
-                    <div className='popoutBody'>
-                        <h1 className='recName'>{recipes.title}</h1>
-                        <h3 className='recCategories'>Recipe Categories</h3>
-                        <>
+            <li key={recipes._id}>
+                <div className='popoutBody'>
+                    <h1 className='recName'>{recipes.title}</h1>
+                    <h3 className='recCategories'>Recipe Categories</h3>
+                    <>
+                        {recipes.vegan && (
                             <img src={veganLogo} style={{width:'80px', height:'80px'}} className='yes' id="vegan" alt="Vegan" title="Is Vegan"></img>
+                        )}
+                        {recipes.vegetarian && (
                             <img src={vegetarianLogo} style={{width:'80px', height:'80px'}} className='yes' id="vegetarian" alt='Vegetarian' title="Is Vegetarian"></img>
+                        )}
+                        {!recipes.pescatarian && (
                             <img src={pescLogo} style={{width:'80px', height:'80px'}} className='no' id="pescatarian" alt='Pescatarian' title="Not Pescatarian"></img>
+                        )}
+                        {!recipes.ketogenic && (
                             <img src={ketoLogo} style={{width:'80px', height:'80px'}} className='no' id= "keto" alt='Ketogenic' title="Not Ketogenic"></img>
+                        )}
+                        {recipes.glutenFree && (
                             <img src={glutenFreeLogo} style={{width:'80px', height:'80px'}} className='yes' id="glutenFree" alt='Gluten Free' title="Is Gluten Free"></img>
+                        )}
+                        {recipes.dairyFree && (
                             <img src={dairyFreeLogo} style={{width:'80px', height:'80px'}} className='yes' id= "dairyFree" alt='Dairy Free' title="Is Dairy Free"></img>
-                        </>
-                        <>
-                            <p></p>
-                            <span style={{padding:'5px'}}> <b>Servings:</b> {recipes.servings}</span>
-                            <span style={{padding:'5px'}}><b>Preparation Time:</b> {recipes.readyInMinutes}</span>
-                            <span style={{padding:'5px'}}><b>Spoonacular Score:</b> {spoonScore} / 100</span>
-                        </>
-                        <div className='ingBox'>
-                            <h3 className='ingHead'>Ingredients:</h3>
-                            <div>
-                                {ingredients.map((ing) => {
-                                    console.log(ing.original);
-                                            <input type="checkbox" name={ing.original}/>
-                                        })}
-                            </div>
-                        </div>
-                        <div className='dirBox'>
-                            <h3 className='directionsHeader'>Directions:</h3>
-                            <>
-                                <p className='recInstructions'>{recipes.instructions}</p>
-                            </>
-                        </div>
-                        <a href={sourceURL} target='_blank'>Visit Original Recipe</a>
+                        )}
+                    </>
+                    <>
+                    </>
+                    <div className='ingBox'>
+                        <h3 className='ingHead'>Ingredients:</h3>
+                        <ul>
+                            {ingredients.map((ing, index) => (
+                                <li key={index}>{ing.original}</li>
+                            ))}
+                        </ul>
                     </div>
-                    <div onLoad={checkCategories(recipes)}></div>
-                </li>
+                    <div className='dirBox'>
+                        <h3 className='directionsHeader'>Directions:</h3>
+                        <>
+                            <p className='recInstructions'>{recipes.instructions}</p>
+                        </>
+                    </div>
+                    <a href={sourceURL} target='_blank'>Visit Original Recipe</a>
+                </div>
+            </li>
         </ul>
     );
 }
+
 const checkCategories = (recipes) =>
 {
     
