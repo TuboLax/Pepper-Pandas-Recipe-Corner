@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
-import pepperPandaLogo from '../assets/pepper-panda.png';
+import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import ReCAPTCHA from "react-google-recaptcha";
 import './auth.css';
 

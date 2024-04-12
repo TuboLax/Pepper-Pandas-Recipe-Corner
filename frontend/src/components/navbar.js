@@ -2,8 +2,8 @@ import './navbar.css';
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import moonLogo from '../assets/light_mode.png';
-import sunLogo from '../assets/dark_mode.png';
+import moonLogo from '../assets/icons/light_mode.png';
+import sunLogo from '../assets/icons/dark_mode.png';
 import { SearchBar } from "./searchbar"; 
 
 export const Navbar = () => {
