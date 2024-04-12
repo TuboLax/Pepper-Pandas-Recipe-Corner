@@ -50,23 +50,30 @@ userRouter.post("/login", async (req, res) => {
 });
 
 userRouter.delete("/deleteAccount/:userID", async (req, res) => {
-   try {
-       const userID = req.params.userID;
-
-       // Check if the user exists
-       const user = await UserModel.findById(userID);
-       if (!user) {
-           return res.json({ success: false, message: "User not found." });
-       }
-
-       // Delete the user
-       await UserModel.findByIdAndDelete(userID);
-
-       return res.json({ success: true, message: "Account deleted successfully." });
-   } catch (error) {
-       console.error("Error occurred during account deletion:", error);
-       return res.status(500).json({ success: false, message: "Internal Server Error" });
-   }
-});
+    try {
+        const userID = req.params.userID;
+        const { password } = req.body;
+ 
+        // Check if the user exists
+        const user = await UserModel.findById(userID);
+        if (!user) {
+            return res.json({ success: false, message: "User not found." });
+        }
+ 
+        // Verify the provided password
+        const passMatches = await argon2.verify(user.password, password);
+        if (!passMatches) {
+            return res.json({ success: false, message: "Incorrect password." });
+        }
+ 
+        // Password is correct, delete the user
+        await UserModel.findByIdAndDelete(userID);
+ 
+        return res.json({ success: true, message: "Account deleted successfully." });
+    } catch (error) {
+        console.error("Error occurred during account deletion:", error);
+        return res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+ });  
 
 module.exports = userRouter;

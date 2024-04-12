@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './settings.css';
 
-const DeleteAccountModal = ({ show, onClose, onDelete, navigate }) => {
+const DeleteAccountModal = ({ show, onClose, onDelete }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
@@ -23,7 +23,6 @@ const DeleteAccountModal = ({ show, onClose, onDelete, navigate }) => {
             if (response && response.success) {
                 alert(response.message);
                 onClose();
-                navigate("/");
             } else {
                 setError(response.message);
             }
@@ -59,54 +58,31 @@ const DeleteAccountModal = ({ show, onClose, onDelete, navigate }) => {
 };
 
 export const Settings = () => {
-    const [showModal, setShowModal] = useState(false);
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-        setError("");
-    };
-
-    const handleDelete = async () => {
+    const handleDelete = async (password) => {
         try {
-            if (!password) {
-                setError("Please enter your password.");
-                return;
-            }
-
             const userID = window.localStorage.getItem("userID");
-            const response = await axios.post(`http://localhost:3000/auth/checkPassword`, {
-                userID: userID,
-                password: password
-            });
-
-            if (response.data && response.data.success) {
-                // Password check successful, proceed with account deletion
-                const deleteResponse = await axios.delete(`http://localhost:3000/auth/deleteAccount/${userID}`, {
-                    data: {
-                        password: password
-                    }
-                });
-
-                if (deleteResponse.data && deleteResponse.data.success) {
-                    alert(deleteResponse.data.message);
-                    navigate("/");
-                } else {
-                    setError(deleteResponse.data.message || "An error occurred. Please try again.");
+            const response = await axios.delete(`http://localhost:3000/auth/deleteAccount/${userID}`, {
+                data: {
+                    password: password
                 }
-            } else {
-                setError(response.data.message || "Incorrect password. Please try again.");
+            });
+            if (response && response.data.success) {
+                window.localStorage.removeItem("userID");
+                navigate("/");
+                window.location.reload();
             }
+            return response.data;
         } catch (error) {
             console.error("Error deleting account:", error);
-            setError("An error occurred. Please try again.");
+            return { success: false, message: "An error occurred. Please try again." };
         }
     };
 
     return (
-        <div className="container" style={{ paddingTop: '120px' }}>
+        <div className="settings-container" style={{ paddingTop: '120px' }}>
             <header className="header">
                 <div className="logo-container">
                     <div className="logo"></div>
@@ -116,7 +92,7 @@ export const Settings = () => {
             
             <div className="settings-content">
                 <button className="delete-account-btn" onClick={() => setShowModal(true)}>Delete Account</button>
-                <DeleteAccountModal show={showModal} onClose={() => setShowModal(false)} onDelete={handleDelete} navigate={navigate} />
+                <DeleteAccountModal show={showModal} onClose={() => setShowModal(false)} onDelete={handleDelete} />
             </div>
 
             <footer className="footer">
