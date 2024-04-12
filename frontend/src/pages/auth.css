@@ -1,66 +1,5 @@
-body {
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-}
-
-.logo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-}
-
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-@font-face {
-  font-family: 'Hongkong';
-  src: url('../fonts/Hongkong-MPv.ttf') format('truetype');
-}
-
-header {
-  background-color: var(--third-color);
-  padding: 10px;
-  text-align: center;
-  width: 100%;
-}
-
-header h1 {
-  margin-bottom: 10px;
-  color: var(--fourth-color);
-  font-family: 'HongKong';
-  font-size: 36px;
-}
-
-header p {
-  font-style: italic;
-  color: var(--fourth-color);
-}
-
 main {
   margin-top: 20px;
-}
-
-footer {
-  background-color: var(--third-color);
-  text-align: center;
-  color: var(--fourth-color);
-  width: 100%;
-  bottom: 0;
-  padding: 20px 0;
-  position:relative;
-}
-footer p {
-  margin: 0;
 }
 
 .auth {
@@ -68,30 +7,23 @@ footer p {
   justify-content: center;
   align-items: center;
   height: 80vh;
-  gap: 40px; /* Added gap between the login and register boxes */
+  gap: 40px;
 }
 
 .auth-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--fifth-color);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 300px;
-  max-width: calc(50% - 40px); /* Added max-width and calc to limit each box's width and accommodate the gap */
+  max-width: calc(50% - 40px);
 }
 
 .auth-container h2 {
-  color: #4caf50; /* Set the title color for both login and register */
-  font-size: 24px; /* Set the font size for the titles */
-}
-
-.auth-container.login h2,
-.auth-container.register h2 {
-  color: #4caf50; /* Set the title color for both login and register */
+  color: var(--third-color);
+  font-size: 24px;
 }
 
 .form-group {
@@ -106,39 +38,20 @@ label {
 .auth-input[type="password"] {
   padding: 8px;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid var(--fourth-color);
   border-radius: 5px;
   box-sizing: border-box;
 }
 
 .auth-button {
   padding: 10px 20px;
-  background-color: var(--sixth-color); /* Green button color for both login and register forms in light mode */
-  color: #fff;
+  background-color: var(--third-color);
+  color: var(--fourth-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.auth-button:hover {
-  background-color: var(--sixth-color);
-}
-
-/* Dark Mode */
-.darkMode {
-  background-color: #333;
-  color: #fff;
-}
-
-.darkMode .auth-container {
-  background-color: #555;
-}
-
-.darkMode .auth-container button {
-  background-color: #db4035; /* Red button color for both login and register forms in dark mode */
-  color: #fff; /* Text color for both login and register buttons in dark mode */
-}
-
-.darkMode .auth-container h2 {
-  color: #db4035; /* Text color for both login and register titles in dark mode */
+.form-group.recaptcha {
+  margin-top: 10px;
 }

@@ -1,124 +1,13 @@
-/* Global Styles */
-body {
-    background-color: var(--first-color);
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: var(--second-color);
+.delete-account-btn {
+    padding: 10px 20px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* Fonts */
-@font-face {
-    font-family: 'Hongkong';
-    src: url('../fonts/Hongkong-MPv.ttf') format('truetype');
-}
-
-/* Header Styles */
-header {
-    background-color: var(--third-color);
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    font-size: 48px;
-}
-
-header h1 {
-    margin-bottom: 10px;
-    color: var(--fourth-color);
-    font-family: 'HongKong';
-    font-size: 48px;
-}
-
-header p {
-    font-style: italic;
-    color: var(--fourth-color);
-}
-
-/* Navigation Styles */
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--second-color);
-}
-
-nav ul li a:hover {
-    color: var(--third-color);
-}
-
-/* Recipe Styles */
-.featured-recipes {
-    margin-top: 30px;
-}
-
-.recipe {
-    margin-bottom: 30px;
-}
-
-.recipe h3,
-.recipe p {
-    color: var(--second-color);
-}
-
-/* Footer Styles */
-footer {
-    background-color: var(--third-color);
-    text-align: center;
-    color: var(--fourth-color);
-    width: 100%;
-    bottom: 0;
-    padding: 20px 0;
-    position:relative;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* Logo Styles */
-.logo-container {
-    display: flex;
-    justify-content: center;
-}
-
-.logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: var(--first-color);
-    content: var(--pepper-logo);
-}
-
-/* Color Variables */
-:root {
-    --first-color: #d3f7e6;
-    --second-color: #333;
-    --third-color: #5eba8d;
-    --fourth-color: #fff;
-    --fifth-color: #f3f3f3; /* navbar header in navbar.css */
-    --pepper-logo: url('../assets/logos/pepper-panda.png');
-}
-
-.darkMode {
-    --first-color: #573c39;
-    --second-color: #fff;
-    --third-color: #db4035;
-    --fourth-color: #fff;
-    --fifth-color: #303030; /* navbar header in navbar.css */
-    --pepper-logo: url('../assets/logos/evil_pepper.png');
+.delete-account-btn:hover {
+    background-color: #d9363e;
 }
