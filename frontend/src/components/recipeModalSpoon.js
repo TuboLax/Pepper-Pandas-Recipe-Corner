@@ -2,7 +2,7 @@ import './recipeModal.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import veganLogo from '../assets/food icons/vegan.png';
-import vegetarianLogo from '../assets/food icons/vegetarian.png';
+import vegetarianLogo from '../assets/food icons/vegetarian.png'; //corrected my spelling
 import pescLogo from '../assets/food icons/pescatarian.PNG';
 import ketoLogo from '../assets/food icons/keto.PNG';
 import dairyFreeLogo from '../assets/food icons/dairy_free.png';
@@ -48,6 +48,12 @@ export const RecipeModalSpoon = (recipeID) =>
 const Form = (ID) => {
     const [recipes, setRecipes] = useState([]);
     const recID = ID;
+    // if <li> or <ol> pops up in the directions from spoonacular this will auto generate the html
+    let directions = recipes.instructions ? recipes.instructions.split('\n') : [];
+    const createMarkup = (html) => {
+        return { __html: html };
+    };
+
     useEffect(() => {
         const fetchSpoonacularRecipe = async () => {
             try {
@@ -65,6 +71,10 @@ const Form = (ID) => {
     let ingredients = Object.values(recipes.extendedIngredients || {});
     console.log(ingredients);
     let sourceURL = JSON.stringify(recipes.sourceURL);
+
+    useEffect(() => {
+        checkCategories(recipes);
+    }, [recipes]);
 
     return (
         <ul>
@@ -91,22 +101,35 @@ const Form = (ID) => {
                         {recipes.dairyFree && (
                             <img src={dairyFreeLogo} style={{width:'80px', height:'80px'}} className='yes' id= "dairyFree" alt='Dairy Free' title="Is Dairy Free"></img>
                         )}
-                    </>
+                   </>
                     <>
+                        <p></p>
+                        <span style={{padding:'5px'}}> <b>Servings:</b> {recipes.servings}</span>
+                        <span style={{padding:'5px'}}><b>Preparation Time:</b> {recipes.readyInMinutes}</span>
+                        <span style={{padding:'5px'}}><b>Spoonacular Score:</b> {spoonScore} / 100</span>
                     </>
+
                     <div className='ingBox'>
                         <h3 className='ingHead'>Ingredients:</h3>
-                        <ul>
-                            {ingredients.map((ing, index) => (
-                                <li key={index}>{ing.original}</li>
-                            ))}
-                        </ul>
+                        <div>
+                            {ingredients.map((ing, index) => {
+                                console.log(ing.original);
+                                return ( // needed a return for the mapping
+                                    <div key={index}>
+                                        <input type="checkbox" name={ing.original}/>
+                                        <label>{ing.original}</label>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                     <div className='dirBox'>
                         <h3 className='directionsHeader'>Directions:</h3>
-                        <>
-                            <p className='recInstructions'>{recipes.instructions}</p>
-                        </>
+                        <div className='directionsList'>
+                            {directions.map((step, index) => ( // parses through so that it breaks the text into a list
+                                <li key={index} dangerouslySetInnerHTML={createMarkup(step)}></li>
+                            ))}
+                        </div>
                     </div>
                     <a href={sourceURL} target='_blank'>Visit Original Recipe</a>
                 </div>
