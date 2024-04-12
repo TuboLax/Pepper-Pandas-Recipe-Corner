@@ -6,7 +6,6 @@ import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import ReCAPTCHA from "react-google-recaptcha";
 import './auth.css';
 
-
 export const Auth = () => {
   return (
     <div className="container" style={{ paddingTop: '120px' }}>
@@ -34,7 +33,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [, setCookies] = useCookies(["accessToken"]);
   const navigate = useNavigate();
-  const [recaptchaValue, setRecaptchaValue] = useState(""); // State variable for reCAPTCHA response
+  const [recaptchaValue, setRecaptchaValue] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -62,18 +61,18 @@ const Login = () => {
   }
 
   const onChange = (value) => {
-    setRecaptchaValue(value); // Update reCAPTCHA response in state
+    setRecaptchaValue(value);
   };
 
   return (
-    <Form
+    <AuthForm
       username={username}
       setUsername={setUsername}
       password={password}
       setPassword={setPassword}
       formType="Login"
       onSubmit={onSubmit}
-      onChange={onChange} // Pass onChange function to Form component
+      onChange={onChange}
     />
   );
 };
@@ -81,7 +80,7 @@ const Login = () => {
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [recaptchaValue, setRecaptchaValue] = useState(""); // Define recaptchaValue state here
+  const [recaptchaValue, setRecaptchaValue] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -103,25 +102,25 @@ const Register = () => {
       console.error(err);
     }
   }
-
+  
   const onChange = (value) => {
-    setRecaptchaValue(value); // Update reCAPTCHA response in state
+    setRecaptchaValue(value);
   };
 
   return (
-    <Form
+    <AuthForm
       username={username}
       setUsername={setUsername}
       password={password}
       setPassword={setPassword}
       formType="Create Account"
       onSubmit={onSubmit}
-      onChange={onChange} // Pass onChange function to Form component
+      onChange={onChange}
     />
   );
 };
 
-const Form = ({ username, setUsername, password, setPassword, formType, onSubmit, onChange }) => {
+const AuthForm = ({ username, setUsername, password, setPassword, formType, onSubmit, onChange }) => {
   return (
     <div className={`auth-container ${formType.toLowerCase().replace(" ", "-")}`}>
       <form onSubmit={onSubmit}>
@@ -143,9 +142,11 @@ const Form = ({ username, setUsername, password, setPassword, formType, onSubmit
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)} />
+        </div>
+        <div className="form-group recaptcha">
           <ReCAPTCHA
             sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-            onChange={onChange} // Pass onChange function
+            onChange={onChange}
           />
         </div>
         <button type="submit" className='auth-button'>Continue</button>

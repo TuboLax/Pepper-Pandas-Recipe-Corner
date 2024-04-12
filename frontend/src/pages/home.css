@@ -1,124 +1,89 @@
-/* Global Styles */
-body {
-    background-color: var(--first-color);
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: var(--second-color);
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* Fonts */
-@font-face {
-    font-family: 'Hongkong';
-    src: url('../fonts/Hongkong-MPv.ttf') format('truetype');
-}
-
-/* Header Styles */
-header {
-    background-color: var(--third-color);
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    font-size: 48px;
-}
-
-header h1 {
-    margin-bottom: 10px;
-    color: var(--fourth-color);
-    font-family: 'HongKong';
-    font-size: 48px;
-}
-
-header p {
-    font-style: italic;
-    color: var(--fourth-color);
-}
-
-/* Navigation Styles */
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--second-color);
-}
-
-nav ul li a:hover {
-    color: var(--third-color);
-}
-
-/* Recipe Styles */
-.featured-recipes {
-    margin-top: 30px;
-}
-
 .recipe {
-    margin-bottom: 30px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    border: 2px solid var(--third-color);
+    border-radius: 10px;
+    margin-bottom: 40px;
+    background-color: var(--fifth-color);
 }
 
-.recipe h3,
-.recipe p {
-    color: var(--second-color);
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
 }
 
-/* Footer Styles */
-footer {
-    background-color: var(--third-color);
-    text-align: center;
-    color: var(--fourth-color);
+.border-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    bottom: 0;
-    padding: 20px 0;
-    position:relative;
+    height: 100%;
+    background-image: url('../assets/borders/bamboo_border1080.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px 0 0 10px;
 }
 
-footer p {
-    margin: 0;
-}
-
-/* Logo Styles */
-.logo-container {
+.title-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: var(--first-color);
-    content: var(--pepper-logo);
+.recipe img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
 }
 
-/* Color Variables */
-:root {
-    --first-color: #d3f7e6;
-    --second-color: #333;
-    --third-color: #5eba8d;
-    --fourth-color: #fff;
-    --fifth-color: #f3f3f3; /* navbar header in navbar.css */
-    --pepper-logo: url('../assets/logos/pepper-panda.png');
+.recipe-content {
+    padding: 20px;
 }
 
-.darkMode {
-    --first-color: #573c39;
-    --second-color: #fff;
-    --third-color: #db4035;
-    --fourth-color: #fff;
-    --fifth-color: #303030; /* navbar header in navbar.css */
-    --pepper-logo: url('../assets/logos/evil_pepper.png');
+.recipe h3 {
+    margin-bottom: 10px;
+    color: var(--second-color);
+    font-size: 24px;
+}
+
+.recipe button {
+    background-color: var(--sixth-color);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    height: 40px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.recipe button:hover {
+    background-color: var(--seventh-color);
+}
+
+.recipe button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+.instructions h4 {
+    color: var(--third-color);
+    font-size: 18px;
+}
+
+.instructions ol {
+    padding-left: 20px;
+}
+
+.instructions li {
+    font-size: 16px;
+    margin-bottom: 10px;
 }

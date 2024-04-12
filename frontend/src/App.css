@@ -1,3 +1,25 @@
+:root {
+  --first-color: #d3f7e6;
+  --second-color: #333;
+  --third-color: #5eba8d;
+  --fourth-color: #fff; /* header color */
+  --fifth-color: #f3f3f3; /* navbar header in navbar.css */
+  --sixth-color: #45a049; /* button color */
+  --seventh-color: #37803a; /* button hover color*/
+  --pepper-logo: url('./assets/logos/pepper-panda.png');
+}
+
+.darkMode {
+  --first-color: #573c39;
+  --second-color: #fff;
+  --third-color: #db4035;
+  --fourth-color: #fff; /* header color */
+  --fifth-color: #303030; /* navbar header in navbar.css */
+  --sixth-color: #db4035; /* button color */
+  --seventh-color:#af332a;/* button hover color*/
+  --pepper-logo: url('./assets/logos/evil_pepper.png');
+}
+
 body {
   background-color: var(--first-color);
   margin: 0;
@@ -19,10 +41,14 @@ body {
   content: var(--pepper-logo);
 }
 
-
 .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
+}
+
+@font-face {
+  font-family: 'Hongkong';
+  src: url('./fonts/Hongkong-MPv.ttf') format('truetype');
 }
 
 header {
@@ -34,48 +60,7 @@ header {
 header h1 {
   margin-bottom: 10px;
   color: var(--fourth-color);
-}
-
-header p {
-  font-style: italic;
-  color: var(--fourth-color);
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: var(--second-color);
-}
-
-nav ul li a:hover {
-  color: var(--third-color);
-}
-
-.featured-recipes {
-  margin-top: 30px;
-}
-
-.recipe {
-  margin-bottom: 30px;
-}
-
-.recipe h3 {
-  color: var(--second-color);
-}
-
-.recipe p {
-  color: var(--second-color);
+  font-family: Hongkong;
 }
 
 footer {
@@ -83,30 +68,4 @@ footer {
   padding: 20px;
   text-align: center;
   color: var(--fourth-color);
-  width: 100%;
-}
-
-footer p {
-  margin: 0;
-}
-
-
-:root{
-  --first-color: #d3f7e6; /* background color */
-  --second-color: #333; /* text colour */
-  --third-color: #5eba8d; /* header colour */
-  --fourth-color: #fff; /* header text colour */
-  --fifth-color: #f3f3f3; /* navbar header in navbar.css */
-  --sixth-color: #45a049; /* button colour */
-  --pepper-logo: url('./assets/logos/pepper-panda.png');
-}
-
-.darkMode{
-  --first-color: #573c39; /* background color */
-  --second-color: #fff; /* text colour */
-  --third-color: #db4035; /* header colour */
-  --fourth-color: #fff; /* header text colour */
-  --fifth-color: #303030; /* navbar header background in navbar.css */
-  --sixth-color: #db4035; /*button colour*/
-  --pepper-logo: url('./assets/logos/evil_pepper.png');
 }
