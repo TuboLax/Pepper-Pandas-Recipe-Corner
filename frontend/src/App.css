@@ -2,9 +2,10 @@
   --first-color: #d3f7e6;
   --second-color: #333;
   --third-color: #5eba8d;
-  --fourth-color: #fff; /* header colour */
+  --fourth-color: #fff; /* header color */
   --fifth-color: #f3f3f3; /* navbar header in navbar.css */
-  --sixth-color: #45a049; /* button colour */
+  --sixth-color: #45a049; /* button color */
+  --seventh-color: #37803a; /* button hover color*/
   --pepper-logo: url('./assets/logos/pepper-panda.png');
 }
 
@@ -12,9 +13,9 @@
   --first-color: #573c39;
   --second-color: #fff;
   --third-color: #db4035;
-  --fourth-color: #fff; /* header colour */
+  --fourth-color: #fff; /* header color */
   --fifth-color: #303030; /* navbar header in navbar.css */
-  --sixth-color: #db4035; /* button colour */
+  --sixth-color: #db4035; /* button color */
   --pepper-logo: url('./assets/logos/evil_pepper.png');
 }
 
@@ -44,6 +45,11 @@ body {
   margin: 0 auto;
 }
 
+@font-face {
+  font-family: 'Hongkong';
+  src: url('./fonts/Hongkong-MPv.ttf') format('truetype');
+}
+
 header {
   background-color: var(--third-color);
   padding: 10px;
@@ -53,11 +59,7 @@ header {
 header h1 {
   margin-bottom: 10px;
   color: var(--fourth-color);
-}
-
-header p {
-  font-style: italic;
-  color: var(--fourth-color);
+  font-family: Hongkong;
 }
 
 footer {

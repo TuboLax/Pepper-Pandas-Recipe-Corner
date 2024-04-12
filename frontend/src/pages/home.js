@@ -53,33 +53,40 @@ export const Home = () => {
             </header>
             <GroceryList />
             <section className="local-recipes">
-                <h2>Pepper's Top Picks!</h2>
+                <h2>What to Cook Today!</h2>
                 {recipes.map((recipe) => (
                     <div className="recipe" key={recipe._id}>
-                        <h3>{recipe.title}</h3>
-                        <button
-                            onClick={() => saveRecipe(recipe._id)}
-                            disabled={isRecipeSaved(recipe._id)}
-                        >
-                            {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
-                        </button>
-                        <div className="instructions">
-                            <h4>Instructions:</h4>
-                            <ol>
-                                {recipe.instructions.map((step, index) => (
-                                    <li key={index}>{step}</li>
-                                ))}
-                            </ol>
+                        <div className="image-container">
+                            <img src={recipe.image} alt={recipe.title} />
+                            <div className="border-overlay"></div>
                         </div>
-                        <img src={recipe.image} alt={recipe.title} />
-                        <p>Cooking Time: {recipe.readyInMinutes} (min)</p>
-                    </div>
+                        <div className="recipe-content">
+                            <div className="title-container">
+                                <h3>{recipe.title}</h3>
+                                <button
+                                    onClick={() => saveRecipe(recipe._id)}
+                                    disabled={isRecipeSaved(recipe._id)}
+                                >
+                                    {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
+                                </button>
+                            </div>
+                            <div className="instructions">
+                                <h4>Instructions:</h4>
+                                <ol>
+                                    {recipe.instructions.map((step, index) => (
+                                        <li key={index}>{step}</li>
+                                    ))}
+                                </ol>
+                            </div>
+                            <p>Cooking Time: {recipe.readyInMinutes} (min)</p>
+                        </div>
+                    </div>                
                 ))}
             </section>
-
+    
             <footer>
                 <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
             </footer>
         </div>
-    );
+    );      
 };
