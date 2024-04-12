@@ -181,6 +181,8 @@ const ArrayParameter = ( {parameter, setParameter, formType} ) => {
 const CreateRecipeForm = () => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
+    const [sourceURL, setsourceURL] = useState("");
+    const [sourceName, setSourceName] = useState("");
     const [servings, setServings] = useState("");
     const [readyInMinutes, setReadyInMinutes] = useState("");
     const [instructions, setInstructions] = useState([]);  
@@ -202,6 +204,8 @@ const CreateRecipeForm = () => {
             const recipe = {
                 title: title,
                 image: image,
+                sourceURL: sourceURL,
+                sourceName: sourceName,
                 servings: servings,
                 readyInMinutes: readyInMinutes,
                 instructions: instructions,
@@ -227,6 +231,8 @@ const CreateRecipeForm = () => {
                         <h2 className='heading'>Recipe Information</h2>
                             <li><TextParameter parameter={title} setParameter={setTitle} formType="Title"/></li>
                             <li><TextParameter parameter={image} setParameter={setImage} formType="Image"/></li>
+                            <li><TextParameter parameter={sourceURL} setParameter={setsourceURL} formType="Source URL"/></li>
+                            <li><TextParameter parameter={sourceName} setParameter={setSourceName} formType="Source Name"/></li>
                             <li><NumberParameter parameter={servings} setParameter={setServings} formType="Servings"/></li>
                             <li><NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time"/></li>
                             <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions"/></li>
