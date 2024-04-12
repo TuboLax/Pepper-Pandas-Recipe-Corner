@@ -3,6 +3,7 @@ import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
+import { RecipeModalLocal } from '../components/recipeModalLocal.js';
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -80,6 +81,9 @@ export const Home = () => {
                             </div>
                             <p>Cooking Time: {recipe.readyInMinutes} (min)</p>
                         </div>
+                        <RecipeModalLocal
+                                recipeKey = {recipes}
+                            />
                     </div>                
                 ))}
             </section>
