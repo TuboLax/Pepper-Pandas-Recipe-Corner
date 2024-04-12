@@ -7,6 +7,7 @@ import { CreateRecipe } from "./pages/create-recipes";
 import { SavedRecipes } from "./pages/saved-recipes";
 import { Navbar } from "./components/navbar";
 import { Search } from "./pages/search";
+import { Settings } from './pages/settings';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/create-recipes" element={<CreateRecipe />} />
             <Route path="/saved-recipes" element={<SavedRecipes />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </Router>
       </GroceryListProvider>

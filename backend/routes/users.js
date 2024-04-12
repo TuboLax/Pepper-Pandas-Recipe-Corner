@@ -49,22 +49,24 @@ userRouter.post("/login", async (req, res) => {
    res.json({ logStatus, token, userID: user._id });
 });
 
+userRouter.delete("/deleteAccount/:userID", async (req, res) => {
+   try {
+       const userID = req.params.userID;
+
+       // Check if the user exists
+       const user = await UserModel.findById(userID);
+       if (!user) {
+           return res.json({ success: false, message: "User not found." });
+       }
+
+       // Delete the user
+       await UserModel.findByIdAndDelete(userID);
+
+       return res.json({ success: true, message: "Account deleted successfully." });
+   } catch (error) {
+       console.error("Error occurred during account deletion:", error);
+       return res.status(500).json({ success: false, message: "Internal Server Error" });
+   }
+});
+
 module.exports = userRouter;
-
-/*
-//middleware to verify jwt token
-const verifyToken = (req, res, next) => {
-    const token = req.headers.authorization;
-    if (token) {
-        jwt.verify(token, process.env.SECRET, (err) => {
-            if (err) {
-                res.sendStatus(403);
-            };
-            next();
-        });
-    } else {
-        res.sendStatus(401);
-    }
-};
-
-module.exports = verifyToken;*/
