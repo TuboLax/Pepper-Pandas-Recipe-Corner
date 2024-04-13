@@ -2,9 +2,10 @@ import './navbar.css';
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import moonLogo from '../assets/light_mode.png';
-import sunLogo from '../assets/dark_mode.png';
+import moonLogo from '../assets/icons/light_mode.png';
+import sunLogo from '../assets/icons/dark_mode.png';
 import { SearchBar } from "./searchbar"; 
+import gearIcon from '../assets/icons/gear_icon.png';
 
 export const Navbar = () => {
     const [cookies,setCookies] = useCookies(["accessToken"]);
@@ -29,13 +30,15 @@ export const Navbar = () => {
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/create-recipes" className="nav-link">Create Recipes</Link>
             <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
-            <Link to="/search" classname="nav-link">Search</Link>
             <Link to="/pantry" className="nav-link">Pantry</Link>
             <div> <SearchBar /> </div>
             <div id="authButton">
                 {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) :
                     (<button className="logout" onClick={logout}>Logout</button>)}
             </div>
+            <Link to="/settings" className="nav-link">
+                <div className="settings-icon"></div>
+            </Link>
             <img src={pepperIcon} style={{width:'80px', height:'80px'}} id="modeIcon" alt="Mode" onClick={checkMode} title="Dark Mode"></img>
         </div>
     );

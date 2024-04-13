@@ -1,74 +1,64 @@
-body {
-    background-color: var(--first-color);
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: var(--second-color);
+
+
+.text-container {
+    width: 500px;
+    padding: 5%;
+    background-color: var(--fifth-color);
 }
 
-.logo-container {
+.text-input {
+    width: 80%;
+}
+
+.diets-container {
+    width: 110px;
+    overflow-y: auto;
+    background-color: var(--fifth-color);
+}
+
+.diets-checkbox {
+    display: flex;
+    height: 60px;
+    width: 100px;
+}
+
+.cuisines-container {
+    width: 150px;
+    height: 368px;
+    overflow-y: auto;
+    background-color: var(--fifth-color);
+}
+
+.cuisines-checkbox {
+    display: flex;
+    height: 60px;
+    width: 120px;
+}
+
+.array-input-box {
+    margin-top: 5%;
+}
+
+.array {
+    width: 490px;
+    overflow-y: auto;
+    margin-top: 5%;
+}
+
+.array button {
+    height: 20px;
+    width: 30px;
+}
+
+.border {
     display: flex;
     justify-content: center;
-}
-
-.logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-header {
+    gap: 40px;
+    padding: 5%;
+    list-style-type:none;
     background-color: var(--third-color);
-    padding: 10px;
+}
+
+.heading {
     text-align: center;
-}
-
-header h1, header p {
-    color: var(--fourth-color);
-}
-
-.my-recipes {
-    margin-bottom: 500px; /* changes space between body and footer */ 
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--second-color);
-}
-
-nav ul li a:hover {
-    color: var(--third-color);
-}
-
-footer {
-    background-color: var(--third-color);
-    padding: 20px;
-    text-align: center;
-    color: var(--fourth-color);
-    width: 100%;
-}
-
-footer p {
-    margin: 0;
-}
-
-#buttonColor {
-    background-color: var(--sixth-color);
 }

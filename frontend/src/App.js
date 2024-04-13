@@ -8,6 +8,7 @@ import { SavedRecipes } from "./pages/saved-recipes";
 import { Pantry } from "./pages/pantry";
 import { Navbar } from "./components/navbar";
 import { Search } from "./pages/search";
+import { Settings } from './pages/settings';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/saved-recipes" element={<SavedRecipes />} />
             <Route path="/pantry" element={<Pantry />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </Router>
       </GroceryListProvider>
