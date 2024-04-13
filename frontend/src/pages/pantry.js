@@ -1,45 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
-import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './pantry.css';
-
-window.onload = function() {
-    const ingredientBox = document.getElementById("ingredient");
-
-    ingredientBox.addEventListener("keyup", ({key}) => {
-        if(key === "Enter") {
-            var text = document.getElementById("ingredient").value;
-            var li = document.createElement("li");
-            if(text != ""){
-                li.innerText = text;
-                document.getElementById("ingredientList").appendChild(li);
-                document.getElementById("ingredient").value = "";
-            }
-        }
-    });
-}
-
-function getResults(){
-    // var node, list;
-    // var searchString;
-
-    // list=[];
-    // for(node = document.getElementById('ingredientList').firstChild; node; node = node.nextSibling) {
-    //     if(node.nodeType == 1 && node.tagName == 'LI'){
-    //         list.push(node.innerHTML);
-    //     }
-    // }
-
-    // searchString=list.toString;
-    ingredientList = getElementById("ingredientList");
-    var li = document.createElement("li");
-    li.innerText = "done";
-    ingredientList.appendChild(li);
-
-}
+import axios from 'axios';
+import { RecipeModalSpoon } from '../components/recipeModalSpoon';
 
 export const Pantry = () => {
+    const [ingredientList, setIngredientList] = useState([]);
+    const [inputIngredientValue, setIngredientValue] = useState('');        //Variables that need to change from user input
+    const [recipes, setRecipes] = useState([]);
+
+    const addItemToIngredientList = (item) => {
+        setIngredientList([...ingredientList, item]);       //Add an ingredient to the list
+    ;}
+
+    const removeItemFromIngredientList = (index) => {
+        const updatedIngredientList = [...ingredientList];  //Remove an ingredient from the list and set the input field empty
+        updatedIngredientList.splice(index, 1);
+        setIngredientList(updatedIngredientList);
+    };
+
+    const handleInputChange = (e) => {
+        setIngredientValue(e.target.value);
+    };
+
+    const search = async() => {                             //This function creates the string for spoonacular and retrieves results
+        var searchString = "";
+
+        if(ingredientList.length != 0){                     //As long as the ingredient list has at least one ingredient it will run.
+            ingredientList.forEach((ingredient) => {
+                searchString += ingredient + ",+"
+            });
+            searchString += "&number=9";                    //Currently have the number of results set low for testing.
+            
+            var response = await axios.get(`http://localhost:3000/find/ingredients/${searchString}`);
+            setRecipes(response.data);
+        }
+        
+    }
+
     return (
         <div className="container">
             <header>
@@ -54,18 +53,55 @@ export const Pantry = () => {
             </aside>
 
             <section className="pantry">
-                <h2 className="pantryHeader">
+                <h2 className="pantryHeader" id="id1">
                     Please enter any ingredients you would like to cook with:
-                    <input type="text" id="ingredient" className="ingredientBox"></input>
-                    <button className="searchButton" onclick = "getResults()">Search</button>
                 </h2>
-                <div className="ingredientDiv">
-                    <ul id="ingredientList" className="pantryIngredients">
+
+                <div className="listContainer">
+                    <ul className="item-list">
+                        {ingredientList.map((item, index) => (
+                            <li key={index} className="ingredient">
+                                <span>{item}</span>
+                                <button onClick={() => removeItemFromIngredientList(index)}>X</button>
+                            </li>
+                        ))}
                     </ul>
                 </div>
-                <div className="recipeDiv">
 
+                <div className="ingredientContainer">
+                        <input
+                            type="text"
+                            className="ingredientBox"
+                            value={inputIngredientValue}
+                            onChange={handleInputChange}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    addItemToIngredientList(inputIngredientValue);
+                                    setIngredientValue('');
+                                }
+                            }}
+                        />
+                        <button className="searchButton" onClick={() => search()}>
+                            Search
+                        </button>
                 </div>
+
+                <div className="recipeDiv">
+                    <ul className='recipeList'>
+                        {recipes.map((recipe) => (
+                        <li key={recipe._id} className='recipeListItem'>
+                            <div>
+                                <h2 className='recipeListItemTitle'>{recipe.title}</h2>
+                            </div>
+                            <img src={recipe.image} alt={recipe.title} />
+                            <RecipeModalSpoon
+                            recipeID = {recipe.id}
+                            />
+                        </li>
+                        ))}
+                    </ul>
+                </div>
+
             </section>
 
             <footer>
