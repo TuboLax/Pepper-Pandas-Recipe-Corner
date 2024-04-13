@@ -77,15 +77,16 @@ nav ul li a:hover {
 /* Footer Styles */
 footer {
     background-color: var(--third-color);
-    padding: 20px;
     text-align: center;
     color: var(--fourth-color);
-    width: 100%; /* Set the width to 100% */
+    width: 100%;
+    bottom: 0;
+    padding: 20px 0;
+    position:relative;
 }
 
-footer > div {
-    max-width: 80%; /* Adjust the maximum width of the content */
-    margin: 0 auto; /* Center the content horizontally */
+footer p {
+    margin: 0;
 }
 
 /* Logo Styles */
