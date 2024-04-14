@@ -30,6 +30,7 @@ export const Navbar = () => {
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/create-recipes" className="nav-link">Create Recipes</Link>
             <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
+            <Link to="/pantry" className="nav-link">Pantry</Link>
             <div> <SearchBar /> </div>
             <div id="authButton">
                 {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) :
