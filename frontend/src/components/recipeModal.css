@@ -5,12 +5,13 @@
     position:fixed;
 }
 
-.fullDetails {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 80%;
-    overflow-y: auto;
+.overlay{
+    background:rgba(49,49,49,0.8);
+}
+
+body.overlayScrollBlock {
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .fullDetails{
