@@ -4,6 +4,7 @@ import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
 import { RecipeModalLocal } from '../components/recipeModalLocal.js';
+import { RecipeModalSpoon } from '../components/recipeModalSpoon.js';
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -82,7 +83,7 @@ export const Home = () => {
                             <p>Cooking Time: {recipe.readyInMinutes} (min)</p>
                         </div>
                         <RecipeModalLocal
-                                recipeKey = {recipes}
+                                recipeKey = {recipe}
                             />
                     </div>                
                 ))}
@@ -120,6 +121,9 @@ const GetRandom = () => {
                 <li key={random._id} className='home-random-recipes-list-item'>
                         <h2>{random.title}</h2>
                         <img src={random.image} alt={random.title} className='home-random-recipes-image'/>
+                        <RecipeModalSpoon
+                recipeID={random.id}
+            />
                 </li>
             ))}
         </ul>
