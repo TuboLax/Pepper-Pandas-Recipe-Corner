@@ -9,6 +9,7 @@ const SaveRecipes = ( {recipeID, recipeTitle} ) => {
     const SpoonID = recipeID;
     const SpoonTitle = recipeTitle;
     const userID = userGetUserID();
+    const [disable, setDisable] = useState(false); 
 
     const createAndSaveRecipe = async(SpoonID, userID) => {
         try {
@@ -35,6 +36,7 @@ const SaveRecipes = ( {recipeID, recipeTitle} ) => {
     
             const createdRecipe = await axios.post("http://localhost:3000/recipes", recipe);    // Creates the Spoonacular recipe locally
             await axios.put("http://localhost:3000/recipes", { recipeID: createdRecipe.data._id.toString(), userID });  // Saves to the user
+            setDisable(true);
         } catch (err) {
             console.log(err)
         }
@@ -44,9 +46,9 @@ const SaveRecipes = ( {recipeID, recipeTitle} ) => {
         <button 
             className='search-save-button'
             onClick={() => createAndSaveRecipe(SpoonID, userID)}
-            disabled={isRecipeSaved(SpoonTitle, userID)}
+            disabled={isRecipeSaved(SpoonTitle, userID) || disable}
         >
-            {isRecipeSaved(SpoonTitle, userID) ? "Saved" : "Save"}
+            {(isRecipeSaved(SpoonTitle, userID) || disable) ? "Saved" : "Save"}
         </button>
     )
 }
@@ -67,11 +69,15 @@ let isRecipeSaved = (title, user) => {
         checkLocal();
     }, []);
 
-    localRecipes.map((recipe) => {
-        if (recipe.title === title && recipe.userOwner === user) {
-            found = true;
-        }
-    })
+    try {
+        localRecipes.map((recipe) => {
+            if (recipe.title === title && recipe.userOwner === user) {
+                found = true;
+            }
+        })
+    } catch (err) {
+        console.log(err);
+    }
 
     return found;
 }
