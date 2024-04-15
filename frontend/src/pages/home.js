@@ -54,40 +54,6 @@ export const Home = () => {
                 <h1>Pepper Panda's Recipe Corner</h1>
             </header>
             <GroceryList />
-            <section className="local-recipes">
-                <h2>What to Cook Today!</h2>
-                {recipes.map((recipe) => (
-                    <div className="recipe" key={recipe._id}>
-                        <div className="image-container">
-                            <img src={recipe.image} alt={recipe.title} />
-                            <div className="border-overlay"></div>
-                        </div>
-                        <div className="recipe-content">
-                            <div className="title-container">
-                                <h3>{recipe.title}</h3>
-                                <button
-                                    onClick={() => saveRecipe(recipe._id)}
-                                    disabled={isRecipeSaved(recipe._id)}
-                                >
-                                    {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
-                                </button>
-                            </div>
-                            <div className="instructions">
-                                <h4>Instructions:</h4>
-                                <ol>
-                                    {recipe.instructions.map((step, index) => (
-                                        <li key={index}>{step}</li>
-                                    ))}
-                                </ol>
-                            </div>
-                            <p>Cooking Time: {recipe.readyInMinutes} (min)</p>
-                        </div>
-                        <RecipeModalLocal
-                                recipeKey = {recipe}
-                            />
-                    </div>                
-                ))}
-            </section>
             <section className='home-random-recipes'>
                 <h2>Pepper's Suggestions!</h2>
                 <GetRandom />
