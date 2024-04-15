@@ -1,15 +1,8 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
+.modal, .overlay{
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    overflow-y: auto;
+    height:100%;
+    inset:0;
+    position:fixed;
 }
 
 .fullDetails {
@@ -20,22 +13,131 @@
     overflow-y: auto;
 }
 
-.closeModal {
+.fullDetails{
+    border-radius: 50%;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #555;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    line-height: 1.4;
+    background: var(--fifth-color);
+    padding: 40px 65px;
+    border-radius: 3px;
+    width: 950px;
+    height:1000px;
+    background-image: var(--border-lrg);
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-size:fill;
+    overflow-y: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
+.closeModal{
+    position:fixed;
+    right:10%;
+    bottom: 85%;   
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--sixth-color);
+    color:var(--fourth-color);
+}
+
+.recName{
+    padding-top: 110px;
+    text-align: center;
+    font-size: 30px;
+    max-width: 900px;
+}
+
+.logos{
+    border-radius: 50%;
+    padding-right: 10px;
+}
+
+.cuisineHeader {
+    text-align: left;
+}
+
+.ingBox{
+    background-color: var(--first-color);
+    width: 45%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 420px;
+    border-radius: 10px;
+}
+
+.dirBox{
+    background-color: var(--first-color);
+    width:45%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 420px;
+    border-radius: 10px;
+}
+
+.boxes {
+    display: flex;
+    column-gap: 20px;
+    padding-left: 5%;
+    padding-bottom: 20px;
+    padding-top:2%;
+}
+
+.ingBox::-webkit-scrollbar, .dirBox::-webkit-scrollbar{
+    display: none;
+}
+
+.ingHead, .directionsHeader {
+    text-align: center;
+    text-shadow:0px 0px 10px rgba(0, 0, 0, 0.1) ;
+}
+
+.ingCheck:checked + .ingLabel{
+    text-decoration: line-through;
+}
+
+input[type="checkbox"]{
+    accent-color: var(--seventh-color);
+    width:18px;
+    height:18px;
+}
+
+a{
+    color: var(--sixth-color);
+}
+a:visited{
+    color:var(--sixth-color)
+}
+a:hover{
+    color: var(--seventh-color);
+}
+a:active{
+    color: var(--seventh-color);
+}
+
+a:invalid{
+    color:black;
+}
+
+/* Specific for Local Modal */
+
+.cuisTagsBox{
+    max-width: 850px;
+    padding-left: 50px;
+}
+
+#localBoxes{
+    padding-left: 10%;
+}
+
+li{
+    padding-bottom: 5px;
 }

@@ -5,6 +5,7 @@ import { Home } from "./pages/home";
 import { Auth } from "./pages/auth";
 import { CreateRecipe } from "./pages/create-recipes";
 import { SavedRecipes } from "./pages/saved-recipes";
+import { Pantry } from "./pages/pantry";
 import { Navbar } from "./components/navbar";
 import { Search } from "./pages/search";
 import { Settings } from './pages/settings';
@@ -20,6 +21,7 @@ function App() {
             <Route path="/auth" element={<Auth />} />
             <Route path="/create-recipes" element={<CreateRecipe />} />
             <Route path="/saved-recipes" element={<SavedRecipes />} />
+            <Route path="/pantry" element={<Pantry />} />
             <Route path="/search" element={<Search />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>

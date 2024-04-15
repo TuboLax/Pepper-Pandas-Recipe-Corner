@@ -4,6 +4,7 @@ import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
 import { RecipeModalLocal } from '../components/recipeModalLocal.js';
+import { RecipeModalSpoon } from '../components/recipeModalSpoon.js';
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -82,10 +83,14 @@ export const Home = () => {
                             <p>Cooking Time: {recipe.readyInMinutes} (min)</p>
                         </div>
                         <RecipeModalLocal
-                                recipeKey = {recipes}
+                                recipeKey = {recipe}
                             />
                     </div>                
                 ))}
+            </section>
+            <section className='home-random-recipes'>
+                <h2>Pepper's Suggestions!</h2>
+                <GetRandom />
             </section>
     
             <footer>
@@ -94,3 +99,33 @@ export const Home = () => {
         </div>
     );      
 };
+
+const GetRandom = () => {
+    const [randomRecipes, setRandomRecipes] = useState([]);
+
+    useEffect(() => {
+        const fetchRandom = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/find/random");
+                setRandomRecipes(response.data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchRandom();
+    }, []);
+
+    return (
+        <ul className='home-random-recipes-list'>
+            {randomRecipes.map((random) => (
+                <li key={random._id} className='home-random-recipes-list-item'>
+                        <h2>{random.title}</h2>
+                        <img src={random.image} alt={random.title} className='home-random-recipes-image'/>
+                        <RecipeModalSpoon
+                recipeID={random.id}
+            />
+                </li>
+            ))}
+        </ul>
+    )
+}

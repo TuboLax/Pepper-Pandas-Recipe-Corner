@@ -47,8 +47,8 @@ exports.searchIngredientsExcluded = async function(ingredientsExluded){
 }
 
 exports.searchRandom = async function() {
-    response = axios.get('https://api.spoonacular.com/recipes/random?apiKey=' + process.env.SPOONACULARAPI + '&number=6')
-        .then(response => response.data)
+    response = axios.get('https://api.spoonacular.com/recipes/random?apiKey=' + process.env.SPOONACULARAPI + '&number=3')
+        .then(response => response.data.recipes)
         .catch(err => console.error(err))
         return response
 }

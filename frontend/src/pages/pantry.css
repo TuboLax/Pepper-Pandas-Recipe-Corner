@@ -1,0 +1,53 @@
+.pantry {
+    color: var(--fifth-color);
+}
+
+.pantryHeader {
+    color: var(--second-color);
+}
+
+.pantryIngredients {
+    color: var(--second-color);
+}
+
+.ingredientBox {
+    padding: 5px;
+    border: 2px solid var(--second-color);
+    border-radius: 5px;
+    font-size: 16px;
+    color: var(--second-color);
+    outline: none;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.ingredientContainer {
+    margin-bottom: 10px;
+}
+
+.ingredientBox:focus {
+    border-color: #007bff;
+    color: var(--second-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.ingredient {
+    border: 2px solid var(--third-color);
+    border-radius: 5px;
+}
+
+.searchButton {
+    color: var(--second-color);
+    background-color: var(--third-color);
+    font-size: 15px;
+    border: 2px solid #2d63c8;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 20;
+}
+
+.searchButton:hover {
+    color: --second-color;
+	background-color: var(--third-color);
+}
