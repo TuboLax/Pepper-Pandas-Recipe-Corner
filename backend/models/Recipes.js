@@ -63,10 +63,6 @@ const RecipeSchema = new mongoose.Schema({
         type: Boolean, 
         required: false 
     },
-    pescatarian: { 
-        type: Boolean, 
-        required: false 
-    },
     glutenFree: { 
         type: Boolean, 
         required: false 
