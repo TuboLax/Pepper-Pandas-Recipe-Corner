@@ -4,15 +4,15 @@ import dairy_free from '../assets/food icons/dairy_free.png';
 import gluten_free from '../assets/food icons/gluten_free.png';
 import vegan from '../assets/food icons/vegan.png';
 import vegitarian from '../assets/food icons/vegitarian.png';
+import pescatarian from '../assets/food icons/pescatarian.PNG';
 import React, { useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 
-
-const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Ketogenic", "Gluten Free", "Dairy Free"];
-const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, gluten_free, dairy_free];
+const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Pescatarian", "Ketogenic", "Gluten Free", "Dairy Free"];
+const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, pescatarian, gluten_free, dairy_free];
 
 const GLOBAL_CUISINES = ["African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese",
     "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", 
@@ -182,7 +182,6 @@ const CreateRecipeForm = () => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [sourceURL, setsourceURL] = useState("");
-    const [sourceName, setSourceName] = useState("");
     const [servings, setServings] = useState("");
     const [readyInMinutes, setReadyInMinutes] = useState("");
     const [instructions, setInstructions] = useState([]);  
@@ -205,7 +204,6 @@ const CreateRecipeForm = () => {
                 title: title,
                 image: image,
                 sourceURL: sourceURL,
-                sourceName: sourceName,
                 servings: servings,
                 readyInMinutes: readyInMinutes,
                 instructions: instructions,
@@ -232,7 +230,6 @@ const CreateRecipeForm = () => {
                             <li><TextParameter parameter={title} setParameter={setTitle} formType="Title"/></li>
                             <li><TextParameter parameter={image} setParameter={setImage} formType="Image"/></li>
                             <li><TextParameter parameter={sourceURL} setParameter={setsourceURL} formType="Source URL"/></li>
-                            <li><TextParameter parameter={sourceName} setParameter={setSourceName} formType="Source Name"/></li>
                             <li><NumberParameter parameter={servings} setParameter={setServings} formType="Servings"/></li>
                             <li><NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time"/></li>
                             <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions"/></li>
