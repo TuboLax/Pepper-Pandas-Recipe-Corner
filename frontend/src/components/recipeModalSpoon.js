@@ -69,6 +69,8 @@ const Form = (ID) => {
     // Separate some info for HTML output
     let spoonScore = parseInt(JSON.stringify(recipes.spoonacularScore));
     let ingredientsArr = Object.values(recipes.extendedIngredients || {});
+
+    // Get cuisine tags and separate with commas
     let cuisineArr = Object.values(recipes.cuisines || {});
     for(var i=0; i<cuisineArr.length; i++)
     {
@@ -80,6 +82,18 @@ const Form = (ID) => {
     if(cuisineArr.length===0)
     {
         cuisineArr[0]='No Tags Found'
+    }
+    // ----------------------------------------
+    // Fill Pescatarian Bool
+    console.log(recipes);
+    let pescBool=false;
+    let dietArr=Object.values(recipes.diets || {});
+    for(var i=0; i<dietArr.length; i++)
+    {
+        if(dietArr[i]==='pescatarian')
+        {
+            pescBool=true;
+        }
     }
 
     return (
@@ -95,7 +109,7 @@ const Form = (ID) => {
                         {recipes.vegetarian && (
                             <img src={vegetarianLogo} style={{width:'80px', height:'80px'}} className='logos' id="vegetarian" alt='Vegetarian' title="Vegetarian"></img>
                         )}
-                        {recipes.pescatarian && (
+                        {pescBool && (
                             <img src={pescLogo} style={{width:'80px', height:'80px'}} className='logos' id="pescatarian" alt='Pescatarian' title="Pescatarian"></img>
                         )}
                         {recipes.ketogenic && (
