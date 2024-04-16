@@ -1,64 +1,115 @@
+/* Content Styles */
+.content {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
 
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .text-container {
-    width: 500px;
-    padding: 5%;
-    background-color: var(--fifth-color);
+    width: 450px;
+    padding: 20px;
+    background-color: var(--eigth-color);
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Text Input Styles */
 .text-input {
-    width: 80%;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.diets-container {
-    width: 110px;
-    overflow-y: auto;
-    background-color: var(--fifth-color);
-}
-
-.diets-checkbox {
-    display: flex;
-    height: 60px;
-    width: 100px;
-}
-
+/* Diet and Cuisine Container Styles */
+.diets-container,
 .cuisines-container {
-    width: 150px;
-    height: 368px;
+    width: 200px;
+    max-height: 440px;
     overflow-y: auto;
-    background-color: var(--fifth-color);
+    padding: 20px;
+    background-color: var(--eigth-color);
+    font-size: 16px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Diet and Cuisine Checkbox Styles */
+.diets-checkbox,
 .cuisines-checkbox {
     display: flex;
-    height: 60px;
-    width: 120px;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+.diets-checkbox img {
+    width: 40px;
+    margin-right: 10px;
 }
 
+/* Array Input Box Styles */
 .array-input-box {
-    margin-top: 5%;
+    margin-top: 10px;
+    color: #999;
 }
 
+/* Array Styles */
 .array {
-    width: 490px;
+    width: 400px;
+    max-height: 200px;
     overflow-y: auto;
-    margin-top: 5%;
+    margin-top: 10px;
 }
 
 .array button {
     height: 20px;
-    width: 30px;
+    width: 20px;
+    margin-right: 5px;
 }
 
 .border {
     display: flex;
     justify-content: center;
     gap: 40px;
-    padding: 5%;
-    list-style-type:none;
-    background-color: var(--third-color);
+    padding: 20px;
+    list-style-type: none;
+    background-color: var(--fifth-color);
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--sixth-color);
 }
 
+/* Heading Styles */
 .heading {
     text-align: center;
+    margin-bottom: 10px;
+}
+
+.create-recipe-button {
+    padding: 12px 24px;
+    background-color: var(--sixth-color);
+    color: var(--fourth-color);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.create-recipe-button:hover {
+    background-color: #4CAF50;
+}
+
+.text-input::placeholder {
+    color: #999;
+    font-style: italic;
 }

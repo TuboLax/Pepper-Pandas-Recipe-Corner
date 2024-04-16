@@ -1,59 +1,32 @@
-.modal, .overlay{
-    width: 100%;
-    height:100%;
-    inset:0;
-    position:fixed;
-}
-
-.overlay{
-    background:rgba(49,49,49,0.8);
-}
-
-body.overlayScrollBlock {
-    max-height: 100%;
-    overflow: hidden;
-}
-
-.fullDetails{
+.fullDetails {
     border-radius: 50%;
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     line-height: 1.4;
     background: var(--fifth-color);
     padding: 40px 65px;
     border-radius: 3px;
     width: 950px;
-    height:1000px;
+    height: 1000px;
     background-image: var(--border-lrg);
-    background-position-x: 50%;
-    background-position-y: 50%;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
-    background-size:fill;
+    background-size: fill;
     overflow-y: hidden;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.closeModal{
-    position:fixed;
-    right:10%;
-    bottom: 85%;   
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: var(--sixth-color);
-    color:var(--fourth-color);
-}
-
-.recName{
+.recName {
     padding-top: 110px;
     text-align: center;
     font-size: 30px;
     max-width: 900px;
 }
 
-.logos{
+.logos {
     border-radius: 50%;
     padding-right: 10px;
 }
@@ -62,7 +35,7 @@ body.overlayScrollBlock {
     text-align: left;
 }
 
-.ingBox{
+.ingBox {
     background-color: var(--first-color);
     width: 45%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -73,9 +46,9 @@ body.overlayScrollBlock {
     border-radius: 10px;
 }
 
-.dirBox{
+.dirBox {
     background-color: var(--first-color);
-    width:45%;
+    width: 45%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     overflow-x: hidden;
@@ -89,56 +62,61 @@ body.overlayScrollBlock {
     column-gap: 20px;
     padding-left: 5%;
     padding-bottom: 20px;
-    padding-top:2%;
+    padding-top: 2%;
 }
 
-.ingBox::-webkit-scrollbar, .dirBox::-webkit-scrollbar{
+.ingBox::-webkit-scrollbar,
+.dirBox::-webkit-scrollbar {
     display: none;
 }
 
-.ingHead, .directionsHeader {
+.ingHead,
+.directionsHeader {
     text-align: center;
-    text-shadow:0px 0px 10px rgba(0, 0, 0, 0.1) ;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.ingCheck:checked + .ingLabel{
+.ingCheck:checked + .ingLabel {
     text-decoration: line-through;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
     accent-color: var(--seventh-color);
-    width:18px;
-    height:18px;
+    width: 18px;
+    height: 18px;
 }
 
-a{
+a {
     color: var(--sixth-color);
 }
-a:visited{
-    color:var(--sixth-color)
+
+a:visited {
+    color: var(--sixth-color);
 }
-a:hover{
-    color: var(--seventh-color);
-}
-a:active{
+
+a:hover {
     color: var(--seventh-color);
 }
 
-a:invalid{
-    color:black;
+a:active {
+    color: var(--seventh-color);
+}
+
+a:invalid {
+    color: black;
 }
 
 /* Specific for Local Modal */
 
-.cuisTagsBox{
+.cuisTagsBox {
     max-width: 850px;
     padding-left: 50px;
 }
 
-#localBoxes{
+#localBoxes {
     padding-left: 10%;
 }
 
-li{
+li {
     padding-bottom: 5px;
 }
