@@ -166,6 +166,14 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
         setInputValue(e.target.value);
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent form submission
+            add(" " + inputValue);
+            setInputValue('');
+        }
+    };
+
     return (
         <div>
             <div>
@@ -178,22 +186,18 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
                 ))}
             </div>
             <div>
+                <div className='array-input-box'>{inputValue ? '' : '"Enter" for another input'}</div>
                 <input
                     type="text"
-                    placeholder={formType === "Ingredients" ? "Add Ingredients here" : `Enter ${formType}`} // Adjust placeholder text for Ingredients
                     value={inputValue}
                     onChange={handleInputChange}
-                    onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                            add(" " + inputValue);
-                            setInputValue('');
-                        }
-                    }}
+                    onKeyPress={handleKeyPress} // Add handleKeyPress event handler here
                 />
             </div>
         </div>
     )
 };
+
 
 const CreateRecipeForm = () => {
     const [title, setTitle] = useState("");
