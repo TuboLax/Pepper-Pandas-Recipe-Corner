@@ -8,39 +8,34 @@ import ketoLogo from '../assets/food icons/keto.PNG';
 import dairyFreeLogo from '../assets/food icons/dairy_free.png';
 import glutenFreeLogo from '../assets/food icons/gluten_free.png';
 
-export const RecipeModalSpoon = (recipeID) =>
-{
+export const RecipeModalSpoon = (recipeID) => {
     const [modal, setModal] = useState(false);
 
-    const toggleModal = () =>
-    {
+    const toggleModal = () => {
         setModal(!modal);
     }
 
-    if(modal)
-    {
+    if (modal) {
         document.body.classList.add('overlayScrollBlock');
-    }
-    else
-    {
+    } else {
         document.body.classList.remove('overlayScrollBlock');
     }
 
-    return(
+    return (
         <>
-        <button className='auth-button' onClick={toggleModal}>Full Recipe</button>
-        {modal && (
-            <div className='modal'>
-                <div className='overlay' onClick={toggleModal}></div>
-                <div className='fullDetails'>
-                    <Form
-                    ID = {recipeID}
-                    />
-                    <button className='closeModal' onClick={toggleModal}>Close</button>
-                    <div className='borderImg'></div>
+            <button className='auth-button' onClick={toggleModal}> Full Recipe </button>
+            {modal && (
+                <div className='modal'>
+                    <div className='overlay' onClick={toggleModal}></div>
+                    <div className='fullDetails'>
+                        <Form
+                            ID = {recipeID}
+                        />
+                        <button className='closeModal' onClick={toggleModal}> Close </button>
+                        <div className='borderImg'></div>
+                    </div>
                 </div>
-            </div>
-        )}
+            )}
         </>
     );
 }
@@ -72,26 +67,23 @@ const Form = (ID) => {
 
     // Get cuisine tags and separate with commas
     let cuisineArr = Object.values(recipes.cuisines || {});
-    for(var i=0; i<cuisineArr.length; i++)
-    {
-        if(i !== (cuisineArr.length)-1)
-        {
-            cuisineArr[i]+=', ';
+    for (var i = 0; i < cuisineArr.length; i++) {
+        if (i !== (cuisineArr.length) - 1) {
+            cuisineArr[i] += ', ';
         }
     }
-    if(cuisineArr.length===0)
-    {
-        cuisineArr[0]='No Tags Found'
+    if (cuisineArr.length === 0){
+        cuisineArr[0] = 'No Tags Found'
     }
+    
     // ----------------------------------------
+    
     // Fill Pescatarian Bool
     console.log(recipes);
-    let pescBool=false;
-    let dietArr=Object.values(recipes.diets || {});
-    for(var i=0; i<dietArr.length; i++)
-    {
-        if(dietArr[i]==='pescatarian')
-        {
+    let pescBool = false;
+    let dietArr = Object.values(recipes.diets || {});
+    for (var i = 0; i < dietArr.length; i++) {
+        if (dietArr[i] === 'pescatarian') {
             pescBool=true;
         }
     }
@@ -101,43 +93,85 @@ const Form = (ID) => {
             <li key={recipes._id}>
                 <div>
                     <h1 className='recName'>{recipes.title}</h1>
-                    <h3>Recipe Categories</h3>
+                    <h3> Recipe Categories </h3>
                     <>
                         {recipes.vegan && (
-                            <img src={veganLogo} style={{width:'80px', height:'80px'}} className='logos' id="vegan" alt="Vegan" title="Vegan"></img>
+                            <img 
+                                src={veganLogo} 
+                                style={{width:'80px', height:'80px'}} 
+                                className='logos' 
+                                id="vegan" 
+                                alt="Vegan" 
+                                title="Vegan"
+                            ></img>
                         )}
                         {recipes.vegetarian && (
-                            <img src={vegetarianLogo} style={{width:'80px', height:'80px'}} className='logos' id="vegetarian" alt='Vegetarian' title="Vegetarian"></img>
+                            <img 
+                                src={vegetarianLogo} 
+                                style={{width:'80px', height:'80px'}} 
+                                className='logos' 
+                                id="vegetarian" 
+                                alt='Vegetarian' 
+                                title="Vegetarian"
+                            ></img>
                         )}
                         {pescBool && (
-                            <img src={pescLogo} style={{width:'80px', height:'80px'}} className='logos' id="pescatarian" alt='Pescatarian' title="Pescatarian"></img>
+                            <img 
+                                src={pescLogo} 
+                                style={{width:'80px', height:'80px'}} 
+                                className='logos' 
+                                id="pescatarian" 
+                                alt='Pescatarian' 
+                                title="Pescatarian"
+                            ></img>
                         )}
                         {recipes.ketogenic && (
-                            <img src={ketoLogo} style={{width:'80px', height:'80px'}} className='logos' id= "keto" alt='Ketogenic' title="Ketogenic"></img>
+                            <img 
+                                src={ketoLogo} 
+                                style={{width:'80px', height:'80px'}} 
+                                className='logos' 
+                                id= "keto" 
+                                alt='Ketogenic' 
+                                title="Ketogenic"
+                            ></img>
                         )}
                         {recipes.glutenFree && (
-                            <img src={glutenFreeLogo} style={{width:'80px', height:'80px'}} className='logos' id="glutenFree" alt='Gluten Free' title="Gluten Free"></img>
+                            <img 
+                                src={glutenFreeLogo} 
+                                style={{width:'80px', height:'80px'}} 
+                                className='logos' 
+                                id="glutenFree" 
+                                alt='Gluten Free' 
+                                title="Gluten Free"
+                            ></img>
                         )}
                         {recipes.dairyFree && (
-                            <img src={dairyFreeLogo} style={{width:'80px', height:'80px'}} className='logos' id= "dairyFree" alt='Dairy Free' title="Dairy Free"></img>
+                            <img 
+                                src={dairyFreeLogo} 
+                                style={{width:'80px', height:'80px'}} 
+                                className='logos' 
+                                id="dairyFree" 
+                                alt='Dairy Free' 
+                                title="Dairy Free"
+                            ></img>
                         )}
                    </>
                     <>
                         <p></p>
-                        <span style={{padding:'15px'}}> <b>Servings:</b> {recipes.servings}</span>
-                        <span style={{padding:'15px'}}><b>Preparation Time:</b> {recipes.readyInMinutes} Minutes</span>
-                        <span style={{padding:'15px'}}><b>Popularity Score:</b> {spoonScore} / 100</span>
+                        <span style={{padding:'15px'}}> <b> Servings: </b> {recipes.servings}</span>
+                        <span style={{padding:'15px'}}><b> Preparation Time: </b> {recipes.readyInMinutes} Minutes </span>
+                        <span style={{padding:'15px'}}><b> Popularity Score: </b> {spoonScore} / 100 </span>
                     </>
                     <>
                     <div>
                         <p></p>
-                        <span><b>Cuisine Tags:</b> </span>
+                        <span><b> Cuisine Tags: </b> </span>
                         <span>{cuisineArr}</span>
                     </div>
                     </>
                     <div className='boxes'>
                         <div className='ingBox'>
-                            <h3 className='ingHead'><b>Ingredients:</b></h3>
+                            <h3 className='ingHead'><b> Ingredients: </b></h3>
                             <div>
                                 {ingredientsArr.map((ing, index) => {
                                     return ( // needed a return for the mapping
@@ -150,7 +184,7 @@ const Form = (ID) => {
                             </div>
                         </div>
                         <div className='dirBox'>
-                            <h3 className='directionsHeader'><b>Directions:</b></h3>
+                            <h3 className='directionsHeader'><b> Directions: </b></h3>
                             <div className='directionsList'>
                                 {directions.map((step, index) => ( // parses through so that it breaks the text into a list
                                     <li key={index} dangerouslySetInnerHTML={createMarkup(step)}></li>
@@ -158,7 +192,7 @@ const Form = (ID) => {
                             </div>
                         </div>
                     </div>
-                    <a className="sourceURL" href={recipes.sourceUrl} target='_blank'>Visit Original Recipe</a>
+                    <a className="sourceURL" href={recipes.sourceUrl} target='_blank'> Visit Original Recipe </a>
                 </div>
             </li>
         </ul>
