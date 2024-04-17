@@ -176,62 +176,36 @@ const GetRecipes = () => {
                         })
                         break;
                     case 'cuisine':
-                        let formatCuisine;
-
                         // First loop that goes through the local recipes
                         temp.map((local) => {
-                            // Second loop that goes through the cuisines parameter
-                            local.cuisines.forEach(cuisine => {
-                                // Checks if the cuisine is empty
-                                if (cuisine != null && cuisine != "") {
-                                    formatCuisine = cuisine.replace(" ", "").toLowerCase();
-                                    if (formatCuisine.includes(query.replace(" ", "").toLowerCase())) {
-                                        tempArray.push(local);
-                                    }
-                                }
-                            })
+                            let tempString = local.cuisines.toString().toLowerCase()    // Converts the cuisines array to a String and lowercases it
+                            // Checks if the query (lowercased) appears in the cuisines' String
+                            if (tempString.includes(query.replace(" ", "").toLowerCase())) {
+                                tempArray.push(local);
+                            }
                         })
                         break;
                     case 'diet':
-                        let formatDiet;
-
                         // First loop that goes through the local recipes
                         temp.map((local) => {
-                            // Second lood that goes through the diets parameter
-                            local.diets.forEach(diet => {
-                                // Checks if the diet is empty
-                                if (diet != null && diet != "") {
-                                    formatDiet = diet.replace(" ", "").toLowerCase();
-                                    if(formatDiet.includes(query.replace(" ", "").toLowerCase())) {
-                                        tempArray.push(local);
-                                    }
-                                }
-
-                            });
-
+                            let tempString = local.diets.toString().replace(" ", "").toLowerCase()
+                            if (tempString.includes(query.replace(" ", "").toLowerCase())) {
+                                tempArray.push(local)
+                            }
                         })
+                        break;
                     case 'ingredients':
-                        const formatArray = (query.split(",")); // Breaks the query into individual strings that are put into an array
-                        let formatIngredient; 
-
-                        // First loop that goes through the local recipes
+                        const formatQuery = query.toLowerCase().split(",")  // Query turns into an array 
+                                                
+                        // First loop through all of the local recipes
                         temp.map((local) => {
-                            // Second loop that goes through the ingredients of the local recipes
-                            local.extendedIngredients.forEach(ingredient => {
-                                formatIngredient = ingredient.toLowerCase(); 
-                                
-                                // Third loop that goes through the query array and checks if it is there
-                                formatArray.forEach(query => {
-                                    if(formatIngredient.includes(query.trim())) {
-                                        // Checks if the recipe is already added to the array
-                                        if (!tempArray.includes(local)) {
-                                            tempArray.push(local)
-                                        }
-                                        
-                                    }
-                                }) 
-
-                            })
+                            let tempLocalIngredients = local.extendedIngredients.toString().replace(" ", "");   // Converts the ingredients to a String
+                            // Second loop to check if each query appears in the ingredients
+                            formatQuery.forEach(queryIngredient => {
+                                if(tempLocalIngredients.includes(queryIngredient) && !tempArray.includes(local)) {
+                                    tempArray.push(local);
+                                }
+                            });
                         })
                         break;
                     default:
