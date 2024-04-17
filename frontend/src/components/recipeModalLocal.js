@@ -7,148 +7,167 @@ import ketoLogo from '../assets/food icons/keto.PNG';
 import dairyFreeLogo from '../assets/food icons/dairy_free.png';
 import glutenFreeLogo from '../assets/food icons/gluten_free.png';
 
-export const RecipeModalLocal = (recipeKey) =>
-{
+export const RecipeModalLocal = (recipeKey) => {
     const [modal, setModal] = useState(false);
 
-    const toggleModal = () =>
-    {
+    const toggleModal = () => {
         setModal(!modal);
     }
 
-    if(modal)
-    {
+    if(modal){
         document.body.classList.add('overlayScrollBlock');
-    }
-    else
-    {
+    } else {
         document.body.classList.remove('overlayScrollBlock');
     }
 
-    return(
+    return (
         <>
-        <button className='auth-button' onClick={toggleModal}>Full Recipe</button>
-        {modal && (
-            <div className='modal'>
-                <div className='overlay' onClick={toggleModal}></div>
-                <div className='fullDetails'>
-                    <Form
-                    recipe = {recipeKey}
-                    />
-                    <button className='closeModal' onClick={toggleModal}>Close</button>
+            <button className='auth-button' onClick={toggleModal}> Full Recipe </button>
+            {modal && (
+                <div className='modal'>
+                    <div className='overlay' onClick={toggleModal}></div>
+                    <div className='fullDetails'>
+                        <Form
+                            recipe = {recipeKey}
+                        />
+                        <button className='closeModal' onClick={toggleModal}>Close</button>
+                    </div>
                 </div>
-            </div>
-        )}
+            )}
         </>
     );
 }
 
-const Form = (recipe) =>{
+const Form = (recipe) => {
 
     // Separate some info for HTML output
-    let hold= Object.values(recipe || {});
-    let callRecipe= (hold[0].recipeKey);
+    let hold = Object.values(recipe || {});
+    let callRecipe = (hold[0].recipeKey);
 
     // For Cuisines -----------------------
     let cuisineArr = (callRecipe.cuisines);
-    let holdCuisArr=[];
-    for(var i=0; i<cuisineArr.length; i++)
-    {
-        if(cuisineArr[i] !== null )
-        {
-            if(i !== cuisineArr.length-1)
-            {
-                holdCuisArr[i]=cuisineArr[i]+ ', ';
-            }
-            else
-            {
-                holdCuisArr[i]=cuisineArr[i];
+    let holdCuisArr = [];
+    for (var i = 0; i < cuisineArr.length; i++) {
+        if (cuisineArr[i] !== null ) {
+            if (i !== cuisineArr.length-1) {
+                holdCuisArr[i] = cuisineArr[i]+ ', ';
+            } else {
+                holdCuisArr[i] = cuisineArr[i];
             }
         }
     }
-    if(holdCuisArr.length===0)
-    {
-        holdCuisArr[0]='No Tags Found'
+    if (holdCuisArr.length === 0) {
+        holdCuisArr[0] = 'No Tags Found'
     }
+    
     // -------------------------------------
+    
     //For Diets
-    var veganBool,
-    vegtrnBool,
-    pescBool,
-    ketoBool,
-    dfBool,
-    gfBool = false;
-    let dietArr= callRecipe.diets;
-    for(var i=0; i<dietArr.length; i++)
-    {
-        if(dietArr[i] === 'Vegan')
-        {
-            veganBool=true;
-        }
-        else if(dietArr[i] === 'Vegetarian')
-        {
-            vegtrnBool=true;
-        }
-        else if(dietArr[i] === 'Pescatarian')
-        {
+    var veganBool, vegtrnBool, pescBool, ketoBool, dfBool, gfBool = false;
+    let dietArr = callRecipe.diets;
+    
+    for(var i=0; i<dietArr.length; i++) {
+        if (dietArr[i] === 'Vegan') {
+            veganBool = true;
+        } else if (dietArr[i] === 'Vegetarian') {
+            vegtrnBool = true;
+        } else if (dietArr[i] === 'Pescatarian') {
             pescBool=true;
-        }
-        else if(dietArr[i] === 'Ketogenic')
-        {
+        } else if (dietArr[i] === 'Ketogenic') {
             ketoBool= true;
-        }
-        else if(dietArr[i] === 'Dairy Free')
-        {
+        } else if(dietArr[i] === 'Dairy Free') {
             dfBool=true;
-        }
-        else if(dietArr[i] === 'Gluten Free')
-        {
+        } else if(dietArr[i] === 'Gluten Free') {
             gfBool=true;
         }
     }
-// --------------------------------------------
+    
+    // --------------------------------------------
+    
     console.log(callRecipe);
     console.log(callRecipe.sourceUrl)
 
-    return(
+    return (
         <div className='popoutBody'>
             <h1 className='recName'>{callRecipe.title}</h1>
-            <h3 className='recCategories'>Recipe Categories</h3>
+            <h3 className='recCategories'> Recipe Categories </h3>
             <>
                 {veganBool && (
-                    <img src={veganLogo} style={{width:'80px', height:'80px', borderRadius: '50%'}} className='logos' id="vegan" alt="Vegan" title="Vegan"></img>
+                    <img 
+                        src={veganLogo} 
+                        style={{width:'80px', height:'80px', borderRadius: '50%'}} 
+                        className='logos' 
+                        id="vegan" 
+                        alt="Vegan" 
+                        title="Vegan"
+                    ></img>
                 )}
                 {vegtrnBool && (
-                    <img src={vegetarianLogo} style={{width:'80px', height:'80px', borderRadius: '50%'}} className='logos' id="vegetarian" alt='Vegetarian' title="Vegetarian"></img>
+                    <img 
+                        src={vegetarianLogo} 
+                        style={{width:'80px', height:'80px', borderRadius: '50%'}} 
+                        className='logos' 
+                        id="vegetarian" 
+                        alt='Vegetarian' 
+                        title="Vegetarian"
+                    ></img>
                 )}
                 {pescBool && (
-                    <img src={pescLogo} style={{width:'80px', height:'80px', borderRadius: '50%'}} className='logos' id="pescatarian" alt='Pescatarian' title="Pescatarian"></img>
+                    <img 
+                        src={pescLogo} 
+                        style={{width:'80px', height:'80px', borderRadius: '50%'}} 
+                        className='logos' 
+                        id="pescatarian" 
+                        alt='Pescatarian' 
+                        title="Pescatarian"
+                    ></img>
                 )}
                 {ketoBool && (
-                    <img src={ketoLogo} style={{width:'80px', height:'80px', borderRadius: '50%'}} className='logos' id= "keto" alt='Ketogenic' title="Ketogenic"></img>
+                    <img 
+                        src={ketoLogo} 
+                        style={{width:'80px', height:'80px', borderRadius: '50%'}} 
+                        className='logos' 
+                        id= "keto" 
+                        alt='Ketogenic' 
+                        title="Ketogenic"
+                    ></img>
                 )}
                 {gfBool && (
-                    <img src={glutenFreeLogo} style={{width:'80px', height:'80px', borderRadius: '50%'}} className='logos' id="glutenFree" alt='Gluten Free' title="Gluten Free"></img>
+                    <img 
+                        src={glutenFreeLogo} 
+                        style={{width:'80px', height:'80px', borderRadius: '50%'}} 
+                        className='logos' 
+                        id="glutenFree" 
+                        alt='Gluten Free' 
+                        title="Gluten Free"
+                    ></img>
                 )}
                 {dfBool && (
-                <img src={dairyFreeLogo} style={{width:'80px', height:'80px', borderRadius: '50%'}} className='logos' id= "dairyFree" alt='Dairy Free' title="Dairy Free"></img>
+                    <img 
+                        src={dairyFreeLogo} 
+                        style={{width:'80px', height:'80px', borderRadius: '50%'}} 
+                        className='logos' 
+                        id="dairyFree" 
+                        alt='Dairy Free' 
+                        title="Dairy Free"
+                    ></img>
                 )}
             </>
             <>
                 <p></p>
-                <span style={{padding:'5px'}}> <b>Servings:</b> {callRecipe.servings}</span>
-                <span style={{padding:'5px'}}><b>Preparation Time:</b> {callRecipe.readyInMinutes} Minutes</span>
+                <span style={{padding:'5px'}}> <b> Servings: </b> {callRecipe.servings} </span>
+                <span style={{padding:'5px'}}> <b> Preparation Time: </b> {callRecipe.readyInMinutes} Minutes </span>
             </>
             <>
             <div className='cuisTagsBox'>
                 <p></p>
-                <span><b>Cuisine Tags:</b> </span>
+                <span> <b> Cuisine Tags: </b> </span>
                 <span>{holdCuisArr}</span>
             </div>
             </>
             <div className='boxes' id='localBoxes'>
                         <div className='ingBox'>
-                            <h3 className='ingHead'><b>Ingredients:</b></h3>
+                            <h3 className='ingHead'><b> Ingredients: </b></h3>
                             <div>
                                 {callRecipe.extendedIngredients.map((ing, index) => {
                                     return ( // needed a return for the mapping
@@ -161,7 +180,7 @@ const Form = (recipe) =>{
                             </div>
                         </div>
                         <div className='dirBox'>
-                            <h3 className='directionsHeader'><b>Directions:</b></h3>
+                            <h3 className='directionsHeader'><b> Directions: </b></h3>
                             <ol>
                                 <div className='directionsList'>
                                     {callRecipe.instructions.map((step, index) => (
@@ -171,7 +190,7 @@ const Form = (recipe) =>{
                             </ol>
                         </div>
                 </div>
-            <a className="sourceURL" href={callRecipe.sourceURL} target='_blank'>Visit Original Recipe</a>
+            <a className="sourceURL" href={callRecipe.sourceURL} target='_blank'> Visit Original Recipe </a>
         </div>
     );
 }

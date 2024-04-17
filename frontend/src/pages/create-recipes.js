@@ -6,6 +6,7 @@ import vegan from '../assets/food icons/vegan.png';
 import vegitarian from '../assets/food icons/vegitarian.png';
 import keto from '../assets/food icons/keto.PNG';
 import pescatarian from '../assets/food icons/pescatarian.PNG'; // Import the pescatarian image
+import pescatarian from '../assets/food icons/pescatarian.PNG';
 import React, { useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +29,7 @@ export const CreateRecipe = () => {
             <div className="logo-container">
                 <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
             </div>
-            <h1>Pepper's Cooking</h1>
+            <h1> Pepper's Cooking </h1>
         </header>
         <section className="my-recipes">
             <GroceryList />
@@ -101,7 +102,7 @@ const DietsParameter = ({ parameter, setParameter }) => {
 
     return (
         <div className='diets-container'>
-            <h2 className='heading'>Diets</h2>
+            <h2 className='heading'> Diets </h2>
             {GLOBAL_DIETS.map((diet, index) => (
                 <div className='diets-checkbox' key={index}>
                     <input type="checkbox" id={"diets-checkbox-" + diet} onClick={() => changeDiet(diet, index)} />
@@ -133,7 +134,7 @@ const CuisinesParameter = ( {parameter, setParameter} ) => {
 
     return (
         <div className='cuisines-container'>
-            <h2 className='heading'>Cuisines</h2> 
+            <h2 className='heading'> Cuisines </h2> 
             {GLOBAL_CUISINES.map((cuisine, index) => (
                 <div className='cuisines-checkbox'>
                     <input type="checkbox" id={"cuisine-checkbox-" + cuisine}  onClick={() => changeCuisine(cuisine, index)}/> 
@@ -180,7 +181,7 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
                 <h3>{formType}</h3>
                 {parameter.map((item, index) => (
                     <div className='array' key={index}>
-                        <button type="button" onClick={() => remove(index)}>X</button>
+                        <button type="button" onClick={() => remove(index)}> X </button>
                         <span>{item}</span>
                     </div>
                 ))}
@@ -203,7 +204,6 @@ const CreateRecipeForm = () => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [sourceURL, setsourceURL] = useState("");
-    const [sourceName, setSourceName] = useState("");
     const [servings, setServings] = useState("");
     const [readyInMinutes, setReadyInMinutes] = useState("");
     const [instructions, setInstructions] = useState([]);
@@ -226,8 +226,7 @@ const CreateRecipeForm = () => {
                     title: title,
                     image: image,
                     sourceURL: sourceURL,
-                    sourceName: sourceName,
-                    servings: servings,
+                        servings: servings,
                     readyInMinutes: readyInMinutes,
                     instructions: instructions,
                     extendedIngredients: extendedIngredients,
