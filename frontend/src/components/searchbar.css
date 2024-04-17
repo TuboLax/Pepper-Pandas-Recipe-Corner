@@ -1,86 +1,86 @@
 
 .searchForm {
-    background-color: var(--third-color);
-    width: 200px;
-    height: 44px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .searchInput {
-    all: unset;
-    font: 16px system-ui;
-    color: var(--fourth-color);
-    height: 100%;
-    width: 100%;
-    padding: 6px 10px;
-  }
-
-  ::placeholder {
-    color: var(--fourth-color);
-    opacity: 0.7; 
-  }
-
-  .searchButton {
-    all: unset;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-  }
-
-  .search-svg {
-    color: var(--fourth-color);
-    fill: currentColor;
-    width: 24px;
-    height: 24px;
-    padding: 10px;
-  }
-
-
-  /* Adds a background color to the top navigation */
-.topnav {
   background-color: var(--third-color);
-  overflow: hidden;
+  width: 200px;
+  height: 44px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.searchInput {
+  all: unset;
+  font: 16px system-ui;
+  color: var(--fourth-color);
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
+}
+
+::placeholder {
+  color: var(--fourth-color);
+  opacity: 0.7; 
+}
+
+.searchButton {
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+}
+
+.search-svg {
+  color: var(--fourth-color);
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+}
+
+
+/* Adds a background color to the top navigation */
+.topnav {
+background-color: var(--third-color);
+overflow: hidden;
 }
 
 /* Dropdown container - needed to position the dropdown content */
 .dropdown {
-  float: left;
-  overflow: hidden;
+float: left;
+overflow: hidden;
 }
 
 /* Style the dropdown button to fit inside the topnav */
 .dropdown .dropbtn {
-  font-size: 17px;
-  border: none;
-  outline: none;
-  color: var(--fourth-color);
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
+font-size: 17px;
+border: none;
+outline: none;
+color: var(--fourth-color);
+padding: 14px 16px;
+background-color: inherit;
+font-family: inherit;
+margin: 0;
 }
 
 /* Style the dropdown content (hidden by default) */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--fifth-color);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  
+display: none;
+position: absolute;
+background-color: var(--fifth-color);
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+
 }
 
 /* Add a dark background on topnav links and the dropdown button on hover */
 .topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: var(--first-color);
-  color: var(--second-color);
+background-color: var(--first-color);
+color: var(--second-color);
 }
 
 /* Show the dropdown menu when the user moves the mouse over the dropdown button */
 .dropdown:hover .dropdown-content {
-  display: block;
+display: block;
 }
