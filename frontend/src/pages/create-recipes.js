@@ -30,8 +30,9 @@ export const CreateRecipe = () => {
             </div>
             <h1>Pepper's Cooking</h1>
         </header>
-        <section className="my-recipes">
-            <GroceryList />
+        <GroceryList />
+        <section className="my-recipes-create">
+            
             < CreateRecipeForm />
         </section>
         <footer>
@@ -72,7 +73,7 @@ const TextParameter = ({ parameter, setParameter, formType }) => {
         />
       </div>
     );
-  };  
+  }; 
 
 const NumberParameter = ( {parameter, setParameter, formType} ) => {
     return (
@@ -100,11 +101,11 @@ const DietsParameter = ({ parameter, setParameter }) => {
     }
 
     return (
-        <div className='diets-container'>
-            <h2 className='heading'>Diets</h2>
+        <div className='diets-container-create'>
+            <h2 className='heading-create'>Diets</h2>
             {GLOBAL_DIETS.map((diet, index) => (
-                <div className='diets-checkbox' key={index}>
-                    <input type="checkbox" id={"diets-checkbox-" + diet} onClick={() => changeDiet(diet, index)} />
+                <div className='diets-checkbox-create' key={index}>
+                    <input type="checkbox" id={"diets-checkbox-create-" + diet} onClick={() => changeDiet(diet, index)} />
                     <img src={GLOBAL_DIETS_ASSETS[index]} alt={diet} />
                     <h5>{diet}</h5>
                 </div>
@@ -118,7 +119,7 @@ const CuisinesParameter = ( {parameter, setParameter} ) => {
 
     const changeCuisine = (cuisine, index) => {
         // Get the checkbox
-        var checkBox = document.getElementById("cuisine-checkbox-"+ cuisine);
+        var checkBox = document.getElementById("cuisine-checkbox-create-"+ cuisine);
         const updatedList = [...parameter]
 
         // If the checkbox is checked, display the output text
@@ -132,11 +133,11 @@ const CuisinesParameter = ( {parameter, setParameter} ) => {
     }
 
     return (
-        <div className='cuisines-container'>
-            <h2 className='heading'>Cuisines</h2> 
+        <div className='cuisines-container-create'>
+            <h2 className='heading-create'>Cuisines</h2> 
             {GLOBAL_CUISINES.map((cuisine, index) => (
-                <div className='cuisines-checkbox'>
-                    <input type="checkbox" id={"cuisine-checkbox-" + cuisine}  onClick={() => changeCuisine(cuisine, index)}/> 
+                <div className='cuisines-checkbox-create'>
+                    <input type="checkbox" id={"cuisine-checkbox-create-" + cuisine}  onClick={() => changeCuisine(cuisine, index)}/> 
                     <h5>{cuisine}</h5>
                 </div>
             ))}
@@ -179,14 +180,14 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
             <div>
                 <h3>{formType}</h3>
                 {parameter.map((item, index) => (
-                    <div className='array' key={index}>
+                    <div className='array-create' key={index}>
                         <button type="button" onClick={() => remove(index)}>X</button>
                         <span>{item}</span>
                     </div>
                 ))}
             </div>
             <div>
-                <div className='array-input-box'>{inputValue ? '' : '"Enter" for another input'}</div>
+                <div className='array-input-box-create'>{inputValue ? '' : '"Enter" for another input'}</div>
                 <input
                     type="text"
                     value={inputValue}
@@ -246,9 +247,9 @@ const CreateRecipeForm = () => {
 
     return (
         <form onSubmit={onSubmit}>
-            <ul className='border'>
-                <div className='text-container'>
-                    <h2 className='heading'>Recipe Information</h2>
+            <ul className='border-create'>
+                <div className='text-container-create'>
+                    <h2 className='heading-create'>Recipe Information</h2>
                     <li><TextParameter parameter={title} setParameter={setTitle} formType="Title" /></li>
                     <li><TextParameter parameter={image} setParameter={setImage} formType="Image" /></li>
                     <li><TextParameter parameter={sourceURL} setParameter={setsourceURL} formType="Source URL" /></li>
@@ -258,7 +259,7 @@ const CreateRecipeForm = () => {
                     <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions" /></li>
                     <li><ArrayParameter parameter={extendedIngredients} setParameter={setExtendedIngredients} formType="Ingredients" /></li>
                     <li className="button-container">
-                        <button type="submit" className="create-recipe-button">Create Recipe</button>
+                        <button type="submit" className="create-recipe-button-create">Create Recipe</button>
                     </li>
                 </div>
                 <li><DietsParameter parameter={diets} setParameter={setDiets} /></li>

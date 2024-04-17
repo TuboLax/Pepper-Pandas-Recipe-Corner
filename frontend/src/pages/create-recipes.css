@@ -1,19 +1,22 @@
+.my-recipes-create {
+    padding-top: 50px;
+}
 /* Content Styles */
-.content {
+.content-create {
     display: flex;
     justify-content: center;
     gap: 40px;
 }
 
 /* Form Styles */
-form {
+.form-create {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px
+    padding-top: 50px;
 }
 
-.text-container {
+.text-container-create {
     width: 450px;
     padding: 20px;
     background-color: var(--eigth-color);
@@ -22,7 +25,7 @@ form {
 }
 
 /* Text Input Styles */
-.text-input {
+.text-input-create {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
@@ -31,8 +34,8 @@ form {
 }
 
 /* Diet and Cuisine Container Styles */
-.diets-container,
-.cuisines-container {
+.diets-container-create,
+.cuisines-container-create {
     width: 200px;
     max-height: 440px;
     overflow-y: auto;
@@ -44,40 +47,40 @@ form {
 }
 
 /* Diet and Cuisine Checkbox Styles */
-.diets-checkbox,
-.cuisines-checkbox {
+.diets-checkbox-create,
+.cuisines-checkbox-create {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
     font-size: 20px;
 }
-.diets-checkbox img {
+.diets-checkbox-create img {
     width: 50px;
     margin-right: 10px;
     border-radius: 50%;
 }
 
 /* Array Input Box Styles */
-.array-input-box {
+.array-input-box-create {
     margin-top: 10px;
     color: #999;
 }
 
 /* Array Styles */
-.array {
+.array-create {
     width: 400px;
     max-height: 200px;
     overflow-y: auto;
     margin-top: 10px;
 }
 
-.array button {
+.array-create button {
     height: 20px;
     width: 20px;
     margin-right: 5px;
 }
 
-.border {
+.border-create {
     display: flex;
     justify-content: center;
     gap: 40px;
@@ -90,12 +93,12 @@ form {
 }
 
 /* Heading Styles */
-.heading {
+.heading-create {
     text-align: center;
     margin-bottom: 10px;
 }
 
-.create-recipe-button {
+.create-recipe-button-create {
     padding: 12px 24px;
     background-color: var(--sixth-color);
     color: var(--fourth-color);
@@ -107,11 +110,11 @@ form {
     transition: background-color 0.3s ease;
 }
 
-.create-recipe-button:hover {
+.create-recipe-button-create:hover {
     background-color: #4CAF50;
 }
 
-.text-input::placeholder {
+.text-input-create::placeholder {
     color: #999;
     font-style: italic;
 }
