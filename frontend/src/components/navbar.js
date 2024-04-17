@@ -4,7 +4,8 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import moonLogo from '../assets/icons/light_mode.png';
 import sunLogo from '../assets/icons/dark_mode.png';
-import { SearchBar } from "./searchbar"; 
+import { SearchBar } from "./searchbar";
+import { LocalBar } from "./searchLocal"; 
 import gearIcon from '../assets/icons/gear_icon.png';
 
 export const Navbar = () => {
@@ -31,7 +32,8 @@ export const Navbar = () => {
             <Link to="/create-recipes" className="nav-link">Create Recipes</Link>
             <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
             <Link to="/pantry" className="nav-link">Pantry</Link>
-            <div> <SearchBar /> </div>
+            <SearchBar /> 
+            <LocalBar />
             <div id="authButton">
                 {!cookies.accessToken ? (<Link to="/auth" className='nav-link'>Login/Register</Link>) :
                     (<button className="logout" onClick={logout}>Logout</button>)}
