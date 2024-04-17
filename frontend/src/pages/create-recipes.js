@@ -5,7 +5,7 @@ import gluten_free from '../assets/food icons/gluten_free.png';
 import vegan from '../assets/food icons/vegan.png';
 import vegitarian from '../assets/food icons/vegitarian.png';
 import keto from '../assets/food icons/keto.PNG';
-import pescatarian from '../assets/food icons/pescatarian.PNG'; // Import the pescatarian image
+import pescatarian from '../assets/food icons/pescatarian.PNG';
 import React, { useState } from 'react';
 import { userGetUserID } from '../hooks/useGetUserID';
 import { useNavigate } from 'react-router-dom';
@@ -66,7 +66,7 @@ const TextParameter = ({ parameter, setParameter, formType }) => {
         <input
           className="text-input"
           type="text"
-          placeholder={placeholderText} // Add placeholder attribute here
+          placeholder={placeholderText}
           value={parameter}
           onChange={(event) => setParameter(event.target.value)}
         />
@@ -105,7 +105,7 @@ const DietsParameter = ({ parameter, setParameter }) => {
             {GLOBAL_DIETS.map((diet, index) => (
                 <div className='diets-checkbox' key={index}>
                     <input type="checkbox" id={"diets-checkbox-" + diet} onClick={() => changeDiet(diet, index)} />
-                    <img src={GLOBAL_DIETS_ASSETS[index]} alt={diet} /> {/* Add image */}
+                    <img src={GLOBAL_DIETS_ASSETS[index]} alt={diet} />
                     <h5>{diet}</h5>
                 </div>
             ))}
@@ -168,7 +168,7 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
             add(" " + inputValue);
             setInputValue('');
         }
@@ -191,7 +191,7 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    onKeyPress={handleKeyPress} // Add handleKeyPress event handler here
+                    onKeyPress={handleKeyPress}
                 />
             </div>
         </div>
@@ -210,7 +210,6 @@ const CreateRecipeForm = () => {
     const [extendedIngredients, setExtendedIngredients] = useState([]);
     const [diets, setDiets] = useState([]);
     const [cuisines, setCuisines] = useState([]);
-    const [notes, setNotes] = useState(""); // State for notes
 
     const userID = userGetUserID();
     const navigate = useNavigate();
@@ -258,7 +257,6 @@ const CreateRecipeForm = () => {
                     <li><NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time" /></li>
                     <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions" /></li>
                     <li><ArrayParameter parameter={extendedIngredients} setParameter={setExtendedIngredients} formType="Ingredients" /></li>
-                    {/* Button container moved inside the .text-container */}
                     <li className="button-container">
                         <button type="submit" className="create-recipe-button">Create Recipe</button>
                     </li>

@@ -10,6 +10,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 50px
 }
 
 .text-container {
@@ -53,7 +54,7 @@ form {
 .diets-checkbox img {
     width: 50px;
     margin-right: 10px;
-    border-radius: 50%; /* This will make the images circular */
+    border-radius: 50%;
 }
 
 /* Array Input Box Styles */

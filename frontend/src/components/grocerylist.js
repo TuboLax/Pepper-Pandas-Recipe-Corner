@@ -64,7 +64,16 @@ const GroceryList = () => {
     };       
 
     const handleInputChange = (e) => {
-        setInputValue(e.target.value);
+        const trimmedValue = e.target.value.trim();
+        setInputValue(trimmedValue);
+    };
+
+    const addItemToList = () => {
+        const trimmedValue = inputValue.trim();
+        if (trimmedValue) {
+            addItemToGroceryList(trimmedValue);
+            setInputValue('');
+        }
     };
 
     return (
@@ -93,8 +102,7 @@ const GroceryList = () => {
                                 onChange={handleInputChange}
                                 onKeyPress={(e) => {
                                     if (e.key === 'Enter') {
-                                        addItemToGroceryList(inputValue);
-                                        setInputValue('');
+                                        addItemToList();
                                     }
                                 }}
                             />
