@@ -151,7 +151,7 @@ export const LocalBar = () => {
     return (
       <div className="topnav" id="myTopnav">
       <div className="dropdown">
-        <div className="dropbtn">Local Recipes
+        <div className="dropbtn">Friend's Recipes
           <i className="fa fa-caret-down"></i>
         </div>
         <div className="dropdown-content">
