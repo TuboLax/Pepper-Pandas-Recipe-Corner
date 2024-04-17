@@ -11,7 +11,7 @@ const SearchTitle = () => {
       try {
         // If the request is blank, send an alert
         if (title.trim() != "") {
-          navigate(`/search?type=spoon&filter=title&query=${title}`);
+          navigate(`/search?type=local&filter=title&query=${title}`);
           location.reload();
         } else {
           alert("Invalid query");
@@ -41,7 +41,7 @@ const SearchCuisine = () => {
     try {
       // If the request is blank, send an alert
       if (title.trim() != "") {
-          navigate(`/search?type=spoon&filter=cuisine&query=${title}`);
+          navigate(`/search?type=local&filter=cuisine&query=${title}`);
           location.reload();
       } else {
         alert("Invalid query");
@@ -71,7 +71,7 @@ const SearchDiet = () => {
     try {
       // If the request is blank, send an alert
       if (title.trim() != "") {
-        navigate(`/search?type=spoon&filter=diet&query=${title}`);
+        navigate(`/search?type=local&filter=diet&query=${title}`);
         location.reload();
       } else {
         alert("Invalid query");
@@ -100,7 +100,7 @@ const SearchIngredients = () => {
     try {
       // If the request is blank, send an alert
       if (title.trim() != "") {
-        navigate(`/search?type=spoon&filter=ingredients&query=${title}`);
+        navigate(`/search?type=local&filter=ingredients&query=${title}`);
         location.reload();
       } else {
         alert("Invalid query");
@@ -146,12 +146,12 @@ const Form = ({ title, setTitle, formType, onSubmit }) => {
     );
 }
 
-export const SearchBar = () => {
+export const LocalBar = () => {
   
     return (
       <div className="topnav" id="myTopnav">
       <div className="dropdown">
-        <div className="dropbtn">Pepper's Recipes
+        <div className="dropbtn">Local Recipes
           <i className="fa fa-caret-down"></i>
         </div>
         <div className="dropdown-content">
