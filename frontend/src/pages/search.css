@@ -20,4 +20,6 @@
 #recipeImage{
     background-color: var(--third-color);
     padding: 10px;
+    height: 250px;
+    width: 250px;
 }
