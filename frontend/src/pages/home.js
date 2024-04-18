@@ -3,8 +3,8 @@ import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
-import { RecipeModalLocal } from '../components/recipeModalLocal.js';
-import { RecipeModalSpoon } from '../components/recipeModalSpoon.js';
+import { RecipeModalLocal } from '../components/Modals/recipeModalLocal.js';
+import { RecipeModalSpoon } from '../components/Modals/recipeModalSpoon.js';
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);

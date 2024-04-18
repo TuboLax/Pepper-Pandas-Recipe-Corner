@@ -3,7 +3,7 @@ import { userGetUserID } from '../hooks/useGetUserID';
 import GroceryList from '../components/grocerylist';
 import './pantry.css';
 import axios from 'axios';
-import { RecipeModalSpoon } from '../components/recipeModalSpoon';
+import { RecipeModalSpoon } from '../components/Modals/recipeModalSpoon';
 
 export const Pantry = () => {
     const [ingredientList, setIngredientList] = useState([]);

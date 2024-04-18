@@ -1,11 +1,11 @@
 import './recipeModal.css';
 import { useState} from 'react';
-import veganLogo from '../assets/food icons/vegan.png';
-import vegetarianLogo from '../assets/food icons/vegitarian.png'; //corrected my spelling
-import pescLogo from '../assets/food icons/pescatarian.PNG';
-import ketoLogo from '../assets/food icons/keto.PNG';
-import dairyFreeLogo from '../assets/food icons/dairy_free.png';
-import glutenFreeLogo from '../assets/food icons/gluten_free.png';
+import veganLogo from '../../assets/food icons/vegan.png';
+import vegetarianLogo from '../../assets/food icons/vegitarian.png'; 
+import pescLogo from '../../assets/food icons/pescatarian.PNG';
+import ketoLogo from '../../assets/food icons/keto.PNG';
+import dairyFreeLogo from '../../assets/food icons/dairy_free.png';
+import glutenFreeLogo from '../../assets/food icons/gluten_free.png';
 
 export const RecipeModalLocal = (recipeKey) => {
     const [modal, setModal] = useState(false);

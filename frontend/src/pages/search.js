@@ -2,8 +2,8 @@ import './search.css';
 import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { RecipeModalSpoon } from '../components/recipeModalSpoon.js';
-import { RecipeModalLocal } from '../components/recipeModalLocal.js';
+import { RecipeModalSpoon } from '../components/Modals/recipeModalSpoon.js';
+import { RecipeModalLocal } from '../components/Modals/recipeModalLocal.js';
 import { userGetUserID } from '../hooks/useGetUserID';
 
 let ALTERNATE;
