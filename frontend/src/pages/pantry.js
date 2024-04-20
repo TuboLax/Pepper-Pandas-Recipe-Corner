@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { userGetUserID } from '../hooks/useGetUserID';
 import GroceryList from '../components/grocerylist';
 import './pantry.css';
 import axios from 'axios';
@@ -31,7 +30,7 @@ export const Pantry = () => {
             ingredientList.forEach((ingredient) => {
                 searchString += ingredient + ",+"
             });
-            searchString += "&number=9";                    //Currently have the number of results set low for testing.
+            searchString += "&number=9&ignorePantry=true";                    //Currently have the number of results set low for testing.
             
             var response = await axios.get(`http://localhost:3000/find/ingredients/${searchString}`);
             setRecipes(response.data);
@@ -40,7 +39,7 @@ export const Pantry = () => {
     }
 
     return (
-        <div className="container" style={{ paddingTop: '120px'}}>
+        <div className="container" style={{paddingTop: '120px' }}>
             <header>
                 <div className="logo-container">
                     <div className="logo"></div>
@@ -56,47 +55,55 @@ export const Pantry = () => {
                 <h2 className="pantryHeader" id="id1">
                     Please enter any ingredients you would like to cook with:
                 </h2>
+                <div className="ingredients-container">
+                    <div className="ingredients-list">
+                        <ul className="item-list">
+                            {ingredientList.map((item, index) => (
+                                <div className="ingredientItem">
+                                    <li key={index} className="ingredient">
+                                        <span>{item}</span>
+                                    </li>
+                                    <button className='removeButton' onClick={() => removeItemFromIngredientList(index)}>
+                                        X
+                                    </button>
+                                </div>
+                                
+                            ))}
+                        </ul>
+                    </div>
 
-                <div className="listContainer">
-                    <ul className="item-list">
-                        {ingredientList.map((item, index) => (
-                            <li key={index} className="ingredient">
-                                <span>{item}</span>
-                                <button onClick={() => removeItemFromIngredientList(index)}>X</button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="ingredientContainer">
-                        <input
-                            type="text"
-                            className="ingredientBox"
-                            value={inputIngredientValue}
-                            onChange={handleInputChange}
-                            onKeyPress={(e) => {
-                                if (e.key === 'Enter') {
-                                    addItemToIngredientList(inputIngredientValue);
-                                    setIngredientValue('');
-                                }
-                            }}
-                        />
-                        <button className="searchButton" onClick={() => search()}>
-                            Search
-                        </button>
+                    <div className="ingredient-input">
+                            <input
+                                type="text"
+                                className="ingredientBox"
+                                value={inputIngredientValue}
+                                onChange={handleInputChange}
+                                onKeyPress={(e) => {
+                                    if (e.key === 'Enter' && inputIngredientValue != "") {
+                                        addItemToIngredientList(inputIngredientValue);
+                                        setIngredientValue('');
+                                    }
+                                }}
+                            />
+                            <button type="button" className="pantrySearchButton" onClick={() => search()}>
+                                Search
+                            </button>
+                    </div>
                 </div>
 
                 <div className="recipeDiv">
-                    <ul className='recipeList'>
+                    <ul className='pantryRecipeList'>
                         {recipes.map((recipe) => (
-                        <li key={recipe._id} className='recipeListItem'>
+                        <li key={recipe._id} className='pantryRecipe'>
                             <div>
-                                <h2 className='recipeListItemTitle'>{recipe.title}</h2>
+                                <h2 className='pantryRecipeTitle'>{recipe.title}</h2>
                             </div>
-                            <img src={recipe.image} alt={recipe.title} />
-                            <RecipeModalSpoon
-                            recipeID = {recipe.id}
-                            />
+                            <img src={recipe.image} alt={recipe.title} className='recipeImage'/>
+                            <div className='buttons'>
+                                <RecipeModalSpoon
+                                    recipeID = {recipe.id}
+                                />
+                            </div>
                         </li>
                         ))}
                     </ul>
