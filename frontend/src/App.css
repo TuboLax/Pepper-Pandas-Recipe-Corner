@@ -7,7 +7,6 @@
   --sixth-color: #45a049; /* button color */
   --seventh-color: #37803a; /* button hover color*/
   --eigth-color: #fff; /* form background colot$*/
-  --ninth-color: #c3e8e4;
   --pepper-logo: url('./assets/logos/pepper-panda.png');
   --border-lrg: url('./assets/borders/bamboo_border1080.png')
 }
@@ -21,7 +20,6 @@
   --sixth-color: #db4035; /* button color */
   --seventh-color:#af332a;/* button hover color*/
   --eigth-color: #4a4a4a;
-  --ninth-color: #4a4a4a;
   --pepper-logo: url('./assets/logos/evil_pepper.png');
   --border-lrg: url('./assets/borders/bamboo_border1080_dark.png');
 }
