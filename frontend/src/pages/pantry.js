@@ -40,7 +40,7 @@ export const Pantry = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container" style={{ paddingTop: '120px'}}>
             <header>
                 <div className="logo-container">
                     <div className="logo"></div>
