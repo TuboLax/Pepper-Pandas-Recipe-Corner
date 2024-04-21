@@ -10,9 +10,7 @@ import GroceryList from '../components/grocerylist';
 import { SavedBar } from '../components/searchSaved.js';
 // Checks if the user searches or not
 let ALTERNATE = window.location.search.includes('filter');
-const RefreshPage = () => {
-    location.reload()
-}
+
 
 export const SavedRecipes = () => {
     const navigate = useNavigate();
@@ -52,7 +50,6 @@ export const SavedRecipes = () => {
             </header>
             <GroceryList />
             <section className="my-recipes">
-                <button onClick={RefreshPage}>Refresh Recipes</button>
                 <SavedBar />
                 <SavedRecipesForm />
             </section>

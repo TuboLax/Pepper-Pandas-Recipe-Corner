@@ -26,11 +26,16 @@ export const Navbar = () => {
         navigate("/auth");
     }
 
+    const navigateSavedRecipes = () => {
+        navigate(`/saved-recipes`);
+        location.reload();
+    }
+
     return (
         <div className="navbar">
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/create-recipes" className="nav-link">Create Recipes</Link>
-            <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
+            <button className="nav-saved-recipes-button" onClick={navigateSavedRecipes}>Saved Recipes</button>
             <Link to="/pantry" className="nav-link">Pantry</Link>
             <SearchBar /> 
             <LocalBar />
@@ -66,3 +71,4 @@ const checkMode = () =>
 
     localStorage.setItem("appMode", JSON.stringify(mode));
 }
+
