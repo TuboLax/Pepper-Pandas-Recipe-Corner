@@ -81,14 +81,14 @@ const GroceryList = () => {
             {isOpen && (
                 <Draggable cancel=".no-drag">
                     <div className="grocery-list">
-                        <button className="close-button" onClick={() => setIsOpen(false)}>X</button>
+                        <button className="close-button" onClick={() => setIsOpen(false)}>x</button>
                         <h2>Grocery List</h2>
                         <div className="list-container">
                             <ul className="item-list">
                                 {groceryList.map((item, index) => (
                                     <li key={index}>
                                         <span>{item}</span>
-                                        <button onClick={() => removeItemFromGroceryList(index)}>X</button>
+                                        <button onClick={() => removeItemFromGroceryList(index)}>x</button>
                                     </li>
                                 ))}
                             </ul>

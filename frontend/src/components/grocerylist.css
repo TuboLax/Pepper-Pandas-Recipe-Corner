@@ -8,11 +8,11 @@
     top: 50%;
     transform: translateY(-50%);
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--eigth-color);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    height: 400px;
+    height: 300px;
     overflow-y: auto;
     z-index: 9999;
 }
@@ -26,7 +26,7 @@
     margin-top: 0;
     font-size: 20px;
     font-family: 'Hongkong';
-    color: #333;
+    color: var(--second-color);
     margin-bottom: 15px;
     text-align: center;
 }
@@ -54,7 +54,7 @@
     top: 10px;
     right: 10px;
     padding: 8px 15px;
-    background-color: #4CAF50;
+    background-color: var(--sixth-color);;
     color: white;
     border: none;
     border-radius: 5px;
@@ -63,11 +63,12 @@
 }
 
 .toggle-button:hover {
-    background-color: #45a049;
+    background-color: var(--seventh-color);
 }
 
 .remove-button {
     margin-left: 10px;
+    border-radius: 10%;
 }
 
 .input-container {
@@ -89,7 +90,7 @@
 .save-button {
     position: relative;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: var(--sixth-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -102,7 +103,7 @@
 .print-button {
     position: relative;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: var(--sixth-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -112,11 +113,11 @@
 }
 
 .save-button:hover {
-    background-color: #45a049;
+    background-color: var(--seventh-color);
 }
 
 .print-button:hover {
-    background-color: #45a049;
+    background-color: var(--seventh-color);
 }
 
 .item-list {
@@ -143,151 +144,7 @@
     right: 10px;
     padding: 8px;
     background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.darkMode .grocery-list-container {
-    position: relative;
-}
-
-.darkMode .grocery-list {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 400px;
-    overflow-y: auto;
-    z-index: 9999;
-}
-
-.darkMode .grocery-list h2 {
-    margin-top: 0;
-    font-size: 20px;
-    color: #db4035;
-    margin-bottom: 15px;
-}
-
-.darkMode .grocery-list ul {
-    padding: 0;
-    list-style-type: disc;
-}
-
-.darkMode .grocery-list li {
-    margin: 0;
-}
-
-.darkMode .grocery-list input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    border: 1px solid #555;
-    border-radius: 5px;
-    background-color: #555;
-    color: #fff;
-}
-
-.darkMode .toggle-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 8px 15px;
-    background-color: #db4035;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.darkMode .toggle-button:hover {
-    background-color: #a82b22;
-}
-
-.darkMode .remove-button {
-    margin-left: 10px;
-}
-
-.darkMode .input-container {
-    position: relative;
-}
-
-.darkMode .translucent-text {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.darkMode .list-input {
-    padding-left: 10px;
-}
-
-.darkMode .save-button {
-    position: relative;
-    padding: 10px 20px;
-    background-color: #db4035;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-}
-
-.darkMode .print-button {
-    position: relative;
-    padding: 10px 20px;
-    background-color: #db4035;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-}
-
-.darkMode .save-button:hover {
-    background-color: #a82b22;
-}
-
-.darkMode .print-button:hover {
-    background-color: #a82b22;
-}
-
-.darkMode .item-list {
-    padding-left: 0;
-}
-
-.darkMode .item-list li {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.darkMode .item-list li span {
-    flex-grow: 1;
-}
-
-.darkMode .item-list li button {
-    margin-left: 10px;
-}
-
-.darkMode .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 8px;
-    background-color: red;
+    border-radius: 10%;
     color: white;
     border: none;
     cursor: pointer;

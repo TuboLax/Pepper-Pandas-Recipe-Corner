@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './settings.css';
@@ -60,6 +60,12 @@ const DeleteAccountModal = ({ show, onClose, onDelete }) => {
 export const Settings = () => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const userID = window.localStorage.getItem("userID");
+        setIsLoggedIn(!!userID);
+    }, []);
 
     const handleDelete = async (password) => {
         try {
@@ -81,8 +87,27 @@ export const Settings = () => {
         }
     };
 
+    if (!isLoggedIn) {
+        return (
+            <div className="container" style={{ paddingTop: '120px'}}>
+                <header className="header">
+                    <div className="logo-container">
+                        <div className="logo"></div>
+                    </div>
+                    <h1>Pepper's Settings</h1>
+                </header>
+                <section className="content">
+                    <p className="sign-in-message">Please sign in to view your settings!</p>
+                </section>
+                <footer className="footer">
+                    <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
+                </footer>
+            </div>
+        );
+    }
+
     return (
-        <div className="settings-container" style={{ paddingTop: '120px' }}>
+        <div className="container" style={{ paddingTop: '120px' }}>
             <header className="header">
                 <div className="logo-container">
                     <div className="logo"></div>
@@ -95,7 +120,7 @@ export const Settings = () => {
                 <DeleteAccountModal show={showModal} onClose={() => setShowModal(false)} onDelete={handleDelete} />
             </div>
 
-            <footer className="footer">
+            <footer className="footer-settings">
                 <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
             </footer>
         </div>

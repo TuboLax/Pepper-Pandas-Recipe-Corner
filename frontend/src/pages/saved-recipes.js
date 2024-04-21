@@ -1,15 +1,41 @@
 import './saved-recipes.css';
-import '../components/Modals/recipeModal.css'
+import '../components/Modals/recipeModal.css';
 import pepperPandaLogo from '../assets/logos/pepper-panda.png';
 import React, { useEffect, useState } from 'react';
-import { userGetUserID } from '../hooks/useGetUserID.js';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { RecipeModalLocal } from '../components/Modals/recipeModalLocal.js';
 import { RecipeEditModal } from '../components/Modals/recipeEditModal.js';
 import GroceryList from '../components/grocerylist';
 
-
 export const SavedRecipes = () => {
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const userID = window.localStorage.getItem("userID");
+        setIsLoggedIn(!!userID);
+    }, []);
+
+    if (!isLoggedIn) {
+        return (
+            <div className="container" style={{ paddingTop: '120px' }}>
+                <header>
+                    <div className="logo-container">
+                        <img src={pepperPandaLogo} alt="Pepper Panda" className="logo" />
+                    </div>
+                    <h1> Pepper's Favorite </h1>
+                </header>
+                <section className="content">
+                    <p className="sign-in-message">Please sign in to view your saved recipes!</p>
+                </section>
+                <footer>
+                    <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
+                </footer>
+            </div>
+        );
+    }
+
     return (
         <div className="container" style={{ paddingTop: '120px' }}>
             <header>
@@ -18,12 +44,10 @@ export const SavedRecipes = () => {
                 </div>
                 <h1> Pepper's Favorite </h1>
             </header>
-
+            <GroceryList />
             <section className="my-recipes">
-                <GroceryList />
                 <SavedRecipesForm />
             </section>
-
             <footer>
                 <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
             </footer>    
@@ -46,11 +70,11 @@ const SavedRecipesForm = () => {
         extendedIngredients: [],
     });
 
-    const userID = userGetUserID();
+    const userID = window.localStorage.getItem("userID");
 
     useEffect(() => {
         const fetchSavedRecipe = async () => {
-            try{
+            try {
                 const response = await axios.get(`http://localhost:3000/recipes/savedRecipes/${userID}`);
                 setSavedRecipes(response.data.savedRecipes);
             } catch (err) {
@@ -110,7 +134,6 @@ const SavedRecipesForm = () => {
         setIsUpdating(null);
     }
 
-    //checks if user is owner of recipe
     const isOwner = (recipe) => recipe.userOwner === userID;
 
     return (
