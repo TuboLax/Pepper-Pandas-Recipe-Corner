@@ -74,10 +74,15 @@
     margin-top: 10px;
 }
 
+.array-create .array-item {
+    display: flex;
+    align-items: center;
+}
+
 .array-create button {
     height: 20px;
     width: 20px;
-    margin-right: 5px;
+    margin-left: auto; /* Pushes the button to the right */
 }
 
 .border-create {
@@ -117,4 +122,5 @@
 .text-input-create::placeholder {
     color: #999;
     font-style: italic;
+    opacity: 1;
 }

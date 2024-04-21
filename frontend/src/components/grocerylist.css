@@ -75,16 +75,15 @@
     position: relative;
 }
 
-.translucent-text {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: rgba(0, 0, 0, 0.5);
-}
 
 .list-input {
     padding-left: 10px;
+}
+
+.list-input::placeholder {
+    color: #999;
+    font-style: italic;
+    opacity: 1;
 }
 
 .save-button {

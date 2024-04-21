@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import './settings.css';
 
 const DeleteAccountModal = ({ show, onClose, onDelete }) => {
@@ -97,7 +99,10 @@ export const Settings = () => {
                     <h1>Pepper's Settings</h1>
                 </header>
                 <section className="content">
-                    <p className="sign-in-message">Please sign in to view your settings!</p>
+                <p className="sign-in-message">
+                    Please sign in to view your settings!<br/>
+                    Click <Link to="/auth">here</Link> to sign in.
+                </p>
                 </section>
                 <footer className="footer">
                     <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>

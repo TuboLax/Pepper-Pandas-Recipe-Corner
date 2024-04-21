@@ -44,7 +44,7 @@ export const Pantry = () => {
                 <div className="logo-container">
                     <div className="logo"></div>
                 </div>
-                <h1>Welcome to Pepper Panda's Pantry Mode</h1>
+                <h1>Panda's Pantry</h1>
             </header>
 
             <aside className="notepad-container">
@@ -53,7 +53,7 @@ export const Pantry = () => {
 
             <section className="pantry">
                 <h2 className="pantryHeader" id="id1">
-                    Please enter any ingredients you would like to cook with:
+                    What would you like to cook with?
                 </h2>
                 <div className="ingredients-container">
                     <div className="ingredients-list">
@@ -73,18 +73,19 @@ export const Pantry = () => {
                     </div>
 
                     <div className="ingredient-input">
-                            <input
-                                type="text"
-                                className="ingredientBox"
-                                value={inputIngredientValue}
-                                onChange={handleInputChange}
-                                onKeyPress={(e) => {
-                                    if (e.key === 'Enter' && inputIngredientValue != "") {
-                                        addItemToIngredientList(inputIngredientValue);
-                                        setIngredientValue('');
-                                    }
-                                }}
-                            />
+                    <input
+                        type="text"
+                        className="ingredientBox"
+                        value={inputIngredientValue}
+                        onChange={handleInputChange}
+                        placeholder="Add ingredients here!"
+                        onKeyPress={(e) => {
+                            if (e.key === 'Enter' && inputIngredientValue.trim() !== "") {
+                                addItemToIngredientList(inputIngredientValue.trim());
+                                setIngredientValue('');
+                            }
+                        }}
+                    />
                             <button type="button" className="pantrySearchButton" onClick={() => search()}>
                                 Search
                             </button>

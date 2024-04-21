@@ -12,7 +12,7 @@
 
 .pantryHeader {
     color: var(--second-color);
-    margin-left: 10%;
+    text-align: center;
 }
 
 .ingredientBox {
@@ -20,10 +20,17 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 20px;
-    color: blank;
+    color: black;
     outline: none;
     margin-right: 15px;
     margin-bottom: 10px;
+
+}
+
+.ingredientBox::placeholder {
+    color: #999;
+    font-style: italic;
+    opacity: 1;
 }
 
 .ingredientContainer {
@@ -35,14 +42,14 @@
 }
 
 .ingredient {
-    border: 1px solid #ccc;
     border-radius: 8px;
     color: black;
     font-size: 25px;
     padding: 5px;
-    background-color: var(--fourth-color);
     overflow: hidden;
-    width: 100%;
+    width: 80%;
+    background-color: var(--fourth-color);
+    border: 1px solid #ccc;
 }
 
 .ingredients-container {

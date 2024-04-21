@@ -65,11 +65,11 @@ const TextParameter = ({ parameter, setParameter, formType }) => {
       <div>
         <h3>{formType}</h3>
         <input
-          className="text-input"
-          type="text"
-          placeholder={placeholderText}
-          value={parameter}
-          onChange={(event) => setParameter(event.target.value)}
+            className="text-input-create"
+            type="text"
+            placeholder={placeholderText}
+            value={parameter}
+            onChange={(event) => setParameter(event.target.value)}
         />
       </div>
     );
@@ -170,7 +170,7 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            add(" " + inputValue);
+            add(inputValue);
             setInputValue('');
         }
     };
@@ -181,13 +181,15 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
                 <h3>{formType}</h3>
                 {parameter.map((item, index) => (
                     <div className='array-create' key={index}>
-                        <button type="button" onClick={() => remove(index)}>X</button>
-                        <span>{item}</span>
+                        <div className="array-item">
+                            <span>{formType === "Instructions" ? index + 1 + ". " : ""}{item}</span> {/* Conditionally add numbers for instructions */}
+                            <button type="button" className="remove-button-create" onClick={() => remove(index)}>X</button>
+                        </div>
                     </div>
                 ))}
             </div>
             <div>
-                <div className='array-input-box-create'>{inputValue ? '' : '"Enter" for another input'}</div>
+                <div className='array-input-box-create'>{inputValue ? '' : `Enter ${formType}`}</div>
                 <input
                     type="text"
                     value={inputValue}
@@ -198,7 +200,6 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
         </div>
     )
 };
-
 
 const CreateRecipeForm = () => {
     const [title, setTitle] = useState("");
