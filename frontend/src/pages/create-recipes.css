@@ -111,7 +111,7 @@
 }
 
 .create-recipe-button-create:hover {
-    background-color: #4CAF50;
+    background-color: var(--seventh-color);
 }
 
 .text-input-create::placeholder {
