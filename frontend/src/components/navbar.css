@@ -83,3 +83,20 @@
       padding-left: 0;
   }
 }
+
+.nav-saved-recipes-button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+
+  text-decoration: none;
+  color: var(--sixth-color);
+  
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-saved-recipes-button:hover {
+  color: var(--seventh-color);
+}
