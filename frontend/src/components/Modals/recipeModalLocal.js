@@ -57,7 +57,7 @@ const Form = (recipe) => {
     let cuisineArr = (callRecipe.cuisines);
     let holdCuisArr = [];
     for (var i = 0; i < cuisineArr.length; i++) {
-        if (cuisineArr[i] !== null ) {
+        if (cuisineArr[i] !== null && cuisineArr[i] !== "") {
             if (i !== cuisineArr.length-1) {
                 holdCuisArr[i] = cuisineArr[i]+ ', ';
             } else {
@@ -76,18 +76,20 @@ const Form = (recipe) => {
     let dietArr = callRecipe.diets;
     
     for(var i=0; i<dietArr.length; i++) {
-        if (dietArr[i] === 'Vegan') {
-            veganBool = true;
-        } else if (dietArr[i] === 'Vegetarian') {
-            vegtrnBool = true;
-        } else if (dietArr[i] === 'Pescatarian') {
-            pescBool=true;
-        } else if (dietArr[i] === 'Ketogenic') {
-            ketoBool= true;
-        } else if(dietArr[i] === 'Dairy Free') {
-            dfBool=true;
-        } else if(dietArr[i] === 'Gluten Free') {
-            gfBool=true;
+        if (dietArr[i] != null && dietArr != "") {
+            if (dietArr[i].toLowerCase().replace(" ", "").trim() === 'vegan') {
+                veganBool = true;
+            } else if (dietArr[i].toLowerCase().replace(" ", "").trim() === 'vegetarian') {
+                vegtrnBool = true;
+            } else if (dietArr[i].toLowerCase().replace(" ", "").trim() === 'pescatarian') {
+                pescBool=true;
+            } else if (dietArr[i].toLowerCase().replace(" ", "").trim() === 'ketogenic') {
+                ketoBool= true;
+            } else if(dietArr[i].toLowerCase().replace(" ", "").trim() === 'dairyfree') {
+                dfBool=true;
+            } else if(dietArr[i].toLowerCase().replace(" ", "").trim() === 'glutenfree') {
+                gfBool=true;
+            }
         }
     }
     
