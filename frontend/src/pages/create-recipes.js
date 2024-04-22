@@ -182,7 +182,7 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
                 {parameter.map((item, index) => (
                     <div className='array-create' key={index}>
                         <div className="array-item">
-                            <span>{formType === "Instructions" ? index + 1 + ". " : ""}{item}</span> {/* Conditionally add numbers for instructions */}
+                            <span>{formType === "Instructions" ? index + 1 + ". " : ""}{item}</span>
                             <button type="button" className="remove-button-create" onClick={() => remove(index)}>X</button>
                         </div>
                     </div>
@@ -253,7 +253,10 @@ const CreateRecipeForm = () => {
                     <li><TextParameter parameter={image} setParameter={setImage} formType="Image" /></li>
                     <li><TextParameter parameter={sourceURL} setParameter={setsourceURL} formType="Source URL" /></li>
                     <li><NumberParameter parameter={servings} setParameter={setServings} formType="Servings" /></li>
-                    <li><NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time" /></li>
+                    <li style={{ display: "flex", alignItems: "center" }}>
+                        <NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time" />
+                        <div className="timer"></div>
+                    </li>
                     <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions" /></li>
                     <li><ArrayParameter parameter={extendedIngredients} setParameter={setExtendedIngredients} formType="Ingredients" /></li>
                     <li className="button-container">

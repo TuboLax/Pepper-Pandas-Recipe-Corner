@@ -165,7 +165,10 @@ const Form = (recipe) => {
             <>
                 <p></p>
                 <span style={{padding:'5px'}}> <b> Servings: </b> {callRecipe.servings} </span>
-                <span style={{padding:'5px'}}> <b> Preparation Time: </b> {callRecipe.readyInMinutes} Minutes </span>
+                <span style={{ display: "inline-flex", alignItems: "center", marginRight: "10px" }}>
+                    <b>Preparation Time:</b> {callRecipe.readyInMinutes} Minutes 
+                    <div className="timer"></div>
+                </span>
             </>
             <>
             <div className='cuisTagsBox'>

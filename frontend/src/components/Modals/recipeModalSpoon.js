@@ -170,7 +170,9 @@ const Form = (ID) => {
                     <>
                         <p></p>
                         <span style={{padding:'15px'}}> <b> Servings: </b> {recipes.servings}</span>
-                        <span style={{padding:'15px'}}><b> Preparation Time: </b> {recipes.readyInMinutes} Minutes </span>
+                        <span style={{ display: "inline-flex", alignItems: "center", marginRight: "10px" }}>
+                            <b>Preparation Time</b> <div className="timer"></div> {recipes.readyInMinutes} Minutes 
+                        </span>
                         <span style={{padding:'15px'}}><b> Popularity Score: </b> {spoonScore} / 100 </span>
                     </>
                     <>
