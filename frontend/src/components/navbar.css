@@ -11,6 +11,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--fifth-color);
+  color: var(--second-color);
   padding: 10px 5vw;
   position: fixed;
   top: 0;
@@ -90,13 +91,10 @@
   outline: none;
   border: none;
 
+  color: var(--second-color);
+
   text-decoration: none;
-  color: var(--sixth-color);
   
   font-size: 20px;
   font-weight: bold;
-}
-
-.nav-saved-recipes-button:hover {
-  color: var(--seventh-color);
 }

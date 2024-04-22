@@ -121,7 +121,7 @@ input[type="checkbox"]{
     height:18px;
 }
 
-a{
+/* a{
     color: var(--sixth-color);
 }
 a:visited{
@@ -136,7 +136,7 @@ a:active{
 
 a:invalid{
     color:black;
-}
+} */
 
 /* Specific for Local Modal */
 
