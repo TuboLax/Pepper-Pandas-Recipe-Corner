@@ -36,11 +36,13 @@ export const RecipeModalSpoon = (recipeID) => {
                             ID = {recipeID}
                         />
                         <button className='closeModal' onClick={toggleModal}> Close </button>
+                        <div className='printButton'>
                         <ReactToPrint
-                            trigger={() => <button className='auth-button'>Print</button>}
+                            trigger={() => <button className='printButton'>Print</button>}
                             content={() => componentRef}
                             pageStyle={pageStyle}
                         />
+                        </div>
                         <div className='borderImg'></div>
                     </div>
                 </div>

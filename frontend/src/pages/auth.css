@@ -46,7 +46,7 @@ label {
 
 .auth-button {
   padding: 10px 20px;
-  background-color: var(--third-color);
+  background-color: var(--sixth-color);
   color: var(--fourth-color);
   border: none;
   border-radius: 5px;
@@ -55,4 +55,8 @@ label {
 
 .form-group.recaptcha {
   margin-top: 10px;
+}
+
+.auth-button:hover{
+  background-color: var(--seventh-color);
 }

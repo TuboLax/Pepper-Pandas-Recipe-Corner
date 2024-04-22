@@ -208,25 +208,28 @@ const SavedRecipesForm = () => {
     const isOwner = (recipe) => recipe.userOwner === userID;
 
     return (
-        <ul>
+        <ul className='recipeList'>
             {savedRecipes.map((recipe) => (
-                <li key={recipe._id}>
-                    <div className="front-recipe-display">
-                        <h3>{recipe.title}</h3>
-                        <img src={recipe.image} alt={recipe.title}></img>
+                <li key={recipe._id} className='recipeListItem'>
+                    <h2>{recipe.title}</h2>
+                    <div className='recImg'>
+                        <img src={recipe.image} alt={recipe.title} className='search-recipe-image'></img>
                     </div>
-
-                    <div className="buttons">
+                    <div className="modalBG">
                         <RecipeModalLocal
                             recipeKey = {recipe}
                         />
-
-                        {isOwner(recipe) && (
-                            <button className='auth-button' onClick={() => startUpdating(recipe)}>Edit Recipe</button>
-                        )}
-
-                        <button className='auth-button' onClick={() => deleteRecipe(recipe._id)}>Delete Recipe</button>
                     </div>
+                    <br></br>
+                    <div className='deleteBG'>
+                    <button className='auth-button' onClick={() => deleteRecipe(recipe._id)}>Delete Recipe</button>
+                    </div>
+                    <br></br>
+                    {isOwner(recipe) && (
+                        <div className='editBG'>
+                        <button className='auth-button' onClick={() => startUpdating(recipe)}>Edit Recipe</button>
+                        </div>
+                    )}
 
                     {isUpdating === recipe._id && (
                         <RecipeEditModal

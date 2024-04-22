@@ -36,7 +36,7 @@ export const RecipeModalLocal = (recipeKey) => {
                         />
                         <button className='closeModal' onClick={toggleModal}>Close</button>
                         <ReactToPrint
-                            trigger={() => <button className='auth-button'>Print</button>}
+                            trigger={() => <button className='printButton'>Print</button>}
                             content={() => componentRef}
                             pageStyle={pageStyle}
                         />
