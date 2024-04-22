@@ -124,3 +124,8 @@
     font-style: italic;
     opacity: 1;
 }
+
+.remove-button-create {
+    margin-left: 10px;
+    border-radius: 10%;
+}
