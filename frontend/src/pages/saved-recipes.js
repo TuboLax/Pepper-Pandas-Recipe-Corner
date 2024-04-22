@@ -35,7 +35,7 @@ export const SavedRecipes = () => {
                 <section className="content">
                 <p className="sign-in-message">
                     Please sign in to view your Saved Recipes!<br/>
-                    Click <Link to="/auth">here</Link> to sign in.
+                    Click <Link to="/auth" className="link-color">here</Link> to sign in.
                 </p>
                 </section>
                 <footer className="footer">
@@ -54,8 +54,8 @@ export const SavedRecipes = () => {
                 <h1> Pepper's Favorite </h1>
             </header>
             <GroceryList />
+            <SavedBar />
             <section className="my-recipes">
-                <SavedBar />
                 <SavedRecipesForm />
             </section>
             <footer>
@@ -213,39 +213,47 @@ const SavedRecipesForm = () => {
     const isOwner = (recipe) => recipe.userOwner === userID;
 
     return (
-        <ul className='recipeList'>
-            {savedRecipes.map((recipe) => (
-                <li key={recipe._id} className='recipeListItem'>
-                    <h2>{recipe.title}</h2>
-                    <div className='recImg'>
-                        <img src={recipe.image} alt={recipe.title} className='search-recipe-image'></img>
-                    </div>
-                    <div className="modalBG">
-                        <RecipeModalLocal
-                            recipeKey = {recipe}
-                        />
-                    </div>
-                    <br></br>
-                    <div className='deleteBG'>
-                    <button className='auth-button' onClick={() => deleteRecipe(recipe._id)}>Delete Recipe</button>
-                    </div>
-                    <br></br>
-                    {isOwner(recipe) && (
-                        <div className='editBG'>
-                        <button className='auth-button' onClick={() => startUpdating(recipe)}>Edit Recipe</button>
-                        </div>
-                    )}
+        <div>
+            {savedRecipes.length === 0 ? (
+                <div className="empty-cookbook-message">
+                    <p>Your cookbook looks empty, add your favorites here!</p>
+                </div>
+            ) : (
+                <ul className='recipeList'>
+                    {savedRecipes.map((recipe) => (
+                        <li key={recipe._id} className='recipeListItem'>
+                            <h2>{recipe.title}</h2>
+                            <div className='recImg'>
+                                <img src={recipe.image} alt={recipe.title} className='search-recipe-image'></img>
+                            </div>
+                            <div className="modalBG">
+                                <RecipeModalLocal
+                                    recipeKey = {recipe}
+                                />
+                            </div>
+                            <br></br>
+                            <div className='deleteBG'>
+                            <button className='auth-button' onClick={() => deleteRecipe(recipe._id)}>Delete Recipe</button>
+                            </div>
+                            <br></br>
+                            {isOwner(recipe) && (
+                                <div className='editBG'>
+                                <button className='auth-button' onClick={() => startUpdating(recipe)}>Edit Recipe</button>
+                                </div>
+                            )}
 
-                    {isUpdating === recipe._id && (
-                        <RecipeEditModal
-                            recipe = {recipe}
-                            onUpdate = {(updatedRecipeData) => updateRecipe(recipe._id, updatedRecipeData)}
-                            onClose = {handleClose}
-                        />
-                    )}
-                </li>
-            ))}
-        </ul>
+                            {isUpdating === recipe._id && (
+                                <RecipeEditModal
+                                    recipe = {recipe}
+                                    onUpdate = {(updatedRecipeData) => updateRecipe(recipe._id, updatedRecipeData)}
+                                    onClose = {handleClose}
+                                />
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
     );
 };
 

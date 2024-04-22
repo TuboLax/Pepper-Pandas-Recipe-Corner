@@ -22,7 +22,7 @@ main {
 }
 
 .auth-container h2 {
-  color: var(--third-color);
+  color: var(--sixth-color);
   font-size: 24px;
   font-family:Arial, sans-serif;
 }

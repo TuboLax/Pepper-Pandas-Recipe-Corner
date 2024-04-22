@@ -6,11 +6,11 @@
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 300px;
-    background-color: #f0f0f0;
+    background-color: var(--fourth-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
+    color: black;
 }
 
 .settings-content {
@@ -78,4 +78,12 @@
 
 .modal-content .delete-account-btn {
     margin-top: 20px;
+}
+
+.link-color {
+    color: var(--sixth-color);
+}
+
+.confrim-text {
+    color: black;
 }

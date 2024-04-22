@@ -8,10 +8,12 @@
   --seventh-color: #37803a; /* button hover color*/
   --eigth-color: #fff; /* form background colot$*/
   --pepper-logo: url('./assets/logos/pepper-panda.png');
+  --about-image: url('./assets/logos/welcome.jpg');
   --border-lrg: url('./assets/borders/bamboo_border1080.png');
   --border-sml: url('./assets/borders/bamboo_border132.png');
   --first-IMG: url('./assets/borders/firstColourLIGHT.JPG');
   --timer-icon: url('./assets/icons/timer.png');
+  --gearIcon: url('./assets/icons/gear_icon.png');
 }
 
 .darkMode {
@@ -24,10 +26,12 @@
   --seventh-color:#af332a;/* button hover color*/
   --eigth-color: #4a4a4a;
   --pepper-logo: url('./assets/logos/evil_pepper.png');
+  --about-image: url('./assets/logos/welcome_Dark.jpg');
   --border-lrg: url('./assets/borders/bamboo_border1080_dark.png');
   --border-sml: url('./assets/borders/bamboo_border132_dark.png');
   --first-IMG: url('./assets/borders/firstColourDARK.JPG');
   --timer-icon: url('./assets/icons/timer_Dark.png');
+  --gearIcon: url('./assets/icons/gear_icon_dark.png');
 }
 
 body {

@@ -41,9 +41,11 @@
   
   /* Adds a background color to the top navigation */
   .saved-topnav {
-  background-color: var(--third-color);
+  margin-top: 10px;
+  background-color: var(--sixth-color);
   width: 205px;
   overflow: hidden;
+  border-radius: 5%;
   }
   
   /* Dropdown container - needed to position the dropdown content */

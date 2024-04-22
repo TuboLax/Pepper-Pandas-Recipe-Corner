@@ -2,3 +2,26 @@
     margin-top: 100px;
     margin-bottom: 300px;
   }
+
+.link-color {
+    color: var(--sixth-color);
+}
+
+.empty-cookbook-message {
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 300px;
+  background-color: var(--fourth-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  line-height: 1.5;
+  color: black;
+}
+
+.empty-cookbook-message p {
+  margin: 0;
+}

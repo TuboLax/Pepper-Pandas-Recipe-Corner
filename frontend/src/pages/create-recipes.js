@@ -13,8 +13,8 @@ import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 
 
-const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Ketogenic", "Gluten Free", "Dairy Free", "Pescatarian"]; // Include Pescatarian
-const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, keto, gluten_free, dairy_free, pescatarian]; // Include Pescatarian
+const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Ketogenic", "Gluten Free", "Dairy Free", "Pescatarian"];
+const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, keto, gluten_free, dairy_free, pescatarian];
 
 const GLOBAL_CUISINES = ["African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese",
     "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
@@ -73,7 +73,7 @@ const TextParameter = ({ parameter, setParameter, formType }) => {
         />
       </div>
     );
-  }; 
+};
 
 const NumberParameter = ( {parameter, setParameter, formType} ) => {
     return (
@@ -219,6 +219,11 @@ const CreateRecipeForm = () => {
         event.preventDefault();
 
         try {
+            if (!userID) {
+                alert("You must be logged in to create a recipe.");
+                return;
+            }
+
             if (title.trim() === "" || readyInMinutes === "" || instructions.length === 0 || extendedIngredients.length === 0) {
                 alert("Title/Cooking Time/Instructions/Ingredients is missing")
             } else {
@@ -270,4 +275,4 @@ const CreateRecipeForm = () => {
     );
 }
 
-export default CreateRecipe;
+export default CreateRecipeForm;

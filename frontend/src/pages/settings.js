@@ -39,8 +39,8 @@ const DeleteAccountModal = ({ show, onClose, onDelete }) => {
             <div className="modal">
                 <div className="modal-content">
                     <span className="close" onClick={onClose}>&times;</span>
-                    <h2>Confirm Account Deletion</h2>
-                    <p>Are you sure you want to delete your account?</p>
+                    <h2 className="confirm-settings confrim-text">Confirm Account Deletion</h2>
+                    <p className="confirm-settings confrim-text">Are you sure you want to delete your account?</p>
                     <div>
                         <input 
                             type="password" 
@@ -101,7 +101,7 @@ export const Settings = () => {
                 <section className="content">
                 <p className="sign-in-message">
                     Please sign in to view your settings!<br/>
-                    Click <Link to="/auth">here</Link> to sign in.
+                    Click <Link to="/auth" className="link-color">here</Link> to sign in.
                 </p>
                 </section>
                 <footer className="footer">

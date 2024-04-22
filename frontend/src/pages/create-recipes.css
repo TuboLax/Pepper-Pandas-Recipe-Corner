@@ -136,5 +136,5 @@
     height: 30px;
     border-radius: 50%;
     background: var(--timer-icon) no-repeat center center;
-    background-size: contain; /* Adjust as needed */
+    background-size: contain;
 }
