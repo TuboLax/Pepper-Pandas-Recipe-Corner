@@ -8,7 +8,9 @@
   --seventh-color: #37803a; /* button hover color*/
   --eigth-color: #fff; /* form background colot$*/
   --pepper-logo: url('./assets/logos/pepper-panda.png');
-  --border-lrg: url('./assets/borders/bamboo_border1080.png')
+  --border-lrg: url('./assets/borders/bamboo_border1080.png');
+  --border-sml: url('./assets/borders/bamboo_border132.png');
+  --first-IMG: url('./assets/borders/firstColourLIGHT.JPG');
 }
 
 .darkMode {
@@ -22,6 +24,8 @@
   --eigth-color: #4a4a4a;
   --pepper-logo: url('./assets/logos/evil_pepper.png');
   --border-lrg: url('./assets/borders/bamboo_border1080_dark.png');
+  --border-sml: url('./assets/borders/bamboo_border132_dark.png');
+  --first-IMG: url('./assets/borders/firstColourDARK.JPG');
 }
 
 body {

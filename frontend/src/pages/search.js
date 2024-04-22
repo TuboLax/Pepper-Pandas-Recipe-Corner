@@ -5,10 +5,11 @@ import axios from 'axios';
 import { RecipeModalSpoon } from '../components/Modals/recipeModalSpoon.js';
 import { RecipeModalLocal } from '../components/Modals/recipeModalLocal.js';
 import { userGetUserID } from '../hooks/useGetUserID';
+import GroceryList from '../components/grocerylist.js';
 
 let ALTERNATE;
 
-const SaveSpoonacular = ( {recipeID, recipeTitle} ) => {
+export const SaveSpoonacular = ( {recipeID, recipeTitle} ) => {
     const SpoonID = recipeID;
     const SpoonTitle = recipeTitle;
     const userID = userGetUserID();
@@ -115,7 +116,7 @@ const SaveLocal = ( {recipeID} ) => {
     }
 
     return (
-        <button
+        <button className='search-save-button'
             onClick={() => save()}
             disabled={isLocalSaved() }
         >
@@ -230,7 +231,7 @@ const GetRecipes = () => {
                 break;
         }
     }, []);
-
+console.log(recipes);
     return (
         <ul className='recipeList'>
             {recipes.map((recipe) => (
@@ -239,13 +240,19 @@ const GetRecipes = () => {
                     <div>
                         <h2 className='recipeListItemTitle'>{recipe.title}</h2>
                     </div>
-                    <img src={recipe.image} alt={recipe.title} id="recipeImage" className='search-recipe-image'/>
-                    {(ALTERNATE) ? (<RecipeModalLocal recipeKey = {recipe}/>) : (<RecipeModalSpoon recipeID = {recipe.id}/>)}
-                    {(ALTERNATE) ? (<SaveLocal recipeID = {recipe._id}/>) : (<SaveSpoonacular 
-                        recipeID = {recipe.id}
-                        recipeTitle = {recipe.title}    
-                    />)}
-                    
+                    <div className='recImg'>
+                        <img src={recipe.image} alt={recipe.title} className='search-recipe-image'/>
+                    </div>
+                        <div className='modalBG'>
+                            {(ALTERNATE) ? (<RecipeModalLocal recipeKey = {recipe}/>) : (<RecipeModalSpoon recipeID = {recipe.id}/>)}
+                        </div>
+                        <br></br>
+                        <div className='saveBG'>
+                            {(ALTERNATE) ? (<SaveLocal recipeID = {recipe._id}/>) : (<SaveSpoonacular 
+                                recipeID = {recipe.id}
+                                recipeTitle = {recipe.title}    
+                            />)}
+                        </div>
                 </li>
                 </>
             ))}
@@ -264,6 +271,7 @@ export const Search = () => {
         <h1>Pepper's Findings</h1>
     </header>
         <div>
+            <GroceryList />
             <GetRecipes/>
         </div>
     <footer>

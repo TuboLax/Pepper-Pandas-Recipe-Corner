@@ -3,12 +3,13 @@ import { userGetUserID } from '../hooks/useGetUserID';
 import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
-import { RecipeModalLocal } from '../components/Modals/recipeModalLocal.js';
 import { RecipeModalSpoon } from '../components/Modals/recipeModalSpoon.js';
+import aboutPepperLogo from './../assets/food icons/pescatarian.PNG';
+import {SaveSpoonacular} from './search.js';
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
-    const [savedRecipes, setSavedRecipes] = useState([]);
+    //const [savedRecipes, setSavedRecipes] = useState([]);
 
     const userID = userGetUserID();
 
@@ -21,19 +22,10 @@ export const Home = () => {
                 console.log(err);
             }
         };
-        const fetchSavedRecipe = async () => {
-            try{
-                const response = await axios.get(`http://localhost:3000/recipes/savedRecipes/ids/${userID}`);
-                setSavedRecipes(response.data.savedRecipes);
-            } catch (err) {
-                console.log(err);
-            }
-        };
 
         fetchRecipe();
-        fetchSavedRecipe();
     }, []);
-
+/*
     const saveRecipe = async (recipeID) => {
         try{
             const response = await axios.put("http://localhost:3000/recipes", { recipeID, userID });
@@ -44,7 +36,7 @@ export const Home = () => {
     };
 
     const isRecipeSaved = (id) => savedRecipes.includes(id);
-
+*/
     return (
         <div className="container" style={{ paddingTop: '120px' }}>
             <header>
@@ -52,42 +44,31 @@ export const Home = () => {
                     <div className="logo"></div>
                 </div>
                 <h1>Pepper Panda's Recipe Corner</h1>
-            </header>
-            <GroceryList />
-            <section className="local-recipes">
-                <h2>What to Cook Today!</h2>
-                {recipes.map((recipe) => (
-                    <div className="recipe" key={recipe._id}>
-                        <div className="image-container">
-                            <img src={recipe.image} alt={recipe.title} />
-                            <div className="border-overlay"></div>
-                        </div>
-                        <div className="recipe-content">
-                            <div className="title-container">
-                                <h3>{recipe.title}</h3>
-                                <button
-                                    onClick={() => saveRecipe(recipe._id)}
-                                    disabled={isRecipeSaved(recipe._id)}
-                                >
-                                    {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
-                                </button>
-                            </div>
-                            <div className="instructions">
-                                <h4>Instructions:</h4>
-                                <ol>
-                                    {recipe.instructions.map((step, index) => (
-                                        <li key={index}>{step}</li>
-                                    ))}
-                                </ol>
-                            </div>
-                            <p>Cooking Time: {recipe.readyInMinutes} (min)</p>
-                        </div>
-                        <RecipeModalLocal
-                                recipeKey = {recipe}
-                            />
-                    </div>                
-                ))}
-            </section>
+                </header>
+                <GroceryList />
+                <div className='heading'>
+                    <h2>About Pepper!</h2>
+                    <p>Pepper Panda's Recipe Corner is your home to creating, saving, and searching all your favorite recipes!</p>
+                </div>
+                <div className='container'>
+                <section className='about'>
+                    <div className='about-image'>
+                        <img src={aboutPepperLogo} alt="Pepper Panda" ></img>
+                    </div>
+                    <div className='about-content'>
+                        <h1><b>Pepper's Story</b></h1>
+                        <p>
+                        Pepper the panda was born in the lush bamboo forests of China, where she spent her years exploring 
+                        the wonders of nature and observing her mother's culinary skills. From a young age, Pepper showed an interest in 
+                        cooking, often sneaking into the kitchen to watch her mother prepare delicious meals for their clan.<br/> As she grew 
+                        older, Pepper knew she wanted to share her family's creations with the rest of the world. She created 
+                        <i> Pepper Panda's Recipe Corner</i>, a website where anyone can <b> read, save, and search</b> through Pepper's cookbook.
+                        Pepper was also curious to try out all new recipes from her new friends, so she added a page for anyone to <b>create 
+                            their own recipe</b> too, which will be added to the friend's cookbook!
+                        </p>
+                    </div>
+                </section>
+                </div>
             <section className='home-random-recipes'>
                 <h2>Pepper's Suggestions!</h2>
                 <GetRandom />
@@ -116,14 +97,25 @@ const GetRandom = () => {
     }, []);
 
     return (
-        <ul className='home-random-recipes-list'>
+        <ul className='recipeList'>
             {randomRecipes.map((random) => (
-                <li key={random._id} className='home-random-recipes-list-item'>
+                <li key={random._id} className='recipeListItem'>
                         <h2>{random.title}</h2>
-                        <img src={random.image} alt={random.title} className='home-random-recipes-image'/>
+                        <div className='recImg'>
+                            <img src={random.image} alt={random.title} className='search-recipe-image'/>
+                        </div>
+                        <div className='modalBG'>
                         <RecipeModalSpoon
-                recipeID={random.id}
-            />
+                            recipeID={random.id}
+                        />
+                        </div>
+                        <br></br>
+                        <div className='saveBG'>
+                            <SaveSpoonacular 
+                                recipeID = {random.id}
+                                recipeTitle = {random.title}    
+                            />
+                        </div>
                 </li>
             ))}
         </ul>

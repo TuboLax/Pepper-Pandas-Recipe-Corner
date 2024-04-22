@@ -1,25 +1,76 @@
 .recipeList {
     display: flex;
-    flex-wrap: wrap;
     list-style: none;
+    flex-wrap: wrap;
     justify-content:center; 
     text-align: center;
+    gap: 20px;
 }
 
 .recipeListItem {
-    width: 350px;
-    height: 350px;
-    margin: 10px;
-    padding-bottom: 25px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 220px 280px;
+    grid-template-rows: 120px 50px 50px 50px 40px;
+    gap: 20px;
+    border: 3px solid var(--third-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: var(--fifth-color);
+    width:530px;
   }
 
 .recipeListItemTitle {
-    overflow-wrap: break-word;  
+    overflow-wrap: break-word;
+    padding-left: 15px;
 }
 
-#recipeImage{
-    background-color: var(--third-color);
+.search-recipe-image{
+    display: flex;
     padding: 10px;
     height: 250px;
     width: 250px;
+    border-image: var(--border-sml);
+    border-image-repeat:unset;
+    border-image-width: 100%;
+    border-image-outset:5px;
+}
+
+.search-save-button{
+    padding: 10px 20px;
+    background-color: var(--sixth-color);
+    color: var(--fourth-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width:75%;
+    height:40px;
+}
+
+.search-save-button:hover{
+    background-color: var(--seventh-color);
+}
+
+.recImg{
+    padding-top: 60px;
+    display: flex;
+}
+
+.modalBG, .saveBG, .editBG, .deleteBG{
+    display: block;
+    background-image: var(--first-IMG);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 180px;
+    margin: 0px 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding-top: 6px;
+}
+
+/* For Saved Recipes */
+
+.deleteBG{
+    width:70%;
+    height:40px;
 }
