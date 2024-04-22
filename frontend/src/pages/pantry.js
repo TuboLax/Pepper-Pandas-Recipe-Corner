@@ -79,7 +79,7 @@ export const Pantry = () => {
                                 value={inputIngredientValue}
                                 onChange={handleInputChange}
                                 onKeyPress={(e) => {
-                                    if (e.key === 'Enter' && inputIngredientValue != "") {
+                                    if (e.key === 'Enter' && inputIngredientValue.trim() != "") {
                                         addItemToIngredientList(inputIngredientValue);
                                         setIngredientValue('');
                                     }
