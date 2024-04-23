@@ -270,10 +270,10 @@ export const Search = () => {
         </div>
         <h1>Pepper's Findings</h1>
     </header>
-        <div>
-            <GroceryList />
+        <GroceryList />
+        <section className="search-spacing">
             <GetRecipes/>
-        </div>
+        </section>
     <footer>
         <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>
     </footer>
