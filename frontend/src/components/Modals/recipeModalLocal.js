@@ -183,14 +183,12 @@ const Form = (recipe) => {
                         <div className='ingBox'>
                             <h3 className='ingHead'><b> Ingredients: </b></h3>
                             <div>
-                                {callRecipe.extendedIngredients.map((ing, index) => {
-                                    return ( // needed a return for the mapping
-                                        <div key={index}>
-                                            <input className='ingCheck' type="checkbox" name={ing}/>
-                                            <label className='ingLabel'> {ing}</label>
-                                        </div>
-                                    );
-                                })}
+                                {callRecipe.extendedIngredients.map((ing, index) => (
+                                    <div key={index}>
+                                        <input className='ingCheck' type="checkbox" name={ing}/>
+                                        <label className='ingLabel'> {ing}</label>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         <div className='dirBox'>
@@ -198,7 +196,7 @@ const Form = (recipe) => {
                             <ol>
                                 <div className='directionsList'>
                                     {callRecipe.instructions.map((step, index) => (
-                                        <li key={index}>{step}</li>
+                                        <li key={index} dangerouslySetInnerHTML={{ __html: step }} />
                                     ))}
                                 </div>
                             </ol>
