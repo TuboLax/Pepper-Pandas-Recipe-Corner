@@ -1,11 +1,3 @@
-:root {
-  --gearIcon: url('../assets/icons/gear_icon.png');
-}
-
-.darkMode {
-  --gearIcon: url('../assets/icons/gear_icon_dark.png');
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;

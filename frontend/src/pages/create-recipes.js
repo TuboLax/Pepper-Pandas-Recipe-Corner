@@ -13,8 +13,8 @@ import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 
 
-const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Ketogenic", "Gluten Free", "Dairy Free", "Pescatarian"]; // Include Pescatarian
-const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, keto, gluten_free, dairy_free, pescatarian]; // Include Pescatarian
+const GLOBAL_DIETS = ["Vegetarian", "Vegan", "Ketogenic", "Gluten Free", "Dairy Free", "Pescatarian"];
+const GLOBAL_DIETS_ASSETS = [vegitarian, vegan, keto, gluten_free, dairy_free, pescatarian];
 
 const GLOBAL_CUISINES = ["African", "Asian", "American", "British", "Cajun", "Caribbean", "Chinese",
     "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian",
@@ -65,15 +65,15 @@ const TextParameter = ({ parameter, setParameter, formType }) => {
       <div>
         <h3>{formType}</h3>
         <input
-          className="text-input"
-          type="text"
-          placeholder={placeholderText}
-          value={parameter}
-          onChange={(event) => setParameter(event.target.value)}
+            className="text-input-create"
+            type="text"
+            placeholder={placeholderText}
+            value={parameter}
+            onChange={(event) => setParameter(event.target.value)}
         />
       </div>
     );
-  }; 
+};
 
 const NumberParameter = ( {parameter, setParameter, formType} ) => {
     return (
@@ -170,7 +170,7 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            add(" " + inputValue);
+            add(inputValue);
             setInputValue('');
         }
     };
@@ -181,13 +181,15 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
                 <h3>{formType}</h3>
                 {parameter.map((item, index) => (
                     <div className='array-create' key={index}>
-                        <button type="button" onClick={() => remove(index)}>X</button>
-                        <span>{item}</span>
+                        <div className="array-item">
+                            <span>{formType === "Instructions" ? index + 1 + ". " : ""}{item}</span>
+                            <button type="button" className="remove-button-create" onClick={() => remove(index)}>X</button>
+                        </div>
                     </div>
                 ))}
             </div>
             <div>
-                <div className='array-input-box-create'>{inputValue ? '' : '"Enter" for another input'}</div>
+                <div className='array-input-box-create'>{inputValue ? '' : `Enter ${formType}`}</div>
                 <input
                     type="text"
                     value={inputValue}
@@ -198,7 +200,6 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
         </div>
     )
 };
-
 
 const CreateRecipeForm = () => {
     const [title, setTitle] = useState("");
@@ -218,6 +219,11 @@ const CreateRecipeForm = () => {
         event.preventDefault();
 
         try {
+            if (!userID) {
+                alert("You must be logged in to create a recipe.");
+                return;
+            }
+
             if (title.trim() === "" || readyInMinutes === "" || instructions.length === 0 || extendedIngredients.length === 0) {
                 alert("Title/Cooking Time/Instructions/Ingredients is missing")
             } else {
@@ -252,7 +258,10 @@ const CreateRecipeForm = () => {
                     <li><TextParameter parameter={image} setParameter={setImage} formType="Image" /></li>
                     <li><TextParameter parameter={sourceURL} setParameter={setsourceURL} formType="Source URL" /></li>
                     <li><NumberParameter parameter={servings} setParameter={setServings} formType="Servings" /></li>
-                    <li><NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time" /></li>
+                    <li style={{ display: "flex", alignItems: "center" }}>
+                        <NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time" />
+                        <div className="timer"></div>
+                    </li>
                     <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions" /></li>
                     <li><ArrayParameter parameter={extendedIngredients} setParameter={setExtendedIngredients} formType="Ingredients" /></li>
                     <li className="button-container">
@@ -266,4 +275,4 @@ const CreateRecipeForm = () => {
     );
 }
 
-export default CreateRecipe;
+export default CreateRecipeForm;

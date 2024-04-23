@@ -4,7 +4,6 @@ import axios from 'axios';
 import GroceryList from '../components/grocerylist';
 import './home.css';
 import { RecipeModalSpoon } from '../components/Modals/recipeModalSpoon.js';
-import aboutPepperLogo from './../assets/food icons/pescatarian.PNG';
 import {SaveSpoonacular} from './search.js';
 
 export const Home = () => {
@@ -53,8 +52,7 @@ export const Home = () => {
                 <div className='container'>
                 <section className='about'>
                     <div className='about-image'>
-                        <img src={aboutPepperLogo} alt="Pepper Panda" ></img>
-                    </div>
+                </div>
                     <div className='about-content'>
                         <h1><b>Pepper's Story</b></h1>
                         <p>

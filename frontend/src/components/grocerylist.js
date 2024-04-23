@@ -85,12 +85,12 @@ const GroceryList = () => {
                             </ul>
                         </div>
                         <div className="input-container">
-                            <div className="translucent-text">{inputValue ? '' : 'Add ingredients here!'}</div>
                             <input
                                 type="text"
                                 className="list-input no-drag"
                                 value={inputValue}
                                 onChange={handleInputChange}
+                                placeholder="Add ingredients here!"
                                 onKeyPress={(e) => {
                                     if (e.key === 'Enter' && inputValue.trim() != "") {
                                         addItemToGroceryList(inputValue);

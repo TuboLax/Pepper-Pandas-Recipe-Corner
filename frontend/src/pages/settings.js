@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import './settings.css';
 
 const DeleteAccountModal = ({ show, onClose, onDelete }) => {
@@ -37,8 +39,8 @@ const DeleteAccountModal = ({ show, onClose, onDelete }) => {
             <div className="modal">
                 <div className="modal-content">
                     <span className="close" onClick={onClose}>&times;</span>
-                    <h2>Confirm Account Deletion</h2>
-                    <p>Are you sure you want to delete your account?</p>
+                    <h2 className="confirm-settings confrim-text">Confirm Account Deletion</h2>
+                    <p className="confirm-settings confrim-text">Are you sure you want to delete your account?</p>
                     <div>
                         <input 
                             type="password" 
@@ -97,7 +99,10 @@ export const Settings = () => {
                     <h1>Pepper's Settings</h1>
                 </header>
                 <section className="content">
-                    <p className="sign-in-message">Please sign in to view your settings!</p>
+                <p className="sign-in-message">
+                    Please sign in to view your settings!<br/>
+                    Click <Link to="/auth" className="link-color">here</Link> to sign in.
+                </p>
                 </section>
                 <footer className="footer">
                     <p>&copy; 2024 Pepper Panda's Recipe Corner. All rights reserved.</p>

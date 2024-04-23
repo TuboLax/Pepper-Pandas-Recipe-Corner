@@ -34,6 +34,7 @@
     border-image-repeat:unset;
     border-image-width: 100%;
     border-image-outset:5px;
+    
 }
 
 .search-save-button{
@@ -73,4 +74,8 @@
 .deleteBG{
     width:70%;
     height:40px;
+}
+
+.search-spacing{
+    padding-top: 50px;
 }

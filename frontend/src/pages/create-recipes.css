@@ -1,6 +1,7 @@
 .my-recipes-create {
     padding-top: 50px;
 }
+
 /* Content Styles */
 .content-create {
     display: flex;
@@ -74,10 +75,15 @@
     margin-top: 10px;
 }
 
+.array-create .array-item {
+    display: flex;
+    align-items: center;
+}
+
 .array-create button {
     height: 20px;
     width: 20px;
-    margin-right: 5px;
+    margin-left: auto; /* Pushes the button to the right */
 }
 
 .border-create {
@@ -117,4 +123,18 @@
 .text-input-create::placeholder {
     color: #999;
     font-style: italic;
+    opacity: 1;
+}
+
+.remove-button-create {
+    margin-left: 10px;
+    border-radius: 10%;
+}
+
+.timer {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--timer-icon) no-repeat center center;
+    background-size: contain;
 }
