@@ -75,18 +75,19 @@ const TextParameter = ({ parameter, setParameter, formType }) => {
     );
 };
 
-const NumberParameter = ( {parameter, setParameter, formType} ) => {
+const NumberParameter = ({ parameter, setParameter, formType }) => {
     return (
         <div>
             <h3>{formType}</h3>
             <input
-            type="number"
-            min="0"
-            value={parameter}
-            onChange={(event) => setParameter(event.target.value)} />
-      </div>
-    )
-}
+                type="number"
+                min="0"
+                value={parameter}
+                onChange={(event) => setParameter(event.target.value)}
+                className="number-border-input" />
+        </div>
+    );
+};
 
 const DietsParameter = ({ parameter, setParameter }) => {
 
@@ -189,12 +190,12 @@ const ArrayParameter = ({ parameter, setParameter, formType }) => {
                 ))}
             </div>
             <div>
-                <div className='array-input-box-create'>{inputValue ? '' : `Enter ${formType}`}</div>
-                <input
-                    type="text"
+                <div className='array-input-box-create'>{inputValue ? '' : `Enter ${formType} one at a time:`}</div>
+                <textarea
                     value={inputValue}
                     onChange={handleInputChange}
-                    onKeyPress={handleKeyPress}
+                    onKeyPress={handleKeyPress} 
+                    className="array-input" // Use the class for input styling
                 />
             </div>
         </div>
