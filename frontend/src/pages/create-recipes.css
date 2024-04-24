@@ -138,3 +138,21 @@
     background: var(--timer-icon) no-repeat center center;
     background-size: contain;
 }
+
+.array-input {
+    width: 80%;
+    height: 50px;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+    border: 1px solid #ccc;
+    font-family: sans-serif;
+    resize: vertical;
+    padding-right: 5px;
+}
+
+.number-border-input {
+    border: 1px solid #ccc;
+    border-radius: 5%;
+    height: 25px;
+    width: 100px;
+}
