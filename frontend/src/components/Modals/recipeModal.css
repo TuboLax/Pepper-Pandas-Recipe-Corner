@@ -39,12 +39,17 @@ body.overlayScrollBlock {
 .closeModal{
     position:fixed;
     right:13%;
-    bottom: 72%;   
+    bottom: 12%;   
     padding: 10px 20px;
     border-radius: 5px;
     background-color: var(--sixth-color);
     color:var(--fourth-color);
 }
+
+.closeModal:hover{
+    background-color: var(--seventh-color);
+}
+
 
 .printButton{
     position: fixed;
@@ -52,9 +57,14 @@ body.overlayScrollBlock {
     border-radius: 5px;
     background-color: var(--sixth-color);
     color:var(--fourth-color);
-    right:13%;
-    bottom: 67%;
+    right:22%;
+    bottom: 12%;
 }
+
+.printButton:hover{
+    background-color: var(--seventh-color);
+}
+
 
 .recName{
     padding-top: 55px;
@@ -121,22 +131,22 @@ input[type="checkbox"]{
     height:18px;
 }
 
-/* a{
+.sourceURL{
     color: var(--sixth-color);
 }
-a:visited{
+.sourceURL:visited{
     color:var(--sixth-color)
 }
-a:hover{
+.sourceURL:hover{
     color: var(--seventh-color);
 }
-a:active{
+.sourceURL:active{
     color: var(--seventh-color);
 }
 
-a:invalid{
+.sourceURL:invalid{
     color:black;
-} */
+}
 
 /* Specific for Local Modal */
 
@@ -168,8 +178,8 @@ li{
         padding-top: 30px;
     }
     .closeModal{
-        bottom:74%;
-        right: 13%;
+        bottom:12%;
+        right: 12%;
     }
     .dirBox,.ingBox{
         max-height: 230px;
