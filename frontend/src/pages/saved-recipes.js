@@ -180,7 +180,7 @@ const SavedRecipesForm = () => {
         try {
             await axios.delete("http://localhost:3000/recipes/deletedRecipes", { data: { recipeID, userID } });
             setSavedRecipes(savedRecipes.filter(recipe => recipe._id !== recipeID));
-            alert("Recipe Successfully Deleted!"); 
+            alert("Recipe Deleted!"); 
         } catch (err) {
             console.log(err);
         }

@@ -22,15 +22,6 @@ app.use("/auth", userRouter);   //Use the user routes under /auth endpoint
 app.use("/recipes", recipesRouter); //Use the recipe routes under /recipes endpoint
 app.use("/find", spoonacularRouter) // Uses the recipe routes under /find endpoint
 
-/*****  DELETE AFTER PROJECT COMPLETION  *****/
-//get for postman - Lists on webpage
-app.get('/', (req, res) => {
-    res.json({
-        mssg: 'Welcome to the app. I am Pepper Panda'
-    });
-})
-/***** DELETE LATER PROJECT COMPLETION *****/
-
 //Database connection
 //Connect to MongoDB Atlas using the connection string from .env file
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }) 
