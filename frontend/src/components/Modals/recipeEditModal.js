@@ -60,14 +60,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                 type="text"
                                 name="instructions"
                                 value={instruction}
-                                onChange={(element) => handleArrayChange(index, element.target.value, "instructions")}
+                                onChange={(element) =>{
+                                    if(element.target.value.trim() == "") {removeArrayElement(index, "instructions")}
+                                    handleArrayChange(index, element.target.value, "instructions")
+                                }}
                             />
                             <button onClick={() => removeArrayElement(index, "instructions")}> X </button>
                         </div>
                     ))}
-                    <button onClick={() => addArrayElement("instructions")}> 
-                        Add Instruction 
-                    </button>
+                    <button onClick={() => {
+                        if(updatedData.instructions.length > 0) {
+                            if(updatedData.instructions[updatedData.instructions.length - 1].trim() != "")
+                                addArrayElement("instructions");
+                        } else {addArrayElement("instructions")}
+                    }}> Add Instruction </button>
+
                 <p> Ingredients: </p>
                     {updatedData.extendedIngredients.map((ingredient, index) => (
                         <div key={index}>
@@ -75,14 +82,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                 type="text"
                                 name="extendedIngredients"
                                 value={ingredient}
-                                onChange={(element) => handleArrayChange(index, element.target.value, "extendedIngredients")}
+                                onChange={(element) =>{
+                                    if(element.target.value.trim() == "") {removeArrayElement(index, "extendedIngredients")}
+                                    handleArrayChange(index, element.target.value, "extendedIngredients")
+                                }}
                             />
                             <button onClick={() => removeArrayElement(index, "extendedIngredients")}> X </button>
                         </div>
                     ))}
-                    <button onClick={() => addArrayElement("extendedIngredients")}>
-                        Add Ingredient
-                    </button>
+                    <button onClick={() => {
+                        if(updatedData.extendedIngredients.length > 0) {
+                            if(updatedData.extendedIngredients[updatedData.extendedIngredients.length - 1].trim() != "")
+                                addArrayElement("extendedIngredients");
+                        } else {addArrayElement("extendedIngredients")}
+                    }}> Add Ingredient </button>
+
                 <p> Cuisines: </p>
                     {updatedData.cuisines.map((cuisine, index) => (
                         <div key={index}>
@@ -90,14 +104,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                 type="text"
                                 name="cuisines"
                                 value={cuisine}
-                                onChange={(element) => handleArrayChange(index, element.target.value, "cuisines")}
+                                onChange={(element) =>{
+                                    if(element.target.value.trim() == "") {removeArrayElement(index, "cuisines")}
+                                    handleArrayChange(index, element.target.value, "cuisines")
+                                }}
                             />
                             <button onClick={() => removeArrayElement(index, "cuisines")}> X </button>
                         </div>
                     ))}
-                    <button onClick={() => addArrayElement("cuisines")}>
-                        Add Cuisine
-                    </button>
+                    <button onClick={() => {
+                        if(updatedData.cuisines.length > 0) {
+                            if(updatedData.cuisines[updatedData.cuisines.length - 1].trim() != "")
+                                addArrayElement("cuisines");
+                        } else {addArrayElement("cuisines")}
+                    }}> Add Cuisine </button>
+
                 <p> Diets: </p>
                     {updatedData.diets.map((diet, index) => (
                         <div key={index}>
@@ -105,14 +126,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                 type="text"
                                 name="diets"
                                 value={diet}
-                                onChange={(element) => handleArrayChange(index, element.target.value, "diets")}
+                                onChange={(element) =>{
+                                    if(element.target.value.trim() == "") {removeArrayElement(index, "diets")}
+                                    handleArrayChange(index, element.target.value, "diets")
+                                }}
                             />
                             <button onClick={() => removeArrayElement(index, "diets")}> X </button>
                         </div>
                     ))}
-                    <button onClick={() => addArrayElement("diets")}>
-                        Add Diet
-                    </button>
+                    <button onClick={() => {
+                        if(updatedData.instructions.length > 0) {
+                            if(updatedData.diets[updatedData.diets.length - 1].trim() != "")
+                                addArrayElement("diets");
+                        } else {addArrayElement("diets")}
+                    }}> Add Diet </button>
+
                 <p> Source URL: </p>
                 <input type="text" name="sourceURL" value={updatedData.sourceURL} onChange={handleUpdateChange} />
 

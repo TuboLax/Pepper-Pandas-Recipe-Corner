@@ -46,16 +46,6 @@ body.overlayScrollBlock {
     color:var(--fourth-color);
 }
 
-.printButton{
-    position: fixed;
-    padding: 10px 24px;
-    border-radius: 5px;
-    background-color: var(--sixth-color);
-    color:var(--fourth-color);
-    right:13%;
-    bottom: 67%;
-}
-
 .recName{
     padding-top: 55px;
     text-align: center;
@@ -74,7 +64,7 @@ body.overlayScrollBlock {
 
 .ingBox{
     background-color: var(--first-color);
-    width: 45%;
+    width: 43%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     overflow-x: hidden;

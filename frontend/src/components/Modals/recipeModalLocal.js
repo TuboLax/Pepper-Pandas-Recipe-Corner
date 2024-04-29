@@ -1,6 +1,6 @@
 import './recipeModal.css';
 import { useState, useRef } from 'react';
-import ReactToPrint from 'react-to-print'
+import { RecipePrinterLocal} from './recipePrinterLocal'
 import veganLogo from '../../assets/food icons/vegan.png';
 import vegetarianLogo from '../../assets/food icons/vegitarian.png'; 
 import pescLogo from '../../assets/food icons/pescatarian.PNG';
@@ -21,24 +21,19 @@ export const RecipeModalLocal = (recipeKey) => {
         document.body.classList.remove('overlayScrollBlock');
     }
 
-    let componentRef = useRef();
-    const pageStyle = "@page { size: 4in 11in; margin: 2.2in -2.5in 1in -2.5in; }";
-
     return (
         <>
             <button className='auth-button' onClick={toggleModal}> Full Recipe </button>
             {modal && (
-                <div className='modal' ref={(el) => (componentRef = el)}>
+                <div className='modal'>
                     <div className='overlay' onClick={toggleModal}></div>
                     <div className='fullDetails'>
                         <Form
                             recipe = {recipeKey}
                         />
                         <button className='closeModal' onClick={toggleModal}>Close</button>
-                        <ReactToPrint
-                            trigger={() => <button className='printButton'>Print</button>}
-                            content={() => componentRef}
-                            pageStyle={pageStyle}
+                        <RecipePrinterLocal
+                            recipeKey = {recipeKey}
                         />
                     </div>
                 </div>
