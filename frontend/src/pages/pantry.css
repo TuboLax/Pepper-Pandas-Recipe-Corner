@@ -7,7 +7,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
-    width: 50%;
+    width: 65%;
 }
 
 .pantryHeader {
@@ -98,7 +98,7 @@
     margin-left: 15%;
     margin-right: 25%;
     margin-bottom: 25px;
-    width: 60%;
+    width: 80%;
     color: var(--second-color);
     background-color: var(--eigth-color);
     list-style-type: none;
@@ -120,6 +120,50 @@
 }
 
 .buttons {
+    padding-bottom: 10px;
+}
+
+.recipeList {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content:center; 
+    text-align: center;
+    gap: 20px;
+}
+
+.pantryRecipeListItem {
+    display: grid;
+    grid-template-columns: 220px 280px;
+    grid-template-rows: 120px 50px 50px 50px 40px;
+    border: 3px solid var(--third-color);
+    border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
+    background-color: var(--fifth-color);
+    width:80%;
+  }
+
+.pantryRecipeListItemTitle {
+    overflow-wrap: break-word;
+    padding-left: 15px;
+}
+
+.pantryRecImg{
+    padding-top: 20px;
+    display: flex;
+    margin-left: 20%;
+}
+
+.pantryRecipeTitle {
+    margin-left: 15px;
+}
+
+.modalBG {
+    text-align: center;
+}
+
+.saveBG {
+    text-align: center;
 }

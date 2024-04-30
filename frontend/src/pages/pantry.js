@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GroceryList from '../components/grocerylist';
 import './pantry.css';
 import axios from 'axios';
 import { RecipeModalSpoon } from '../components/Modals/recipeModalSpoon';
+import { RecipeModalLocal } from '../components/Modals/recipeModalLocal';
+import { userGetUserID } from '../hooks/useGetUserID';
+import { SaveSpoonacular } from './search.js';
 
 export const Pantry = () => {
     const [ingredientList, setIngredientList] = useState([]);
@@ -30,7 +33,7 @@ export const Pantry = () => {
             ingredientList.forEach((ingredient) => {
                 searchString += ingredient + ",+"
             });
-            searchString += "&number=9&ignorePantry=true";                    //Currently have the number of results set low for testing.
+            searchString += "&number=9&ignorePantry=true";
             
             var response = await axios.get(`http://localhost:3000/find/ingredients/${searchString}`);
             setRecipes(response.data);
@@ -95,17 +98,24 @@ export const Pantry = () => {
                 <div className="recipeDiv">
                     <ul className='pantryRecipeList'>
                         {recipes.map((recipe) => (
-                        <li key={recipe._id} className='pantryRecipe'>
-                            <div>
-                                <h2 className='pantryRecipeTitle'>{recipe.title}</h2>
-                            </div>
-                            <img src={recipe.image} alt={recipe.title} className='recipeImage'/>
-                            <div className='buttons'>
-                                <RecipeModalSpoon
-                                    recipeID = {recipe.id}
-                                />
-                            </div>
-                        </li>
+                            <li key={recipe._id} className='pantryRecipeListItem'>
+                                    <h2 className='pantryRecipeTitle'>{recipe.title}</h2>
+                                    <div className='pantryRecImg'>
+                                        <img src={recipe.image} alt={recipe.title} className='search-recipe-image'/>
+                                    </div>
+                                    <div className='modalBG buttons'>
+                                    <RecipeModalSpoon
+                                        recipeID={recipe.id}
+                                    />
+                                    </div>
+                                    <br></br>
+                                    <div className='saveBG buttons'>
+                                        <SaveSpoonacular 
+                                            recipeID = {recipe.id}
+                                            recipeTitle = {recipe.title}    
+                                        />
+                                    </div>
+                            </li>
                         ))}
                     </ul>
                 </div>

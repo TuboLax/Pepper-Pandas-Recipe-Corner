@@ -71,15 +71,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                     type="text"
                                     name="instructions"
                                     value={instruction}
-                                    onChange={(element) => handleArrayChange(index, element.target.value, "instructions")}
+                                    onChange={(element) =>{
+                                        if(element.target.value.trim() == "") {removeArrayElement(index, "instructions")}
+                                        handleArrayChange(index, element.target.value, "instructions")
+                                    }}
                                 />
                             <button className='edit-rmvButton' onClick={() => removeArrayElement(index, "instructions")}> X </button>
                             </div>
                     ))}
                     </div>
-                    <button className='edit-instChange-addButton' onClick={() => addArrayElement("instructions")}> 
-                        Add Instruction 
-                    </button>
+                    <button className='edit-instChange-addButton' onClick={() => {
+                        if(updatedData.instructions.length > 0) {
+                            if(updatedData.instructions[updatedData.instructions.length - 1].trim() != "")
+                                addArrayElement("instructions");
+                        } else {addArrayElement("instructions")}
+                    }}> Add Instruction </button>
                 </div>
                 <div className='edit-ingChange'>
                     <h3><b> Ingredients: </b></h3>
@@ -90,15 +96,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                     type="text"
                                     name="extendedIngredients"
                                     value={ingredient}
-                                    onChange={(element) => handleArrayChange(index, element.target.value, "extendedIngredients")}
+                                    onChange={(element) =>{
+                                        if(element.target.value.trim() == "") {removeArrayElement(index, "extendedIngredients")}
+                                        handleArrayChange(index, element.target.value, "extendedIngredients")
+                                    }}
                                 />
                                 <button className='edit-rmvButton' onClick={() => removeArrayElement(index, "extendedIngredients")}> X </button>
                             </div>
                     ))}
                     </div>
-                    <button className='edit-ingChange-addButton' onClick={() => addArrayElement("extendedIngredients")}>
-                        Add Ingredient
-                    </button>
+                    <button className='edit-ingChange-addButton' onClick={() => {
+                        if(updatedData.extendedIngredients.length > 0) {
+                            if(updatedData.extendedIngredients[updatedData.extendedIngredients.length - 1].trim() != "")
+                                addArrayElement("extendedIngredients");
+                        } else {addArrayElement("extendedIngredients")}
+                    }}> Add Ingredient </button>
                 </div>
                 <div className='edit-cuisChange'>
                     <h3><b> Cuisines: </b></h3>
@@ -109,15 +121,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                     type="text"
                                     name="cuisines"
                                     value={cuisine}
-                                    onChange={(element) => handleArrayChange(index, element.target.value, "cuisines")}
+                                    onChange={(element) =>{
+                                        if(element.target.value.trim() == "") {removeArrayElement(index, "cuisines")}
+                                        handleArrayChange(index, element.target.value, "cuisines")
+                                    }}
                                 />
                                 <button className='edit-rmvButton' onClick={() => removeArrayElement(index, "cuisines")}> X </button>
                             </div>
                         ))}
                     </div>
-                        <button className='edit-cuisChange-addButton' onClick={() => addArrayElement("cuisines")}>
-                            Add Cuisine
-                        </button>
+                        <button className='edit-cuisChange-addButton' onClick={() => {
+                        if(updatedData.cuisines.length > 0) {
+                            if(updatedData.cuisines[updatedData.cuisines.length - 1].trim() != "")
+                                addArrayElement("cuisines");
+                        } else {addArrayElement("cuisines")}
+                    }}> Add Cuisine </button>
                 </div>
                 <div className='edit-dietChange'>
                 <h3><b> Diets: </b></h3>
@@ -128,15 +146,21 @@ export const RecipeEditModal = ({ recipe, onUpdate, onClose }) => {
                                     type="text"
                                     name="diets"
                                     value={diet}
-                                    onChange={(element) => handleArrayChange(index, element.target.value, "diets")}
+                                    onChange={(element) =>{
+                                        if(element.target.value.trim() == "") {removeArrayElement(index, "diets")}
+                                        handleArrayChange(index, element.target.value, "diets")
+                                    }}
                                 />
                                 <button className='edit-rmvButton' onClick={() => removeArrayElement(index, "diets")}> X </button>
                             </div>
                         ))}
                     </div>
-                        <button className='edit-dietChange-addButton' onClick={() => addArrayElement("diets")}>
-                            Add Diet
-                        </button>
+                        <button className='edit-dietChange-addButton' onClick={() => {
+                        if(updatedData.instructions.length > 0) {
+                            if(updatedData.diets[updatedData.diets.length - 1].trim() != "")
+                                addArrayElement("diets");
+                        } else {addArrayElement("diets")}
+                    }}> Add Diet </button>
                 </div>
                 <div className='edit-srcURLChange'>
                     <h3><b> Source URL: </b></h3>
