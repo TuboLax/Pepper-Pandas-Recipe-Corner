@@ -1,7 +1,5 @@
 import './recipeModal.css';
 import { useState, useEffect, useRef } from 'react';
-import ReactToPrint from 'react-to-print'
-import { RecipePrinterSpoon } from './recipePrinterSpoon';
 import axios from 'axios';
 import veganLogo from '../../assets/food icons/vegan.png';
 import vegetarianLogo from '../../assets/food icons/vegitarian.png'; //corrected my spelling
@@ -32,9 +30,6 @@ export const RecipeModalSpoon = (recipeID) => {
                     <div className='fullDetails'>
                         <Form
                             ID = {recipeID}
-                        />
-                        <RecipePrinterSpoon
-                            recipeID = {recipeID}
                         />
                         <button className='closeModal' onClick={toggleModal}> Close </button>
                         <div className='printButton'>
