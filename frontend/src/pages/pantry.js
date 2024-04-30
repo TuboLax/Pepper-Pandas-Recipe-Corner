@@ -33,7 +33,7 @@ export const Pantry = () => {
             ingredientList.forEach((ingredient) => {
                 searchString += ingredient + ",+"
             });
-            searchString += "&number=3&ignorePantry=true";                    //Currently have the number of results set low for testing.
+            searchString += "&number=9&ignorePantry=true";
             
             var response = await axios.get(`http://localhost:3000/find/ingredients/${searchString}`);
             setRecipes(response.data);
