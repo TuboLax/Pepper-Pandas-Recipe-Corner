@@ -8,7 +8,6 @@ import {SaveSpoonacular} from './search.js';
 
 export const Home = () => {
     const [recipes, setRecipes] = useState([]);
-    //const [savedRecipes, setSavedRecipes] = useState([]);
 
     const userID = userGetUserID();
 
@@ -24,18 +23,7 @@ export const Home = () => {
 
         fetchRecipe();
     }, []);
-/*
-    const saveRecipe = async (recipeID) => {
-        try{
-            const response = await axios.put("http://localhost:3000/recipes", { recipeID, userID });
-            setSavedRecipes(response.data.savedRecipes);
-        } catch (err) {
-            console.log(err);
-        }
-    };
 
-    const isRecipeSaved = (id) => savedRecipes.includes(id);
-*/
     return (
         <div className="container" style={{ paddingTop: '120px' }}>
             <header>

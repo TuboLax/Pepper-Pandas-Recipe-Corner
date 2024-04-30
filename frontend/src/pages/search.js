@@ -41,6 +41,7 @@ export const SaveSpoonacular = ( {recipeID, recipeTitle} ) => {
             const createdRecipe = await axios.post("http://localhost:3000/recipes", recipe);    // Creates the Spoonacular recipe locally
             await axios.put("http://localhost:3000/recipes", { recipeID: createdRecipe.data._id.toString(), userID });  // Saves to the user
             setDisable(true);
+            alert("Spoonacular Recipe Saved!");
         } catch (err) {
             console.log(err)
         }
@@ -106,6 +107,7 @@ const SaveLocal = ( {recipeID} ) => {
         try {
             const response = await axios.put("http://localhost:3000/recipes", { recipeID, userID });
             setSavedRecipes(response.data.savedRecipes);
+            alert("Local Recipe Saved!");
         } catch (err) {
             console.log(err)
         }
