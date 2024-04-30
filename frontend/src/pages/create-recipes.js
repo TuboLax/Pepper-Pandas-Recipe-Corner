@@ -46,7 +46,7 @@ const TextParameter = ({ parameter, setParameter, formType }) => {
     let placeholderText = "";
     switch (formType) {
       case "Title":
-        placeholderText = "Enter Recipe Title (e.g., Panda's Favorite Stir Fry)";
+        placeholderText = "Enter Recipe Title (e.g., Pepper's Favorite Stir Fry)";
         break;
       case "Image":
         placeholderText = "Paste Image URL";
@@ -260,7 +260,7 @@ const CreateRecipeForm = () => {
                     <li><TextParameter parameter={sourceURL} setParameter={setsourceURL} formType="Source URL" /></li>
                     <li><NumberParameter parameter={servings} setParameter={setServings} formType="Servings" /></li>
                     <li style={{ display: "flex", alignItems: "center" }}>
-                        <NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Cooking Time" />
+                        <NumberParameter parameter={readyInMinutes} setParameter={setReadyInMinutes} formType="Preparation Time (Minutes)" />
                         <div className="timer"></div>
                     </li>
                     <li><ArrayParameter parameter={instructions} setParameter={setInstructions} formType="Instructions" /></li>
