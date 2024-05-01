@@ -55,7 +55,7 @@ export const RecipePrinterLocal = (recipeKey) => {
             <ReactToPrint
                 content={() => componentRef.current}
                 trigger={() => (
-                    <button className='auth-button'>Print</button>
+                    <button className='printButton'>Print</button>
                 )}
             />
             <div className='printBody' ref={componentRef}>
