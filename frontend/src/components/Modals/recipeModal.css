@@ -87,7 +87,7 @@ body.overlayScrollBlock {
     text-align: left;
     overflow-x: hidden;
     overflow-y: scroll;
-    max-height: 320px;
+    max-height: 300px;
     border-radius: 10px;
 }
 
@@ -98,7 +98,7 @@ body.overlayScrollBlock {
     text-align: left;
     overflow-x: hidden;
     overflow-y: scroll;
-    max-height: 320px;
+    max-height: 300px;
     border-radius: 10px;
 }
 
