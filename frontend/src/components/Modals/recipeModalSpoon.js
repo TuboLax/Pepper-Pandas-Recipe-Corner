@@ -32,8 +32,6 @@ export const RecipeModalSpoon = (recipeID) => {
                             ID = {recipeID}
                         />
                         <button className='closeModal' onClick={toggleModal}> Close </button>
-                        <div className='printButton'>
-                        </div>
                         <div className='borderImg'></div>
                     </div>
                 </div>
