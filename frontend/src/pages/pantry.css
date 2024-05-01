@@ -135,7 +135,7 @@
 .pantryRecipeListItem {
     display: grid;
     grid-template-columns: 220px 280px;
-    grid-template-rows: 120px 50px 50px 50px 40px;
+    grid-template-rows: 190px 50px 50px 50px 5px;
     border: 3px solid var(--third-color);
     border-radius: 10px;
     margin-left: auto;
