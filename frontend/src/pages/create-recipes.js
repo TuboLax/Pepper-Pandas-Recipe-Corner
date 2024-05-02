@@ -226,7 +226,7 @@ const CreateRecipeForm = () => {
             }
 
             if (title.trim() === "" || readyInMinutes === "" || instructions.length === 0 || extendedIngredients.length === 0) {
-                alert("Title/Cooking Time/Instructions/Ingredients is missing")
+                alert("Title/Preparation Time/Instructions/Ingredients is missing")
             } else {
                 const recipe = {
                     title: title,
